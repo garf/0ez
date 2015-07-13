@@ -146,6 +146,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
+        Illuminate\Html\HtmlServiceProvider::class,
+
         //https://github.com/anhskohbo/no-captcha
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         //https://github.com/jenssegers/laravel-date
@@ -194,7 +196,8 @@ return [
         'Inspiring' => Illuminate\Foundation\Inspiring::class,
         'Lang'      => Illuminate\Support\Facades\Lang::class,
         'Log'       => Illuminate\Support\Facades\Log::class,
-        'Mail'      => Illuminate\Support\Facades\Mail::class,
+//        'Mail'      => Illuminate\Support\Facades\Mail::class,
+        'Mail'      => YOzaz\LaravelSwiftmailer\Facade::class,
         'Password'  => Illuminate\Support\Facades\Password::class,
         'Queue'     => Illuminate\Support\Facades\Queue::class,
         'Redirect'  => Illuminate\Support\Facades\Redirect::class,
@@ -212,6 +215,8 @@ return [
         'Date' => Jenssegers\Date\Date::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Form' => Illuminate\Html\FormFacade::class,
+        'HTML' => Illuminate\Html\HtmlFacade::class,
     ],
 
 ];
