@@ -9,6 +9,9 @@
                         @include('site.blog._post', ['post' => $post])
                     @endforeach
                 </div>
+                @if($posts->lastPage() > 1)
+                    <div class="center-align">{!! $posts->render() !!}</div>
+                @endif
             </div>
             <div class="col s4">
 

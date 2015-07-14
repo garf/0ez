@@ -17,7 +17,8 @@
         "styde/blade-pagination": "5.1.*@dev",
         "anhskohbo/no-captcha": "2.*",
 
-        "intervention/image": "~2.1"
+        "intervention/image": "~2.1",
+        "laracasts/testdummy": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

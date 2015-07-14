@@ -8,7 +8,7 @@
             {!! $post->excerpt !!}
         </div>
         <div class="card-action light-green darken-2 right-align">
-            <a href="#" class="white-text">Читать далее</a>
+            <a href="#" class="btn-flat white-text">Читать далее</a>
         </div>
     </div>
 </div>

@@ -14,10 +14,13 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('category_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->string('title');
             $table->text('excerpt');
             $table->longText('content');
             $table->string('img', 255);
+            $table->string('slug', 512);
             $table->string('meta_description', 512);
             $table->string('meta_keywords');
             $table->enum('status', ['active', 'moderation', 'deleted', 'refused', 'draft'])->default('active');
