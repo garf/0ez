@@ -22,10 +22,10 @@ $factory(App\Models\Posts::class, function ($faker) {
     return [
         'category_id' => 'factory:App\Models\Categories',
         'user_id' => 'factory:App\Models\Users',
-        'title' => $faker->realText(100, $indexSize = 2),
+        'title' => $faker->sentence(8),
         'excerpt' => $faker->paragraph(),
-        'content' => $faker->realText(1000, $indexSize = 2),
-        'img' => $faker->imageUrl($width = 700, $height = 250),
+        'content' => $faker->realText(1000, 2),
+        'img' => $faker->imageUrl(700, 400),
         'meta_description' => $faker->paragraph(),
         'meta_keywords' => $faker->email,
         'status' => 'active',
