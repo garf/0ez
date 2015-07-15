@@ -8,5 +8,5 @@
  * Or send me the template to admin@styde.net
  */
 return array(
-    'theme' => 'bootstrap'
+    'theme' => 'foundation'
 );

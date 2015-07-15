@@ -1,11 +1,14 @@
-<div class="col-md-6 col-sm-12 col-xs-12">
-    <div class="panel panel-success blog-post">
+    <div class="small-12 medium-12 large-6 columns panel panel-success blog-post" data-equalizer-watch>
         <div class="panel-heading card-image" style="min-height: 70px;">
-            <span class="card-title white black-text blog-post-title">{{ $post->title }}</span>
+            <h2>
+                <small class="card-title white black-text blog-post-title">
+                    {{ $post->title }}
+                </small>
+            </h2>
         </div>
         <div class="panel-body">
             <img src="{{ $post->img }}" alt="" style="max-width: 100%;">
-            <div style="min-height: 100px; margin-top: 10px;">
+            <div style="margin-top: 10px;">
                 {!! $post->excerpt !!}
             </div>
         </div>
@@ -13,4 +16,3 @@
             <a href="#" class="btn btn-warning">Читать далее</a>
         </div>
     </div>
-</div>
