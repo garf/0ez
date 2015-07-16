@@ -39,7 +39,7 @@ class Posts extends Model
 
     public function getBySlug($slug)
     {
-        return Posts::where('slug', 'like', $slug)->first();
+        return Posts::with(['user', 'category'])->where('slug', 'like', $slug)->first();
     }
 
     public function scopeActive($query) {
