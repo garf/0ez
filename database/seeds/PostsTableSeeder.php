@@ -13,6 +13,6 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
 
-        Factory::times(30)->create(App\Models\Posts::class);
+        Factory::times(10)->create(App\Models\Posts::class);
     }
 }

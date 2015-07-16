@@ -21,8 +21,9 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->string('img', 255);
             $table->string('slug', 512);
-            $table->string('meta_description', 512);
-            $table->string('meta_keywords');
+            $table->string('seo_title', 255);
+            $table->string('seo_keywords', 255);
+            $table->string('seo_description', 512);
             $table->enum('status', ['active', 'moderation', 'deleted', 'refused', 'draft'])->default('active');
             $table->dateTime('published_at');
             $table->timestamps();

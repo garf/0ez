@@ -18,7 +18,8 @@
         "anhskohbo/no-captcha": "2.*",
 
         "intervention/image": "~2.1",
-        "laracasts/testdummy": "^2.3"
+        "laracasts/testdummy": "^2.3",
+        "barryvdh/laravel-debugbar": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

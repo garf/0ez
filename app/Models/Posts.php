@@ -7,6 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
     protected $table = 'posts';
+    public static $_instance = null;
+
+    public static function i()
+    {
+        if (null === self::$_instance) {
+            self::$_instance = new self();
+        }
+
+        return self::$_instance;
+    }
 
     public function user()
     {
@@ -16,6 +26,15 @@ class Posts extends Model
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
+    }
+
+    public function getPostsByCategoryId($category_id)
+    {
+        $posts = Posts::with(['category', 'user']);
+        if(!empty($category_id)) {
+            $posts = $posts->where('category_id', $category_id);
+        }
+        return $posts->active()->paginate(5);
     }
 
     public function scopeActive($query) {

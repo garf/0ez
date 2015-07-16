@@ -10,24 +10,30 @@ $factory(App\Models\Users::class, function ($faker) {
 });
 
 $factory(App\Models\Categories::class, function ($faker) {
-    $title = $faker->text(30);
+    $title = ucfirst($faker->word());
 
     return [
         'title' => $title,
+        'seo_title' => $title,
+        'seo_keywords' => implode(', ', $faker->words(6)),
+        'seo_description' => $faker->sentence(10),
         'slug' => str_slug($title, '-'),
     ];
 });
 
 $factory(App\Models\Posts::class, function ($faker) {
+    $title = $faker->sentence(8);
     return [
         'category_id' => 'factory:App\Models\Categories',
         'user_id' => 'factory:App\Models\Users',
-        'title' => $faker->sentence(8),
+        'title' => $title,
+        'slug' => str_slug($title),
         'excerpt' => $faker->paragraph(),
         'content' => $faker->realText(1000, 2),
         'img' => $faker->imageUrl(700, 400),
-        'meta_description' => $faker->paragraph(),
-        'meta_keywords' => $faker->email,
+        'seo_title' => $title,
+        'seo_keywords' => implode(', ', $faker->words(6)),
+        'seo_description' => $faker->sentence(10),
         'status' => 'active',
         'published_at' => $faker->dateTime(),
     ];

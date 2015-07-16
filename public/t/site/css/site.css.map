@@ -1,0 +1,1 @@
+{"version":3,"sources":["site.scss"],"names":[],"mappings":"AAAA;EACI,cAAa,EADJ;;AAIb;EACI,wBAAuB;EACvB,mBAAkB;EAClB,mBAAkB,EAHZ","file":"site.css","sourcesContent":[".card-space {\n    color: white;\n}\n\n.yan-dex {\n    vertical-align: middle;\n    font-weight: bold;\n    text-align: right;\n}"],"sourceRoot":"/source/"}

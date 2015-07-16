@@ -162,6 +162,8 @@ return [
         YOzaz\LaravelSwiftmailer\ServiceProvider::class,
         //https://github.com/StydeNet/blade-pagination
         Styde\BladePagination\ServiceProvider::class,
+        //https://github.com/barryvdh/laravel-debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -217,6 +219,7 @@ return [
         'Agent' => Jenssegers\Agent\Facades\Agent::class,
         'Form' => Illuminate\Html\FormFacade::class,
         'HTML' => Illuminate\Html\HtmlFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

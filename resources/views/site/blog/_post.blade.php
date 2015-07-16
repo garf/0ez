@@ -1,18 +1,28 @@
-    <div class="small-12 medium-12 large-6 columns panel panel-success blog-post" data-equalizer-watch>
-        <div class="panel-heading card-image" style="min-height: 70px;">
-            <h2>
-                <small class="card-title white black-text blog-post-title">
-                    {{ $post->title }}
-                </small>
-            </h2>
-        </div>
-        <div class="panel-body">
-            <img src="{{ $post->img }}" alt="" style="max-width: 100%;">
-            <div style="margin-top: 10px;">
-                {!! $post->excerpt !!}
+    <div class="col s12 m12 l12 blog-post">
+        <div class="card ">
+            <div class="card-image">
+                <img src="{{ $post->img }}" alt="">
             </div>
-        </div>
-        <div class="panel-footer text-right">
-            <a href="#" class="btn btn-warning">Читать далее</a>
+            <div class="card-content">
+                <a href="{{ route('view', ['slug' => $post->slug]) }}"
+                   class="card-title activator grey-text text-darken-4">{{ $post->title }}</a>
+                <p>{!! $post->excerpt !!}</p>
+            </div>
+            <div class="card-action">
+                <div class="row">
+                    <div class="col s12 m12 l7 left-align">
+                        <div>
+                            Категория: <a href="{{ route('category', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a>
+                        </div>
+                        <div>
+                            Автор: {{ $post->user->name }}
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l5 right-align">
+                        <a href="{{ route('view', ['slug' => $post->slug]) }}" class="">Читать далее</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
