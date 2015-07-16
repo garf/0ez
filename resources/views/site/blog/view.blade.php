@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col s12 m12 l4">
                                     <div class="card-image">
-                                        <img src="{{ $post->img }}" alt="">
+                                        <img src="{{ $post->img }}" alt="" class="circle responsive-img">
                                     </div>
                                     <div>
                                         <div>
