@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Posts extends Model
 {
     protected $table = 'posts';
-    public static $_instance = null;
+    protected static $_instance = null;
 
     public static function i()
     {
@@ -35,6 +35,11 @@ class Posts extends Model
             $posts = $posts->where('category_id', $category_id);
         }
         return $posts->active()->paginate(5);
+    }
+
+    public function getBySlug($slug)
+    {
+        return Posts::where('slug', 'like', $slug)->first();
     }
 
     public function scopeActive($query) {

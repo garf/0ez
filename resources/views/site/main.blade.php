@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{{ $title or config('app.sitename') }}</title>
+    @include('site.partials.seo-meta')
     @yield('meta')
     <link rel="stylesheet" href="/plugins/materialize/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

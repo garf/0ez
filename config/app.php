@@ -27,7 +27,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://0ez.ru'),
-    'sitename' => env('APP_SITENAME', '0ez - Как я поехал в Америку'),
+    'sitename' => env('APP_SITENAME', '0ez'),
 
     /*
     |--------------------------------------------------------------------------

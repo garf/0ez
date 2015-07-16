@@ -21,6 +21,9 @@ class BlogController extends Controller
             }
             $category_id = $category->id;
             View::share('active_category', $category_id);
+            View::share('seo_title', 'Категория: ' . $category->seo_title);
+            View::share('seo_description', $category->seo_description);
+            View::share('seo_keywords', $category->seo_keywords);
         } else {
             $category = null;
             $category_id = null;
@@ -36,6 +39,10 @@ class BlogController extends Controller
 
     public function view($slug)
     {
-        return 'view post ' . $slug;
+        $post = Posts::i()->getBySlug($slug);
+        View::share('seo_title', $post->seo_title);
+        View::share('seo_description', $post->seo_description);
+        View::share('seo_keywords', $post->seo_keywords);
+        return view('site.blog.view', ['post' => $post]);
     }
 }
