@@ -21,5 +21,14 @@ elixir(function (mix) {
 });
 
 elixir(function (mix) {
-    mix.version(["t/site/js/site.js", "t/site/css/site.css"]);
+    mix.scripts(['root.js'], 'public/t/root/js/root.js');
+});
+elixir(function (mix) {
+    mix.sass([
+        "root.scss"
+    ], "public/t/root/css/root.css");
+});
+
+elixir(function (mix) {
+    mix.version(["t/site/js/site.js", "t/site/css/site.css", "t/root/js/root.js", "t/root/css/root.css"]);
 });

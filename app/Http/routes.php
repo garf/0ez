@@ -25,6 +25,10 @@ Route::post('/root/login', [
     'uses' => 'AuthController@loginPost',
 ]);
 
+Route::get('/root/logout', [
+    'as' => 'logout',
+    'uses' => 'AuthController@logout',
+]);
 
 
 //=======ROOT=======//

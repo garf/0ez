@@ -11,6 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return 'Your on Root';
+        $data = [];
+        return view('root.dashboard.index', $data);
     }
 }

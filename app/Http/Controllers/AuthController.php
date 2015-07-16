@@ -44,4 +44,10 @@ class AuthController extends Controller
 
         return Redirect::route($redirectTarget);
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        return Redirect::route('login');
+    }
 }
