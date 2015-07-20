@@ -34,7 +34,7 @@ class Posts extends Model
         if(!empty($category_id)) {
             $posts = $posts->where('category_id', $category_id);
         }
-        return $posts->active()->paginate(5);
+        return $posts->active()->paginate(10);
     }
 
     public function getBySlug($slug)

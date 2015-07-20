@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.post-options {
+    a {
+        margin-right: 8px;
+    }
+}
+
+.brown-text {
+    color: #512800;
+}

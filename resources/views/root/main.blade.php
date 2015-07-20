@@ -2,9 +2,12 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     @yield('meta')
-    <link rel="stylesheet" href="/plugins/materialize/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ elixir('t/root/css/root.css') }}">
     @yield('css')
     @yield('js-top')
@@ -12,9 +15,9 @@
 <body>
 @include('root.partials.header')
 @yield('body')
-@include('root.partials.footer')
+{{--@include('root.partials.footer')--}}
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="/plugins/materialize/js/materialize.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="{{ elixir('t/root/js/root.js') }}"></script>
 @yield('js-bottom')
 </body>

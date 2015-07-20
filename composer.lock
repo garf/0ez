@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4bade6293f307309bb8fbf70eb40dc8",
+    "hash": "743084910639dd666968e5d444fa6e5d",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -50,6 +50,118 @@
                 "recaptcha"
             ],
             "time": "2015-06-10 05:09:18"
+        },
+        {
+            "name": "barryvdh/elfinder-builds",
+            "version": "v2.1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/elfinder-builds.git",
+                "reference": "f11eb97d55ad16cdb96b6e41c2d9ffc4e697303c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/elfinder-builds/zipball/f11eb97d55ad16cdb96b6e41c2d9ffc4e697303c",
+                "reference": "f11eb97d55ad16cdb96b6e41c2d9ffc4e697303c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Levashov",
+                    "email": "dio@std42.ru",
+                    "homepage": "http://std42.ru"
+                },
+                {
+                    "name": "Troex Nevelin",
+                    "email": "troex@fury.scancode.ru",
+                    "homepage": "http://std42.ru"
+                },
+                {
+                    "name": "Naoki Sawada",
+                    "email": "hypweb@gmail.com",
+                    "homepage": "http://xoops.hypweb.net"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "https://github.com/Studio-42/elFinder/contributors"
+                }
+            ],
+            "description": "File manager for web",
+            "homepage": "http://elfinder.org",
+            "time": "2015-06-25 06:56:25"
+        },
+        {
+            "name": "barryvdh/elfinder-flysystem-driver",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/elfinder-flysystem-driver.git",
+                "reference": "3ae5cd939e36710bab0ea0163011dbfbc1a6ec77"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/elfinder-flysystem-driver/zipball/3ae5cd939e36710bab0ea0163011dbfbc1a6ec77",
+                "reference": "3ae5cd939e36710bab0ea0163011dbfbc1a6ec77",
+                "shasum": ""
+            },
+            "require": {
+                "intervention/image": "~2.0",
+                "league/flysystem": "~1.0",
+                "php": ">=5.4"
+            },
+            "suggest": {
+                "barryvdh/elfinder-builds": "~2.1",
+                "league/glide": "~0.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "elFinderVolumeFlysystem.php"
+                ],
+                "psr-4": {
+                    "Barryvdh\\elFinderFlysystemDriver\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A Flysystem Driver for elFinder",
+            "keywords": [
+                "Flysystem",
+                "elfinder",
+                "filesystem"
+            ],
+            "time": "2015-06-20 06:51:51"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -104,6 +216,56 @@
                 "webprofiler"
             ],
             "time": "2015-07-09 14:51:59"
+        },
+        {
+            "name": "barryvdh/laravel-elfinder",
+            "version": "v0.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-elfinder.git",
+                "reference": "f19c8870ab6a0e53da9b79045427a1cdedccbbec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-elfinder/zipball/f19c8870ab6a0e53da9b79045427a1cdedccbbec",
+                "reference": "f19c8870ab6a0e53da9b79045427a1cdedccbbec",
+                "shasum": ""
+            },
+            "require": {
+                "barryvdh/elfinder-builds": "2.1.x",
+                "barryvdh/elfinder-flysystem-driver": "0.1.x@dev",
+                "illuminate/support": "5.0.x|5.1.x",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\Elfinder\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A Laravel Package to integrate elFinder 2",
+            "keywords": [
+                "elfinder",
+                "filebrowser",
+                "laravel",
+                "tinymce"
+            ],
+            "time": "2015-06-07 19:51:57"
         },
         {
             "name": "barryvdh/laravel-ide-helper",

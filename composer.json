@@ -19,7 +19,8 @@
 
         "intervention/image": "~2.1",
         "laracasts/testdummy": "^2.3",
-        "barryvdh/laravel-debugbar": "^2.0"
+        "barryvdh/laravel-debugbar": "^2.0",
+        "barryvdh/laravel-elfinder": "^0.3.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -49,7 +50,8 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize"
+            "php artisan optimize",
+            "php artisan elfinder:publish"
         ],
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""

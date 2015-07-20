@@ -164,6 +164,8 @@ return [
         Styde\BladePagination\ServiceProvider::class,
         //https://github.com/barryvdh/laravel-debugbar
         Barryvdh\Debugbar\ServiceProvider::class,
+        //https://github.com/barryvdh/laravel-elfinder
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
 
     ],
 

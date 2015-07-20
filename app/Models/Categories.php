@@ -7,7 +7,7 @@ use DB;
 
 class Categories extends Model
 {
-    protected $table = 'posts_categories';
+    protected $table = 'categories';
     public static $_instance = null;
 
     public static function i()
@@ -26,11 +26,11 @@ class Categories extends Model
 
     public function withPostsCount()
     {
-        return Categories::leftJoin('posts', 'posts.category_id', '=', 'posts_categories.id')
+        return Categories::leftJoin('posts', 'posts.category_id', '=', 'categories.id')
             ->where('posts.status', 'active')
-            ->groupBy('posts_categories.id')
-            ->orderBy('posts_categories.title')
-            ->get(['posts_categories.*', DB::raw('COUNT(posts.id) as num')]);
+            ->groupBy('categories.id')
+            ->orderBy('categories.title')
+            ->get(['categories.*', DB::raw('COUNT(posts.id) as num')]);
     }
 
     public function getBySlug($slug)

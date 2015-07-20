@@ -39,4 +39,14 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\DashboardController@index',
     ]);
 
+    Route::get('/posts', [
+        'as' => 'root-posts',
+        'uses' => 'Root\BlogController@index',
+    ]);
+
+    Route::get('/posts/new', [
+        'as' => 'root-posts-new',
+        'uses' => 'Root\BlogController@addPost',
+    ]);
+
 });
