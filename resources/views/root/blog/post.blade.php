@@ -5,24 +5,28 @@
     <div class="container">
         {!! Form::open() !!}
             <div class="row">
-                <div class="col s12 m12 l8">
+                <div class="col-sm-12 col-md-12 col-lg-8">
                     <br />
-                    <div class="input-field">
-                        <input id="title" type="text" name="title">
+                    <div class="form-group">
                         <label for="title">Title</label>
+                        <input id="title" type="text" class="form-control" name="title">
                     </div>
-                    <div class="input-field">
+                    <div class="form-group">
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
                     </div>
                 </div>
-                <div class="col s12 m12 l4">
+                <div class="col-sm-12 col-md-12 col-lg-4">
                     <div class="">
                         <h4>Categories</h4>
-                        <select name="category">
+                        <select name="category" class="form-control">
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach
                         </select>
+                    </div>
+                    <hr />
+                    <div>
+                        <input type="submit" value="Save" class="btn btn-block btn-success" >
                     </div>
                 </div>
             </div>

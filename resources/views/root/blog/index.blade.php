@@ -6,7 +6,7 @@
             <div class="col-sm-12 col-md-12 col-lg-2">
                 <div class="sidebar-nav">
                     <a href="{{ route('root-posts-new') }}" class="btn btn-block btn-success">New Post</a>
-
+                    <input type="text" name="q" placeholder="Fast search..." class="form-control" />
                     <ul class="nav nav-pills nav-stacked">
                         <li class="{{ Input::get('status', 'all') == 'all' ? 'active' : '' }}"><a href="{{ route('root-posts') }}"
                                >All Posts</a></li>

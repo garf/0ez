@@ -34,5 +34,5 @@ CKEDITOR.editorConfig = function( config ) {
 
 	config.imgurClientID = "cf6f00927ed63b4";
 	config.imgurClientSecret = "9aa33101c457981898b03884aa1a351157dac086";
-	config.extraPlugins = 'table,youtube';
+	config.extraPlugins = 'table,youtube,fixed,maximize';
 };
