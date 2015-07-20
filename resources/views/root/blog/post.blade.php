@@ -6,10 +6,9 @@
         {!! Form::open() !!}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-8">
-                    <br />
                     <div class="form-group">
-                        <label for="title">Title</label>
-                        <input id="title" type="text" class="form-control" name="title">
+                        <label for="inputTitle">Title</label>
+                        <input id="inputTitle" type="text" class="form-control" name="title">
                     </div>
                     <div class="form-group">
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
@@ -17,8 +16,8 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-4">
                     <div class="">
-                        <h4>Categories</h4>
-                        <select name="category" class="form-control">
+                        <label for="inputCategory">Categories</label>
+                        <select name="category" id="inputCategory" class="form-control">
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                             @endforeach

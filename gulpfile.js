@@ -16,7 +16,8 @@ elixir(function (mix) {
 });
 elixir(function (mix) {
     mix.sass([
-        "site.scss"
+        "common.scss",
+        "site.scss",
     ], "public/t/site/css/site.css");
 });
 
@@ -25,6 +26,7 @@ elixir(function (mix) {
 });
 elixir(function (mix) {
     mix.sass([
+        "common.scss",
         "root.scss"
     ], "public/t/root/css/root.css");
 });

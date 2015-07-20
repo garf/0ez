@@ -1,3 +1,10 @@
+@-moz-document url-prefix() {
+  fieldset {
+    display: table-cell; } }
+
+.brown-text {
+  color: #512800; }
+
 body {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14,8 +21,5 @@ main {
 
 .post-options a {
   margin-right: 8px; }
-
-.brown-text {
-  color: #512800; }
 
 /*# sourceMappingURL=root.css.map */
