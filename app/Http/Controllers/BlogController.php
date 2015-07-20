@@ -24,6 +24,7 @@ class BlogController extends Controller
             View::share('seo_title', 'Категория: ' . $category->seo_title);
             View::share('seo_description', $category->seo_description);
             View::share('seo_keywords', $category->seo_keywords);
+            $this->title->prepend('Категория: ' . $category->seo_title);
         } else {
             $category = null;
             $category_id = null;
@@ -43,6 +44,7 @@ class BlogController extends Controller
         View::share('seo_title', $post->seo_title);
         View::share('seo_description', $post->seo_description);
         View::share('seo_keywords', $post->seo_keywords);
+        $this->title->prepend($post->seo_title);
         return view('site.blog.view', ['post' => $post]);
     }
 }

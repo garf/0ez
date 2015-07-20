@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @include('site.partials.seo-meta')
     @yield('meta')
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">

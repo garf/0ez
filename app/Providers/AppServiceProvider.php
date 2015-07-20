@@ -24,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(\App\Classes\Title::class, function () {
+            return new \App\Classes\Title(config('app.sitename'));
+        });
+        $this->app->bind('title', \App\Classes\Title::class);
     }
 }
