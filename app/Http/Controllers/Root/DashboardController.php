@@ -13,7 +13,11 @@ class DashboardController extends Controller
     public function index()
     {
         View::share('menu_item_active', 'index');
-        $data = [];
+        $data = [
+            'title' => 'Dashboard',
+        ];
+        $this->title->prepend($data['title']);
         return view('root.dashboard.index', $data);
     }
+
 }

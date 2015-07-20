@@ -22,7 +22,10 @@ class BlogController extends Controller
         }
         $data = [
             'posts' => $posts,
+            'title' => 'Posts List',
         ];
+
+        $this->title->prepend($data['title']);
         View::share('menu_item_active', 'posts');
         return view('root.blog.index', $data);
     }
@@ -31,8 +34,10 @@ class BlogController extends Controller
     {
         $data = [
             'categories' => Categories::all(),
+            'title' => 'New Post',
             'post' => null
         ];
+        $this->title->prepend($data['title']);
         View::share('menu_item_active', 'posts');
 
         return view('root.blog.post', $data);
