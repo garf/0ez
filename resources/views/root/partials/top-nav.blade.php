@@ -20,7 +20,11 @@
                             class="{{ $left['class'] }}"
                             id="{{ $left['id'] }}"
                                 {{ $left['blank'] ? 'target="_blank"' : '' }}
-                                >{{ $left['title'] }}
+                                >
+                            @if(isset($left['icon']) && $left['icon'] != '')
+                                <i class="{{ $left['icon'] }}"></i>
+                            @endif
+                                {{ $left['title'] }}
                             @if(isset($menu_item_active) && $left['item'] == $menu_item_active)
                                 <span class="sr-only">(current)</span>
                             @endif
@@ -35,7 +39,11 @@
                             class="{{ $right['class'] }}"
                             id="{{ $right['id'] }}"
                                 {{ $right['blank'] ? 'target="_blank"' : '' }}
-                                >{{ $right['title'] }}
+                                >
+                            @if(isset($right['icon']) && $right['icon'] != '')
+                                <i class="{{ $right['icon'] }}"></i>
+                            @endif
+                            {{ $right['title'] }}
                             @if(isset($menu_item_active) && $right['item'] == $menu_item_active)
                                 <span class="sr-only">(current)</span>
                             @endif
