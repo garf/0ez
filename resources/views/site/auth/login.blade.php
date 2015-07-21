@@ -3,30 +3,42 @@
 @section('body')
     <div class="container">
         <div class="row">
-            <div class="col s12 m12 l4 offset-l4">
+            <div class="col-sm-12 col-md-2 col-lg-4"></div>
+            <div class="col-sm-12 col-md-8 col-lg-4">
                 {!! Form::open(['route' => 'login']) !!}
-                <h5>Sign In</h5>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h1>Sign In</h1></div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input id="email" type="text" class="form-control" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" class="form-control" name="password">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" id="remember" name="remember"> Remeber me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit">
+                                Log In
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="input-field">
-                    <input id="email" type="text" class="validate" name="email">
-                    <label for="email">E-mail</label>
-                </div>
-                <div class="input-field">
-                    <input id="password" type="password" class="validate" name="password">
-                    <label for="password">Password</label>
-                </div>
-                <p>
-                    <input type="checkbox" id="remember" name="remember"/>
-                    <label for="remember">Remeber me</label>
-                </p>
-                <div class="right-align">
-                    <button class="btn waves-effect waves-light" type="submit" >
-                        Log In
-                    </button>
-                </div>
+
+
+
+
                 {!! Form::close() !!}
             </div>
-            <div class="col s12 m12 l4"></div>
+            <div class="col-sm-12 col-md-2 col-lg-4"></div>
         </div>
 
     </div>
