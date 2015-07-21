@@ -21,6 +21,13 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->boolean('active')->default(0);
         });
+
+        $user = new \App\Models\Users;
+        $user->name = 'Garfild';
+        $user->email = 'garipov.dinar@gmail.com';
+        $user->password = '123';
+        $user->active = '1';
+        $user->save();
     }
 
     /**

@@ -22,6 +22,7 @@ class CleateCategoriesTable extends Migration
             $table->timestamps();
         });
         $category = new \App\Models\Categories;
+        $category->id = 1;
         $category->title = 'Без рубрики';
         $category->slug = 'unbound';
         $category->save();
