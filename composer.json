@@ -50,8 +50,10 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize",
-            "php artisan elfinder:publish"
+            "php artisan clear-compiled",
+            "php artisan ide-helper:generate",
+            "php artisan elfinder:publish",
+            "php artisan optimize"
         ],
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
