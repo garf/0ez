@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="post-options">
                                     <a href="{{ route('view', ['slug' => $post->slug]) }}" target="_blank" class="brown-text">View</a>
-                                    <a href="#!" class="brown-text">Edit</a>
+                                    <a href="{{ route('root-post-edit', ['post_id' => $post->id]) }}" class="brown-text">Edit</a>
                                     @if($post->status == 'active')
                                         <a href="#!" class="brown-text">To Draft</a>
                                     @else

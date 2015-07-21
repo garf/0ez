@@ -3,56 +3,66 @@
 @section('body')
 
     <div class="container">
-        {!! Form::open(['url' => '', 'enctype' => 'multipart/form-data']) !!}
+        {!! Form::open(['url' => $save_url, 'enctype' => 'multipart/form-data']) !!}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-8">
+                    @if(!empty($post))
+                        <div class="well">
+
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label for="inputTitle">Title</label>
-                        <input id="inputTitle" type="text" class="form-control" name="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="textarea0">Excerpt</label>
-                        <textarea id="textarea0" class="form-control"></textarea>
+                        <input id="inputTitle" type="text" value="{{ $post->title or Input::old('title') }}" class="form-control" name="title">
                     </div>
                     <div class="form-group">
                         <label for="textarea1">Content</label>
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <textarea id="textarea1" name="content" class="materialize-textarea">{!! $post->content or Input::old('content')  !!} </textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputSEOTitle">SEO Title</label>
-                        <input id="inputSEOTitle" type="text" class="form-control" name="seo_title">
+                        <input id="inputSEOTitle" type="text" value="{{ $post->seo_title or Input::old('seo_title') }}" class="form-control" name="seo_title">
                     </div>
                     <div class="form-group">
                         <label for="inputSEODescription">SEO Description</label>
-                        <textarea id="inputSEODescription" class="form-control"></textarea>
+                        <textarea id="inputSEODescription" name="seo_description" class="form-control">{{ $post->seo_description or Input::old('seo_description') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputSEOKeywords">SEO Keywords</label>
-                        <input id="inputSEOKeywords" type="text" class="form-control" name="seo_keywords">
+                        <input id="inputSEOKeywords" type="text" class="form-control"
+                               value="{{ $post->seo_keywords or Input::old('seo_keywords') }}" name="seo_keywords">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-4">
                     <div class="form-group">
                         <label for="inputCategory">Categories</label>
-                        <select name="category" id="inputCategory" class="form-control">
+                        <select name="category_id" id="inputCategory" class="form-control">
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                <option value="{{ $category->id }}"
+                                        {{ (!empty($post) && $post->category_id == $category->id) ? 'selected' : '' }}>
+                                    {{ $category->title }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="inputImg">Miniature</label>
+                        <div>
+                            @if(!empty($post) && !empty($post->img))
+                                <img src="/upload/{{ $post->img }}" alt="" style="max-width: 100%;" >
+                            @endif
+                        </div>
                         <input type="file" id="inputImg" name="img" class="form-control" >
                     </div>
                     <div class="form-group">
                         <label for="inputStatus">Status</label>
                         <select name="status" id="inputStatus" class="form-control">
-                            <option value="active">Active</option>
-                            <option value="draft">Draft</option>
+                            <option value="active" {{ (!empty($post) && $post->status == 'active') ? 'selected' : '' }}>Active</option>
+                            <option value="draft" {{ (!empty($post) && $post->status == 'draft') ? 'selected' : '' }}>Draft</option>
                             <optgroup label="Additional">
-                                <option value="moderation">Moderation</option>
-                                <option value="deleted">Deleted</option>
-                                <option value="refused">Refused</option>
+                                <option value="moderation" {{ (!empty($post) && $post->status == 'moderation') ? 'selected' : '' }}>Moderation</option>
+                                <option value="deleted" {{ (!empty($post) && $post->status == 'deleted') ? 'selected' : '' }}>Deleted</option>
+                                <option value="refused" {{ (!empty($post) && $post->status == 'refused') ? 'selected' : '' }}>Refused</option>
                             </optgroup>
                         </select>
                     </div>
@@ -74,9 +84,11 @@
                         <input type="text"
                                id="inputTags"
                                name="tags"
+                               value="{{ (!empty($post) ? $post->tags->implode('tag', ', ') : Input::old('tags'))  }}"
                                class="form-control">
 
                         <div class="well well-sm tags-list">
+                            <b>Popular Tags</b><br />
                             <a href="#!">tags</a>
                             <a href="#!">list</a>
                             <a href="#!">goes</a>

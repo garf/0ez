@@ -32,6 +32,9 @@
                                 <div>
                                     Опубликовано: {{ hdate($post->published_at) }}
                                 </div>
+                                <div>
+                                    Теги: @include('site.partials.tags-list', ['tags' => $post->tags])
+                                </div>
                             </div>
 
                         </div>

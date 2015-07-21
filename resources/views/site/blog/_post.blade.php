@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-4">
         <a href="{{ route('view', ['slug' => $post->slug]) }}">
-            <img class="media-object" style="max-width: 100%;" src="{{ $post->img }}" alt="">
+            <img class="media-object" style="max-width: 100%;" src="/upload/{{ $post->img }}" alt="">
         </a>
     </div>
     <div class="col-lg-8">
@@ -17,6 +17,9 @@
                 </div>
                 <div>
                     <span class="text-muted">Опубликовано:</span> {{ hdate($post->published_at) }}
+                </div>
+                <div>
+                    Теги: @include('site.partials.tags-list', ['tags' => $post->tags])
                 </div>
             </div>
             <div class="col-lg-6 text-right">

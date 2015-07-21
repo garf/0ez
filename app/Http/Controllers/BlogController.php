@@ -47,4 +47,16 @@ class BlogController extends Controller
         $this->title->prepend($post->seo_title);
         return view('site.blog.view', ['post' => $post]);
     }
+
+    public function tag($tag)
+    {
+        $data = [
+            'posts' => Posts::i()->getPostsByTag($tag),
+            'title' => 'Тэг: ' . $tag,
+        ];
+        View::share('seo_title', $data['title']);
+        $this->title->prepend($data['title']);
+
+        return view('site.blog.index', $data);
+    }
 }

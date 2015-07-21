@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('seo_title', 255);
             $table->string('seo_keywords', 255);
             $table->string('seo_description', 512);
+            $table->boolean('is_pinned')->default(0);
             $table->enum('status', ['active', 'moderation', 'deleted', 'refused', 'draft'])->default('active');
             $table->dateTime('published_at');
             $table->timestamps();

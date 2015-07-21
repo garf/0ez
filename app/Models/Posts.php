@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Cache;
 
 class Posts extends Model
 {
@@ -23,6 +24,11 @@ class Posts extends Model
         return $this->belongsTo(Users::class, 'user_id');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tags::class, 'post_tag', 'post_id', 'tag_id');
+    }
+
     public function category()
     {
         return $this->belongsTo(Categories::class, 'category_id');
@@ -37,9 +43,16 @@ class Posts extends Model
         return $posts->active()->paginate(10);
     }
 
+    public function getPostsByTag($tag)
+    {
+        if()
+        $posts = Tags::where('tag', 'like', $tag)->first()->posts()->active()->paginate(10);
+        return $posts;
+    }
+
     public function getBySlug($slug)
     {
-        return Posts::with(['user', 'category'])->where('slug', 'like', $slug)->first();
+        return Posts::with(['user', 'category', 'tags'])->where('slug', 'like', $slug)->first();
     }
 
     public function scopeActive($query) {

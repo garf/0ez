@@ -8,3 +8,14 @@ if (!function_exists('hdate')) {
         return $obj->ago();
     }
 }
+
+if (!function_exists('generate_filename')) {
+    /* Generate Unique filename */
+    function generate_filename($dir, $ext) {
+        do {
+            $name = str_random(10) . '.' . $ext;
+        } while(file_exists($dir . $name));
+
+        return $name;
+    }
+}

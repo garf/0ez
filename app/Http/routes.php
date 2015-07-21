@@ -10,6 +10,11 @@ Route::get('/view/{slug}', [
     'uses' => 'BlogController@view',
 ]);
 
+Route::get('/tag/{tag}', [
+    'as' => 'tag',
+    'uses' => 'BlogController@tag',
+]);
+
 Route::get('/category/{slug?}', [
     'as' => 'category',
     'uses' => 'BlogController@index',
@@ -46,7 +51,17 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
 
     Route::get('/posts/new', [
         'as' => 'root-posts-new',
-        'uses' => 'Root\BlogController@addPost',
+        'uses' => 'Root\BlogController@newPost',
     ]);
+
+    Route::get('/posts/edit/{post_id}', [
+        'as' => 'root-post-edit',
+        'uses' => 'Root\BlogController@edit',
+    ])->where(['post_id' => '[0-9]+']);
+
+    Route::post('/posts/store/{post_id?}', [
+        'as' => 'root-posts-store',
+        'uses' => 'Root\BlogController@store',
+    ])->where(['post_id' => '[0-9]+']);
 
 });
