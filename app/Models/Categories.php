@@ -33,6 +33,14 @@ class Categories extends Model
             ->get(['categories.*', DB::raw('COUNT(posts.id) as num')]);
     }
 
+    public function allWithPostsCount()
+    {
+        return Categories::leftJoin('posts', 'posts.category_id', '=', 'categories.id')
+            ->groupBy('categories.id')
+            ->orderBy('categories.title')
+            ->get(['categories.*', DB::raw('COUNT(posts.id) as num')]);
+    }
+
     public function getBySlug($slug)
     {
         return Categories::where('slug', 'like', $slug)->first();

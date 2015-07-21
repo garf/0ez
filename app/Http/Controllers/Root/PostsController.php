@@ -15,18 +15,18 @@ use Input;
 use Auth;
 use Redirect;
 
-class BlogController extends Controller
+class PostsController extends Controller
 {
     public function index()
     {
         if(Input::has('status')) {
-            $posts = Posts::orderBy('published_at', 'desc')->where('status', Input::get('status'))->paginate(20);
+            $posts = Posts::byStatus(Input::get('status'))->sort()->paginate(20);
         } else {
-            $posts = Posts::orderBy('published_at', 'desc')->paginate(20);
+            $posts = Posts::whereNotIn('status', ['deleted', 'refused'])->sort()->paginate(20);
         }
         $data = [
             'posts' => $posts,
-            'title' => 'Posts List',
+            'title' => 'Posts',
         ];
 
         $this->title->prepend($data['title']);
@@ -96,9 +96,54 @@ class BlogController extends Controller
         View::share('menu_item_active', 'posts');
 
         return view('root.blog.post', $data);
-
     }
 
+    public function pin($post_id)
+    {
+        $this->_setPinnedStatus($post_id, true);
+        return Redirect::back();
+    }
+
+    public function unpin($post_id)
+    {
+        $this->_setPinnedStatus($post_id, false);
+        return Redirect::back();
+    }
+
+    public function toDraft($post_id)
+    {
+        $this->_setPostStatus($post_id, 'draft');
+        return Redirect::back();
+    }
+
+    public function toActive($post_id)
+    {
+        $this->_setPostStatus($post_id, 'active');
+        return Redirect::back();
+    }
+
+    public function toDeleted($post_id)
+    {
+        $this->_setPostStatus($post_id, 'deleted');
+        return Redirect::back();
+    }
+
+    private function _setPinnedStatus($post_id, $status)
+    {
+        $post = Posts::find($post_id);
+        $post->is_pinned = $status;
+        $post->save();
+        return $post;
+    }
+
+    private function _setPostStatus($post_id, $status)
+    {
+        $post = Posts::find($post_id);
+        $post->status = $status;
+        $post->save();
+        return $post;
+    }
+    
     private function _setTags($tags_str, $post_id)
     {
         PostTag::where('post_id', $post_id)->delete();

@@ -2,15 +2,28 @@
 
 @section('body')
     <div class="container">
+        <h1>{{ $title }}</h1>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-2">
                 <div class="sidebar-nav">
                     <a href="{{ route('root-posts-new') }}" class="btn btn-block btn-success">New Post</a>
                     <input type="text" name="q" placeholder="Fast search..." class="form-control" />
                     <ul class="nav nav-pills nav-stacked">
-                        <li class="{{ Input::get('status', 'all') == 'all' ? 'active' : '' }}"><a href="{{ route('root-posts') }}"
-                               >All Posts</a></li>
-                        <li class="{{ Input::get('status') == 'draft' ? 'active' : '' }}"><a href="{{ route('root-posts', ['status' => 'draft']) }}">Drafts</a></li>
+                        <li class="{{ Input::get('status', 'all') == 'all' ? 'active' : '' }}">
+                            <a href="{{ route('root-posts') }}">All Posts</a>
+                        </li>
+                        <li class="{{ Input::get('status') == 'draft' ? 'active' : '' }}">
+                            <a href="{{ route('root-posts', ['status' => 'draft']) }}">Drafts</a>
+                        </li>
+                        <li class="{{ Input::get('status') == 'moderation' ? 'active' : '' }}">
+                            <a href="{{ route('root-posts', ['status' => 'moderation']) }}">Moderation</a>
+                        </li>
+                        <li class="{{ Input::get('status') == 'refused' ? 'active' : '' }}">
+                            <a href="{{ route('root-posts', ['status' => 'refused']) }}">Refused</a>
+                        </li>
+                        <li class="{{ Input::get('status') == 'deleted' ? 'active' : '' }}">
+                            <a href="{{ route('root-posts', ['status' => 'deleted']) }}">Deleted</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -38,12 +51,25 @@
                                     <a href="{{ route('view', ['slug' => $post->slug]) }}" target="_blank" class="brown-text">View</a>
                                     <a href="{{ route('root-post-edit', ['post_id' => $post->id]) }}" class="brown-text">Edit</a>
                                     @if($post->status == 'active')
-                                        <a href="#!" class="brown-text">To Draft</a>
+                                        <a href="{{ route('root-post-to-draft', ['post_id' => $post->id]) }}"
+                                           class="brown-text">To Draft</a>
                                     @else
-                                        <a href="#!" class="brown-text">Publish</a>
+                                        <a href="{{ route('root-post-to-active', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Publish</a>
                                     @endif
-                                    <a href="#!" class="brown-text">Delete</a>
-                                    <a href="#!" class="brown-text">Pin</a>
+                                    @if($post->status != 'deleted')
+                                        <a href="{{ route('root-post-to-deleted', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Delete</a>
+                                    @else
+                                        <a href="{{ route('root-post-to-draft', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Recover</a>
+                                    @endif
+                                    @if($post->is_pinned)
+                                        <a href="{{ route('root-post-unpin', ['post_id' => $post->id]) }}" class="brown-text">Unpin</a>
+                                    @else
+                                        <a href="{{ route('root-post-pin', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Pin</a>
+                                    @endif
                                 </div>
                             </td>
                             <td>
@@ -69,12 +95,4 @@
 
 
     </div>
-@stop
-
-@section('js-bottom')
-    <script>
-        $(document).ready(function () {
-            $('.sidebar-nav .row').pushpin({top: $('.sidebar-nav').offset().top});
-        });
-    </script>
 @stop

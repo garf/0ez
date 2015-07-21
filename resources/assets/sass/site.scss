@@ -1,15 +1,62 @@
-.card-space {
-    color: white;
+body {
+    background: url('/t/common/bgs/main.jpg') left top repeat;
 }
 
-.yan-dex {
-    vertical-align: middle;
-    font-weight: bold;
-    text-align: right;
+.post-pinned {
+    background: #fffae1;
+}
+.post {
+    box-shadow: 0 0 6px #999;
+
+    .post-content {
+        padding: 15px 0 15px 15px;
+    }
+    .post-image {
+        padding: 0;
+    }
 }
 
-.cke {
-    select {
-        display: inline-block !important;
+.post-body {
+    background: #fff;
+    box-shadow: 0 0 6px #999;
+}
+
+.posts-content {
+    background: #fff;
+}
+
+.related-list {
+    margin-bottom: 20px;
+    .related-item {
+        .related-img {
+            img {
+                max-width: 100%;
+            }
+        }
+        .related-link {
+            padding-top: 8px;
+            a {
+                color: #000;
+            }
+        }
+    }
+}
+
+.page-footer {
+    .footer-content {
+        background: #4c4d47;
+        padding: 15px 0;
+        color: #FDFDFD;
+
+        a {
+            text-decoration: underline;
+            color: #fdfdfd;
+        }
+    }
+    .footer-copyright {
+        background: #3E3F3A;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        color: #FDFDFD;
     }
 }

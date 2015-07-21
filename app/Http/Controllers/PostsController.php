@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Agent;
 use View;
 
-class BlogController extends Controller
+class PostsController extends Controller
 {
 
     public function index($slug='')

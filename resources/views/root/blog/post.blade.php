@@ -6,19 +6,24 @@
         {!! Form::open(['url' => $save_url, 'enctype' => 'multipart/form-data']) !!}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-8">
-                    @if(!empty($post))
-                        <div class="well">
-
-                        </div>
-                    @endif
                     <div class="form-group">
                         <label for="inputTitle">Title</label>
                         <input id="inputTitle" type="text" value="{{ $post->title or Input::old('title') }}" class="form-control" name="title">
                     </div>
+                    @if(!empty($post))
+                        <div class="well">
+                            <div><span class="text-muted">URL:</span>
+                                <a href="{{ route('view', ['slug' => $post->slug]) }}" target="_blank">
+                                    {{ route('view', ['slug' => $post->slug]) }}
+                                </a>
+                            </div>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label for="textarea1">Content</label>
                         <textarea id="textarea1" name="content" class="materialize-textarea">{!! $post->content or Input::old('content')  !!} </textarea>
                     </div>
+
                     <div class="form-group">
                         <label for="inputSEOTitle">SEO Title</label>
                         <input id="inputSEOTitle" type="text" value="{{ $post->seo_title or Input::old('seo_title') }}" class="form-control" name="seo_title">
@@ -57,8 +62,8 @@
                     <div class="form-group">
                         <label for="inputStatus">Status</label>
                         <select name="status" id="inputStatus" class="form-control">
-                            <option value="active" {{ (!empty($post) && $post->status == 'active') ? 'selected' : '' }}>Active</option>
                             <option value="draft" {{ (!empty($post) && $post->status == 'draft') ? 'selected' : '' }}>Draft</option>
+                            <option value="active" {{ (!empty($post) && $post->status == 'active') ? 'selected' : '' }}>Active</option>
                             <optgroup label="Additional">
                                 <option value="moderation" {{ (!empty($post) && $post->status == 'moderation') ? 'selected' : '' }}>Moderation</option>
                                 <option value="deleted" {{ (!empty($post) && $post->status == 'deleted') ? 'selected' : '' }}>Deleted</option>

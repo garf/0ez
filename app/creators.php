@@ -27,7 +27,7 @@ view()->creator('root.partials.top-nav', function($view) {
             'blank' => false,
         ],
         [
-            'url' => route('root-index'),
+            'url' => route('root-categories'),
             'title' => 'Categories',
             'route' => 'root-categories',
             'item' => 'categories',

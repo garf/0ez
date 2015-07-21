@@ -16,7 +16,7 @@
 <body>
     @include('site.partials.header')
     @yield('body')
-{{--    @include('site.partials.footer')--}}
+    @include('site.partials.footer')
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{ elixir('t/site/js/site.js') }}"></script>

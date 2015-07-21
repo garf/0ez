@@ -8,6 +8,7 @@ use Cache;
 class Posts extends Model
 {
     protected $table = 'posts';
+    protected $fillable = ['*'];
     protected static $_instance = null;
 
     public static function i()
@@ -40,13 +41,19 @@ class Posts extends Model
         if(!empty($category_id)) {
             $posts = $posts->where('category_id', $category_id);
         }
-        return $posts->active()->paginate(10);
+        return $posts->active()->sort()->paginate(10);
     }
 
     public function getPostsByTag($tag)
     {
-        if()
-        $posts = Tags::where('tag', 'like', $tag)->first()->posts()->active()->paginate(10);
+        $slug = str_slug($tag, '_');
+        $key = 'post_tag_' . $slug;
+        if(Cache::has($key)) {
+            return Cache::get($key);
+        } else {
+            $posts = Tags::where('tag', 'like', $tag)->first()->posts()->active()->paginate(10);
+            Cache::put($key, $posts, 5);
+        }
         return $posts;
     }
 
@@ -57,5 +64,18 @@ class Posts extends Model
 
     public function scopeActive($query) {
         return $query->where('status', 'active');
+    }
+
+    public function scopeSort($query) {
+        return $query->orderBy('is_pinned', 'desc')->orderBy('published_at', 'desc');
+    }
+
+    public function scopeByStatus($query, $statuses) {
+
+        if(is_array($statuses)) {
+            return $query->whereIn('status', $statuses);
+        } else {
+            return $query->where('status', $statuses);
+        }
     }
 }

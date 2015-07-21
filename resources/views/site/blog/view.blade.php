@@ -3,7 +3,7 @@
 @section('body')
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-9">
+            <div class="col-sm-12 col-md-12 col-lg-9 post-body">
                 <article>
                     <div class="card">
                         <div class="card-content">
@@ -12,7 +12,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-12 col-lg-12">
                                     <div class="card-image">
-                                        <img src="{{ $post->img }}" alt="" style="max-width: 100%;" class="circle responsive-img">
+                                        <img src="/upload/{{ $post->img }}" alt="" style="max-width: 100%;" class="circle responsive-img">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12">
@@ -38,8 +38,10 @@
                             </div>
 
                         </div>
-                        <div class="card-action">
+                        <div class="">
+                            <hr />
                             <h3>Похожие посты</h3>
+                            @include('site.partials.related', ['post' => $post])
                         </div>
                     </div>
                 </article>

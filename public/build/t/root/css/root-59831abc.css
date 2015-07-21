@@ -12,7 +12,8 @@ body {
   min-height: 100vh;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
-  flex-direction: column; }
+  flex-direction: column;
+  padding-top: 90px; }
 
 main {
   -webkit-flex: 1 0 auto;
