@@ -136,6 +136,17 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\SeoController@index',
     ]);
 
+    Route::get('/seo/counters', [
+        'as' => 'root-counters',
+        'uses' => 'Root\SeoController@counters',
+    ]);
+
+
+    Route::post('/seo/counters/save', [
+        'as' => 'root-counters-save',
+        'uses' => 'Root\SeoController@saveCounters',
+    ]);
+
 
     //=======USERS=======//
 

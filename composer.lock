@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "844aa4a50b24e71a6fe444cc5d32dfc0",
+    "hash": "3880334b103aa59ae824fc614b92bb82",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -591,6 +591,47 @@
                 "fixtures"
             ],
             "time": "2015-05-29 06:29:14"
+        },
+        {
+            "name": "gaaarfild/laravel-conf",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gaaarfild/laravel-conf.git",
+                "reference": "59f166c782b6bb488ff11e6642f16d63e071ae73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gaaarfild/laravel-conf/zipball/59f166c782b6bb488ff11e6642f16d63e071ae73",
+                "reference": "59f166c782b6bb488ff11e6642f16d63e071ae73",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.2",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gaaarfild\\LaravelConf\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dinar Garipov",
+                    "email": "garipov.dinar@gmail.com"
+                }
+            ],
+            "description": "Store additional config files in JSON, write, read, fallback.",
+            "keywords": [
+                "config",
+                "laravel"
+            ],
+            "time": "2015-07-22 14:20:37"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -3975,7 +4016,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "styde/blade-pagination": 20
+        "styde/blade-pagination": 20,
+        "gaaarfild/laravel-conf": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

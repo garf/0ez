@@ -166,6 +166,8 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         //https://github.com/barryvdh/laravel-elfinder
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
+        //File Config
+        Gaaarfild\LaravelConf\LaravelConfServiceProvider::class,
 
     ],
 
@@ -222,6 +224,7 @@ return [
         'Form' => Illuminate\Html\FormFacade::class,
         'HTML' => Illuminate\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Conf' => Gaaarfild\LaravelConf\ConfFacade::class,
     ],
 
 ];

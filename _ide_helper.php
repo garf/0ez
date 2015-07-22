@@ -13437,5 +13437,79 @@ namespace {
     }
 
 
+    class Conf extends \Gaaarfild\LaravelConf\ConfFacade{
+        
+        /**
+         * Store config value by key
+         *
+         * @param $key
+         * @param $value
+         * @static 
+         */
+        public static function set($key, $value){
+            return \Gaaarfild\LaravelConf\Conf::set($key, $value);
+        }
+        
+        /**
+         * Check existence of the key
+         *
+         * @param $key
+         * @param bool $withFallback
+         * @return string 
+         * @static 
+         */
+        public static function has($key, $withFallback = true){
+            return \Gaaarfild\LaravelConf\Conf::has($key, $withFallback);
+        }
+        
+        /**
+         * Get config value by key
+         *
+         * @param $key
+         * @param bool $default
+         * @param bool $withFallback
+         * @return string 
+         * @static 
+         */
+        public static function get($key, $default = null, $withFallback = true){
+            return \Gaaarfild\LaravelConf\Conf::get($key, $default, $withFallback);
+        }
+        
+        /**
+         * Return entire config
+         *
+         * @return string 
+         * @static 
+         */
+        public static function all(){
+            return \Gaaarfild\LaravelConf\Conf::all();
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Gaaarfild\LaravelConf\Conf::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Gaaarfild\LaravelConf\Conf::hasMacro($name);
+        }
+        
+    }
+
+
 }
 
