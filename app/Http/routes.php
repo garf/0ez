@@ -129,6 +129,13 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\TagsController@clearOrphaned',
     ]);
 
+    //=======SEO=======//
+
+    Route::get('/seo', [
+        'as' => 'root-seo',
+        'uses' => 'Root\SeoController@index',
+    ]);
+
 
     //=======USERS=======//
 

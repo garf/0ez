@@ -58,6 +58,16 @@ view()->creator('root.partials.top-nav', function($view) {
             'id' => '',
             'blank' => false,
         ],
+        [
+            'url' => route('root-seo'),
+            'title' => 'SEO',
+            'route' => 'root-seo',
+            'item' => 'seo',
+            'class' => '',
+            'icon' => 'fa fa-plane',
+            'id' => '',
+            'blank' => false,
+        ],
     ];
 
     $menu_items_right = [
