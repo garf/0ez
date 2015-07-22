@@ -39,7 +39,7 @@ view()->creator('root.partials.top-nav', function($view) {
             'blank' => false,
         ],
         [
-            'url' => route('root-index'),
+            'url' => route('root-tags'),
             'title' => 'Tags',
             'route' => 'root-tags',
             'item' => 'tags',
@@ -49,7 +49,7 @@ view()->creator('root.partials.top-nav', function($view) {
             'blank' => false,
         ],
         [
-            'url' => route('root-index'),
+            'url' => route('root-users'),
             'title' => 'Users',
             'route' => 'root-users',
             'item' => 'users',

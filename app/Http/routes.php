@@ -96,6 +96,40 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\CategoriesController@index',
     ]);
 
+    Route::get('/categories/new', [
+        'as' => 'root-categories-new',
+        'uses' => 'Root\CategoriesController@newCategory',
+    ]);
+
+    Route::get('/categories/edit/{category_id}', [
+        'as' => 'root-categories-edit',
+        'uses' => 'Root\CategoriesController@editCategory',
+    ]);
+
+    Route::post('/categories/store/{category_id?}', [
+        'as' => 'root-categories-store',
+        'uses' => 'Root\CategoriesController@store',
+    ]);
+
+    Route::get('/categories/delete/{category_id}', [
+        'as' => 'root-categories-delete',
+        'uses' => 'Root\CategoriesController@remove',
+    ]);
+
+    //=======TAGS=======//
+
+    Route::get('/tags', [
+        'as' => 'root-tags',
+        'uses' => 'Root\TagsController@index',
+    ]);
+
+
+    Route::get('/tags/clear-orphaned', [
+        'as' => 'root-tags-clear-orphaned',
+        'uses' => 'Root\TagsController@clearOrphaned',
+    ]);
+
+
     //=======USERS=======//
 
     Route::get('/users', [

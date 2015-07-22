@@ -42,7 +42,7 @@
                             <td>{{ $post->id }}</td>
                             <td>
                                 <div>
-                                    <a href="#{{ $post->id }}">{{ $post->title }}</a>
+                                    <a href="{{ route('root-post-edit', ['post_id' => $post->id]) }}">{{ $post->title }}</a>
                                     @if($post->status == 'draft')
                                         <span class="purple-text">Draft</span>
                                     @endif
