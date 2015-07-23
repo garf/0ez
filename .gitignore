@@ -7,3 +7,4 @@ Homestead.yaml
 /app/packages/
 /public/robots.txt
 /public/humans.txt
+/public/sitemap.xml
