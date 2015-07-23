@@ -111,8 +111,8 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\CategoriesController@store',
     ]);
 
-    Route::get('/categories/delete/{category_id}', [
-        'as' => 'root-categories-delete',
+    Route::get('/categories/remove/{category_id}', [
+        'as' => 'root-categories-remove',
         'uses' => 'Root\CategoriesController@remove',
     ]);
 
@@ -123,11 +123,15 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\TagsController@index',
     ]);
 
-
     Route::get('/tags/clear-orphaned', [
         'as' => 'root-tags-clear-orphaned',
         'uses' => 'Root\TagsController@clearOrphaned',
     ]);
+
+    Route::get('/tags/remove/{tag_id}', [
+        'as' => 'root-tags-remove',
+        'uses' => 'Root\TagsController@remove',
+    ])->where(['tag_id' => '[0-9]+']);
 
     //=======SEO=======//
 

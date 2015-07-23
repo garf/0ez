@@ -14,8 +14,9 @@
                         <li class="list-group-item active">
                             <span class="badge" title="Posts count">{{ $tag->num }}</span>
                             <a class="collection-item brown-text" href="{{ route('tag', ['tag' => $tag->tag]) }}" target="_blank">
-                                {{ $tag->tag }}
+                                {{ $tag->tag }}&nbsp;
                             </a>
+                            <a href="{{ route('root-tags-remove', ['tag_id' => $tag->id]) }}" onclick="return confirm('You want to remove this tag?');"><i class="fa fa-times"></i></a>
                         </li>
                     @endforeach
                 </ul>

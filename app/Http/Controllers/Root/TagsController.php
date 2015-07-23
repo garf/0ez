@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Root;
 
+use App\Models\PostTag;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 
@@ -32,6 +33,14 @@ class TagsController extends Controller
                 Tags::destroy($tag->id);
             }
         }
+        return Redirect::back();
+    }
+
+    public function remove($tag_id)
+    {
+        Tags::destroy($tag_id);
+        PostTag::where(['tag_id' => $tag_id])->delete();
+
         return Redirect::back();
     }
 }

@@ -29,8 +29,8 @@
                                         <i class="fa fa-trash-o"></i> <span class="caret"></span>
                                     </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="{{ route('root-categories-delete', ['category_id' => $category->id]) }}" onclick="return confirm('Are you sure?');">Delete</a></li>
-                                            <li><a href="{{ route('root-categories-delete', ['category_id' => $category->id, 'with_posts' => 1]) }}" onclick="return confirm('Are you sure? Even Posts!?');">Delete With
+                                            <li><a href="{{ route('root-categories-remove', ['category_id' => $category->id]) }}" onclick="return confirm('Are you sure?');">Delete</a></li>
+                                            <li><a href="{{ route('root-categories-remove', ['category_id' => $category->id, 'with_posts' => 1]) }}" onclick="return confirm('Are you sure? Even Posts!?');">Delete With
                                                     Posts</a></li>
                                         </ul>
                                 </div>
