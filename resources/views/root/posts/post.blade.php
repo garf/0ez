@@ -6,11 +6,6 @@
         <h1>{{ $title }}</h1>
 
         {!! Form::open(['url' => $save_url, 'enctype' => 'multipart/form-data']) !!}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <a href="{{ route('root-posts') }}" class="btn btn-sm btn-warning">Back</a>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <div class="form-group">

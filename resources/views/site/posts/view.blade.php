@@ -52,3 +52,7 @@
         </div>
     </div>
 @stop
+
+@section('meta')
+    <link rel="author" href="{{ $post->user->name or '' }}" />
+@stop

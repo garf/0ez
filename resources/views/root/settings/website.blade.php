@@ -30,9 +30,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="inputSeoDescription">Default Meta Description</label>
+                    <input type="text" value="{{ Conf::get('seo.default.seo_description') }}" name="seo_description" class="form-control" id="inputSeoDescription">
+                </div>
+                <div class="form-group">
+                    <label for="inputSeoKeywords">Default Meta Keywords</label>
+                    <input type="text" value="{{ Conf::get('seo.default.seo_keywords') }}" name="seo_keywords" class="form-control" id="inputSeoKeywords">
+                </div>
 
                 <div class="text-right">
-                    <input type="submit" value="Save" class="btn btn-primary">
+                    <a href="{{ route('root-settings') }}" class="btn btn-default">Cancel</a>
+                    <input type="submit" value="Save" class="btn btn-success">
                 </div>
             {!! Form::close() !!}
         </div>

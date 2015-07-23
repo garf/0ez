@@ -105,9 +105,13 @@ class SettingsController extends Controller
     public function websiteSave()
     {
         Conf::set('app.sitename', Input::get('sitename'));
-        Conf::set('seo.default.seo_title', Input::get('site_title'));
         Conf::set('app.description', Input::get('site_description'));
+
         Conf::set('seo.index', Input::get('seo_index'));
+
+        Conf::set('seo.default.seo_title', Input::get('site_title'));
+        Conf::set('seo.default.seo_description', Input::get('seo_description'));
+        Conf::set('seo.default.seo_keywords', Input::get('seo_keywords'));
         Notifications::add('Settings Saved', 'success');
         return Redirect::back();
     }
