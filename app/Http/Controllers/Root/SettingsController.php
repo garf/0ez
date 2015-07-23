@@ -17,7 +17,7 @@ class SettingsController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'SEO Instruments',
+            'title' => 'Settings',
         ];
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'settings');
@@ -30,6 +30,7 @@ class SettingsController extends Controller
         $data = [
             'title' => 'Meta and Counters',
         ];
+        $this->title->prepend('Settings');
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'settings');
 
@@ -63,6 +64,7 @@ class SettingsController extends Controller
             'humans_txt' => file_get_contents(public_path('humans.txt')),
         ];
         $this->title->prepend($data['title']);
+        $this->title->prepend('Settings');
         View::share('menu_item_active', 'settings');
 
         return view('root.settings.robots-txt', $data);

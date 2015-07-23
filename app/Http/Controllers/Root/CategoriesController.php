@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use View;
 use Input;
 use Redirect;
+use Notifications;
 
 class CategoriesController extends Controller
 {
@@ -61,6 +62,7 @@ class CategoriesController extends Controller
 //        $category->slug = str_slug($category->seo_title);
         $category->save();
 
+        Notifications::add('Category saved', 'success');
         return Redirect::route('root-categories-edit', ['category_id' => $category->id]);
     }
 
@@ -70,9 +72,12 @@ class CategoriesController extends Controller
         $category->delete();
         if(Input::get('with_posts', '0') == '1') {
             Posts::where('category_id', $category_id)->delete();
+            Notifications::add('Category removed with posts', 'success');
         } else {
             Posts::where('category_id', $category_id)->update(['category_id' => '1']);
+            Notifications::add('Category removed. Posts moved to Uncategorized', 'success');
         }
+
         return Redirect::route('root-categories');
     }
 }

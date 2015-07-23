@@ -14,6 +14,7 @@ use View;
 use Input;
 use Auth;
 use Redirect;
+use Notifications;
 
 class PostsController extends Controller
 {
@@ -80,6 +81,7 @@ class PostsController extends Controller
 
         $this->_setTags(Input::get('tags'), $post->id);
 
+        Notifications::add('Blog post saved', 'success');
         return Redirect::route('root-post-edit', ['post_id' => $post->id]);
     }
 
@@ -101,30 +103,35 @@ class PostsController extends Controller
     public function pin($post_id)
     {
         $this->_setPinnedStatus($post_id, true);
+        Notifications::add('Post pinned', 'success');
         return Redirect::back();
     }
 
     public function unpin($post_id)
     {
         $this->_setPinnedStatus($post_id, false);
+        Notifications::add('Post unpinned', 'success');
         return Redirect::back();
     }
 
     public function toDraft($post_id)
     {
         $this->_setPostStatus($post_id, 'draft');
+        Notifications::add('Post sent to drafts', 'success');
         return Redirect::back();
     }
 
     public function toActive($post_id)
     {
         $this->_setPostStatus($post_id, 'active');
+        Notifications::add('Post published', 'success');
         return Redirect::back();
     }
 
     public function toDeleted($post_id)
     {
         $this->_setPostStatus($post_id, 'deleted');
+        Notifications::add('Post deleted', 'success');
         return Redirect::back();
     }
 
