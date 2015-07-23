@@ -17,7 +17,7 @@ class Blog
         if(!empty($except)) {
             $related = $related->where('id', '!=', $except);
         }
-        $related = $related->orderBy('created_at')
+        $related = $related->active()->orderBy('created_at')
             ->take($limit)
             ->get();
 
@@ -26,7 +26,7 @@ class Blog
             $left = $limit - $related->count();
             $excluded = $related->lists('id')->toArray();
             $excluded[] = $except;
-            $additional = Posts::whereNotIn('id', $excluded)->limit($left)->get();
+            $additional = Posts::whereNotIn('id', $excluded)->active()->limit($left)->get();
             $related = $related->merge($additional);
         }
         return $related;

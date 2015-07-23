@@ -3,10 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use Cache;
 
-class Posts extends Model
+class Posts extends Model implements SluggableInterface
 {
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'seo_title',
+        'save_to' => 'slug',
+    ];
+
     protected $table = 'posts';
     protected $fillable = ['*'];
     protected static $_instance = null;

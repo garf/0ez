@@ -21,7 +21,8 @@
         "laracasts/testdummy": "^2.3",
         "barryvdh/laravel-debugbar": "^2.0",
         "barryvdh/laravel-elfinder": "^0.3.4",
-        "gaaarfild/laravel-conf": "dev-master"
+        "gaaarfild/laravel-conf": "dev-master",
+        "cviebrock/eloquent-sluggable": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

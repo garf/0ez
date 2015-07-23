@@ -3,10 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
 use DB;
 
-class Categories extends Model
+class Categories extends Model implements SluggableInterface
 {
+    use SluggableTrait;
+
+    protected $sluggable = [
+        'build_from' => 'seo_title',
+        'save_to' => 'slug',
+    ];
+
     protected $table = 'categories';
     public static $_instance = null;
 

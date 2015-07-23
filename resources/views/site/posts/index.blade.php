@@ -6,7 +6,7 @@
             <div class="col-sm-12 col-md-12 col-lg-9 posts-content">
                 <div class="row" data-equalizer>
                     @foreach($posts as $post)
-                        @include('site.blog._post', ['post' => $post])
+                        @include('site.posts._post', ['post' => $post])
                     @endforeach
                 </div>
                 <div class="text-center">

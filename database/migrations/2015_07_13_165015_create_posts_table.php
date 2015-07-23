@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->text('excerpt');
             $table->longText('content');
             $table->string('img', 255);
-            $table->string('slug', 512);
+            $table->string('slug', 512)->unique();
             $table->string('seo_title', 255);
             $table->string('seo_keywords', 255);
             $table->string('seo_description', 512);

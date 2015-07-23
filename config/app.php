@@ -168,6 +168,8 @@ return [
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
         //File Config
         Gaaarfild\LaravelConf\LaravelConfServiceProvider::class,
+        //https://github.com/cviebrock/eloquent-sluggable
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
     ],
 

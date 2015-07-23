@@ -31,7 +31,7 @@ class PostsController extends Controller
 
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'posts');
-        return view('root.blog.index', $data);
+        return view('root.posts.index', $data);
     }
 
     public function newPost()
@@ -45,7 +45,7 @@ class PostsController extends Controller
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'posts');
 
-        return view('root.blog.post', $data);
+        return view('root.posts.post', $data);
     }
 
     public function store($post_id=null)
@@ -69,7 +69,7 @@ class PostsController extends Controller
         $content = explode('<!--more-->', Input::get('content'));
         $post->excerpt = (count($content) == 2) ? $content[0] . '</p>' : '';
         $post->content = Input::get('content');
-        $post->slug = str_slug($seo_title, '-');
+//        $post->slug = str_slug($seo_title, '-');
         $post->seo_title = strip_tags($seo_title);
         $post->seo_description = strip_tags(Input::get('seo_description'));
         $post->seo_keywords = strip_tags(Input::get('seo_keywords'));
@@ -95,7 +95,7 @@ class PostsController extends Controller
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'posts');
 
-        return view('root.blog.post', $data);
+        return view('root.posts.post', $data);
     }
 
     public function pin($post_id)

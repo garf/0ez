@@ -35,7 +35,7 @@ class PostsController extends Controller
             'category' => $category,
         ];
 
-        return view('site.blog.index', $data);
+        return view('site.posts.index', $data);
     }
 
     public function view($slug)
@@ -45,7 +45,7 @@ class PostsController extends Controller
         View::share('seo_description', $post->seo_description);
         View::share('seo_keywords', $post->seo_keywords);
         $this->title->prepend($post->seo_title);
-        return view('site.blog.view', ['post' => $post]);
+        return view('site.posts.view', ['post' => $post]);
     }
 
     public function tag($tag)
@@ -57,6 +57,6 @@ class PostsController extends Controller
         View::share('seo_title', $data['title']);
         $this->title->prepend($data['title']);
 
-        return view('site.blog.index', $data);
+        return view('site.posts.index', $data);
     }
 }
