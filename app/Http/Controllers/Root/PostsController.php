@@ -151,6 +151,7 @@ class PostsController extends Controller
         $tags = explode(', ', $tags_str);
 
         foreach ($tags as $tag) {
+            if(trim($tag) == '') continue;
             $tag = mb_strtolower($tag);
             $dbtag = Tags::where('tag', 'like', $tag)->first();
             if (empty($dbtag)) {
