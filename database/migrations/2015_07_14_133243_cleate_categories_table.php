@@ -18,7 +18,7 @@ class CleateCategoriesTable extends Migration
             $table->string('seo_title', 255);
             $table->string('seo_keywords', 255);
             $table->string('seo_description', 512);
-            $table->string('slug', 512)->unique();
+            $table->string('slug', 512);
             $table->timestamps();
         });
         $category = new \App\Models\Categories;
