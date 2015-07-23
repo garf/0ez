@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                     @foreach($posts as $post)
-                        <tr class="{{ in_array($post->status, ['draft', 'deleted', 'refused']) ? 'active' : '' }}">
+                        <tr class="{{ $post->is_pinned == '1' ? 'warning' : '' }} {{ in_array($post->status, ['draft', 'deleted', 'refused']) ? 'active' : '' }}">
                             <td>{{ $post->id }}</td>
                             <td>
                                 <div>
