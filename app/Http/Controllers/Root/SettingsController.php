@@ -89,4 +89,27 @@ class SettingsController extends Controller
 
         return view('root.settings.sitemap', $data);
     }
+
+    public function website()
+    {
+        $data = [
+            'title' => 'Website',
+        ];
+        $this->title->prepend('Settings');
+        $this->title->prepend($data['title']);
+        View::share('menu_item_active', 'settings');
+
+        return view('root.settings.website', $data);
+    }
+
+    public function websiteSave()
+    {
+        Conf::set('app.sitename', Input::get('sitename'));
+        Conf::set('seo.default.seo_title', Input::get('site_title'));
+        Conf::set('app.description', Input::get('site_description'));
+        Conf::set('seo.index', Input::get('seo_index'));
+        Notifications::add('Settings Saved', 'success');
+        return Redirect::back();
+    }
+
 }

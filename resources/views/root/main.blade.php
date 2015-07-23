@@ -8,7 +8,7 @@
     @yield('meta')
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ elixir('t/root/css/root.css') }}">
     @yield('css')
     @yield('js-top')

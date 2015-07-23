@@ -171,6 +171,16 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\SettingsController@sitemap',
     ]);
 
+    Route::get('/settings/website', [
+        'as' => 'root-settings-website',
+        'uses' => 'Root\SettingsController@website',
+    ]);
+
+    Route::post('/settings/website', [
+        'as' => 'root-settings-website-save',
+        'uses' => 'Root\SettingsController@websiteSave',
+    ]);
+
 
     //=======USERS=======//
 

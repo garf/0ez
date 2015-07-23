@@ -7,6 +7,9 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="list-group">
+                    <a class="list-group-item" href="{{ route('root-settings-website') }}">
+                        Website Settings
+                    </a>
                     <a class="list-group-item" href="{{ route('root-counters') }}">
                         Meta and Counters
                     </a>

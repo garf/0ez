@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Conf;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(\App\Classes\Title::class, function () {
-            return new \App\Classes\Title(config('app.sitename'));
+            return new \App\Classes\Title(Conf::get('app.sitename'));
         });
         $this->app->bind('title', \App\Classes\Title::class);
     }
