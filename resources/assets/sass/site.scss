@@ -1,10 +1,15 @@
 body {
-    background: url('/t/common/bgs/main.jpg') left top repeat;
+    background: url('/t/common/bgs/bg.png') left top repeat;
 }
 
 .post-pinned {
     background: #fffae1;
 }
+
+.post-regular {
+    background: #ffffff;
+}
+
 .post {
     box-shadow: 0 0 6px #999;
 

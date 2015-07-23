@@ -3,7 +3,7 @@
 @section('body')
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-9 posts-content">
+            <div class="col-sm-12 col-md-12 col-lg-9">
                 <div class="row" data-equalizer>
                     @foreach($posts as $post)
                         @include('site.posts._post', ['post' => $post])

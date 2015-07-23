@@ -166,6 +166,11 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\SettingsController@robotsTxtSave',
     ]);
 
+    Route::get('/settings/sitemap', [
+        'as' => 'root-sitemap',
+        'uses' => 'Root\SettingsController@sitemap',
+    ]);
+
 
     //=======USERS=======//
 
@@ -180,4 +185,4 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
 Route::get('/{page_name}', [
     'as' => 'static-page',
     'uses' => 'PagesController@view',
-]);
+])->where(['page_name' => '[A-z0-9-_]+']);

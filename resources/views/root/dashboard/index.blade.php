@@ -64,7 +64,6 @@
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading"><a href="{{ route('root-posts') }}">Latest Posts</a></div>
-                    <div class="panel-body">
                         <ul class="list-group">
                             @foreach($latest_posts as $latest)
                                 <li class="list-group-item">
@@ -77,13 +76,11 @@
                                 </li>
                             @endforeach
                         </ul>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="panel panel-default">
                     <div class="panel-heading"><a href="{{ route('root-posts') }}">Popular Posts</a></div>
-                    <div class="panel-body">
                         <ul class="list-group">
                             @foreach($popular_posts as $popular)
                                 <li class="list-group-item">
@@ -97,7 +94,6 @@
                                 </li>
                             @endforeach
                         </ul>
-                    </div>
                 </div>
             </div>
         </div>

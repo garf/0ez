@@ -77,4 +77,16 @@ class SettingsController extends Controller
         Notifications::add('robots.txt and humans.txt file saved', 'success');
         return Redirect::route('root-robots-txt');
     }
+
+    public function sitemap()
+    {
+        $data = [
+            'title' => 'Sitemap.xml file',
+        ];
+        $this->title->prepend($data['title']);
+        $this->title->prepend('Settings');
+        View::share('menu_item_active', 'settings');
+
+        return view('root.settings.sitemap', $data);
+    }
 }

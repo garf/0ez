@@ -10,11 +10,11 @@
         <div class="">
             <ul class="list-group">
                 @foreach($tags as $tag)
-                    <li class="list-group-item active">
+                    <li class="list-group-item">
                         <span class="badge" title="Posts count">{{ $tag->num }}</span>
-                        <a class="collection-item brown-text" href="{{ route('tag', ['tag' => $tag->tag]) }}" target="_blank">
-                            {{ $tag->tag }}&nbsp;
-                        </a>
+                        <a class="brown-text" href="{{ route('tag', ['tag' => $tag->tag]) }}" target="_blank">
+                            {{ $tag->tag }}
+                        </a>&nbsp;
                         <a href="{{ route('root-tags-remove', ['tag_id' => $tag->id]) }}" onclick="return confirm('You want to remove this tag?');"><i class="fa fa-times"></i></a>
                     </li>
                 @endforeach
