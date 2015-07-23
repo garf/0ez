@@ -6,12 +6,13 @@
     </div>
     <div class="col-lg-8">
         <div class="post-content">
-            <h4 class="media-heading"><a href="{{ route('view', ['slug' => $post->slug]) }}"
+            <h2 class="media-heading">
+                <a href="{{ route('view', ['slug' => $post->slug]) }}"
                                          class="card-title activator grey-text text-darken-4">{{ $post->title }}</a>
-            </h4>
+            </h2>
 
             <p>{!! $post->excerpt !!}</p>
-
+            <hr />
             <div class="row">
                 <div class="col-lg-6">
                     <div>
@@ -22,7 +23,7 @@
                         <span class="text-muted">Опубликовано:</span> {{ hdate($post->published_at) }}
                     </div>
                     <div>
-                        Теги: @include('site.partials.tags-list', ['tags' => $post->tags])
+                        <span class="text-muted">Теги:</span> @include('site.partials.tags-list', ['tags' => $post->tags])
                     </div>
                 </div>
                 <div class="col-lg-6 text-right">
