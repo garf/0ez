@@ -13,7 +13,7 @@
                         </a>
                     </li>
                     <li class="list-group-item active">
-                        <a class="collection-item brown-text" href="">
+                        <a class="collection-item brown-text" href="{{ route('root-robots-txt') }}">
                             Robots.txt
                         </a>
                     </li>

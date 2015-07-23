@@ -34,7 +34,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @foreach($menu_items_right as $right)
-                    <li class="{{ isset($menu_item_active) && $left['item'] == $menu_item_active ? 'active' : '' }}">
+                    <li class="{{ isset($menu_item_active) && $right['item'] == $menu_item_active ? 'active' : '' }}">
                         <a href="{{ $right['url'] }}"
                             class="{{ $right['class'] }}"
                             id="{{ $right['id'] }}"

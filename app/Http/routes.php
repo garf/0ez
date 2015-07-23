@@ -148,7 +148,17 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
 
     Route::post('/settings/counters/save', [
         'as' => 'root-counters-save',
-        'uses' => 'Root\SettingsController@saveCounters',
+        'uses' => 'Root\SettingsController@countersSave',
+    ]);
+
+    Route::get('/settings/robots-txt', [
+        'as' => 'root-robots-txt',
+        'uses' => 'Root\SettingsController@robotsTxt',
+    ]);
+
+    Route::post('/settings/robots-txt', [
+        'as' => 'root-tobots-txt-save',
+        'uses' => 'Root\SettingsController@robotsTxtSave',
     ]);
 
 
