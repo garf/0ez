@@ -133,22 +133,22 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\TagsController@remove',
     ])->where(['tag_id' => '[0-9]+']);
 
-    //=======SEO=======//
+    //=======SETTINGS=======//
 
-    Route::get('/seo', [
-        'as' => 'root-seo',
-        'uses' => 'Root\SeoController@index',
+    Route::get('/settings', [
+        'as' => 'root-settings',
+        'uses' => 'Root\SettingsController@index',
     ]);
 
-    Route::get('/seo/counters', [
+    Route::get('/settings/counters', [
         'as' => 'root-counters',
-        'uses' => 'Root\SeoController@counters',
+        'uses' => 'Root\SettingsController@counters',
     ]);
 
 
-    Route::post('/seo/counters/save', [
+    Route::post('/settings/counters/save', [
         'as' => 'root-counters-save',
-        'uses' => 'Root\SeoController@saveCounters',
+        'uses' => 'Root\SettingsController@saveCounters',
     ]);
 
 

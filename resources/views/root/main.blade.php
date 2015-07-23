@@ -15,6 +15,9 @@
 </head>
 <body>
 @include('root.partials.header')
+<div class="container">
+    {!! Notifications::byGroup('0')->toBootstrap() !!}
+</div>
 @yield('body')
 {{--@include('root.partials.footer')--}}
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>

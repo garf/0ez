@@ -10,8 +10,9 @@ use View;
 use Input;
 use Redirect;
 use Conf;
+use Notifications;
 
-class SeoController extends Controller
+class SettingsController extends Controller
 {
     public function index()
     {

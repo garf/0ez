@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c1d98d1eab27724b1542995e527be7fd",
+    "hash": "e8082c3cd769476f9502ec15499bc6a9",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -498,16 +498,16 @@
         },
         {
             "name": "danielstjules/stringy",
-            "version": "1.9.0",
+            "version": "1.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danielstjules/Stringy.git",
-                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b"
+                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
-                "reference": "3cf18e9e424a6dedc38b7eb7ef580edb0929461b",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
+                "reference": "4749c205db47ee5b32e8d1adf6d9aff8db6caf3b",
                 "shasum": ""
             },
             "require": {
@@ -550,7 +550,7 @@
                 "utility",
                 "utils"
             ],
-            "time": "2015-02-10 06:19:18"
+            "time": "2015-07-23 00:54:12"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -710,12 +710,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/gaaarfild/laravel-conf.git",
-                "reference": "59f166c782b6bb488ff11e6642f16d63e071ae73"
+                "reference": "ff440ca1ad397b5ac6d73c34dcce166354bad603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gaaarfild/laravel-conf/zipball/6de682026b2a60f9454a898ca9b7e134f9453083",
-                "reference": "59f166c782b6bb488ff11e6642f16d63e071ae73",
+                "url": "https://api.github.com/repos/gaaarfild/laravel-conf/zipball/ff440ca1ad397b5ac6d73c34dcce166354bad603",
+                "reference": "ff440ca1ad397b5ac6d73c34dcce166354bad603",
                 "shasum": ""
             },
             "require": {
@@ -738,12 +738,53 @@
                     "email": "garipov.dinar@gmail.com"
                 }
             ],
-            "description": "Store additional config files in JSON, write, read, fallback.",
+            "description": "Store additional configs in JSON (write, read)",
             "keywords": [
                 "config",
                 "laravel"
             ],
-            "time": "2015-07-22 14:20:37"
+            "time": "2015-07-23 09:34:51"
+        },
+        {
+            "name": "gaaarfild/laravel-notifications",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gaaarfild/laravel-notifications.git",
+                "reference": "5ceda37d0c9f0996d42e1c232c17ceec8921cc3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gaaarfild/laravel-notifications/zipball/5ceda37d0c9f0996d42e1c232c17ceec8921cc3a",
+                "reference": "5ceda37d0c9f0996d42e1c232c17ceec8921cc3a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.2",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gaaarfild\\LaravelNotifications\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dinar Garipov",
+                    "email": "garipov.dinar@gmail.com"
+                }
+            ],
+            "description": "Convenient flash notifications",
+            "keywords": [
+                "laravel",
+                "notifications"
+            ],
+            "time": "2015-07-23 10:05:39"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -4129,7 +4170,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "styde/blade-pagination": 20,
-        "gaaarfild/laravel-conf": 20
+        "gaaarfild/laravel-conf": 20,
+        "gaaarfild/laravel-notifications": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

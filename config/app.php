@@ -166,8 +166,10 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         //https://github.com/barryvdh/laravel-elfinder
         Barryvdh\Elfinder\ElfinderServiceProvider::class,
-        //File Config
+        //https://github.com/gaaarfild/laravel-conf
         Gaaarfild\LaravelConf\LaravelConfServiceProvider::class,
+        //https://github.com/gaaarfild/laravel-notifications
+        Gaaarfild\LaravelNotifications\LaravelNotificationsServiceProvider::class,
         //https://github.com/cviebrock/eloquent-sluggable
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
@@ -227,6 +229,7 @@ return [
         'HTML' => Illuminate\Html\HtmlFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Conf' => Gaaarfild\LaravelConf\ConfFacade::class,
+        'Notifications' => Gaaarfild\LaravelNotifications\NotificationsFacade::class,
     ],
 
 ];

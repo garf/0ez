@@ -13511,5 +13511,128 @@ namespace {
     }
 
 
+    class Notifications extends \Gaaarfild\LaravelNotifications\NotificationsFacade{
+        
+        /**
+         * Set new message for the next request
+         *
+         * @param $message
+         * @param string $type
+         * @param string $group
+         * @static 
+         */
+        public static function add($message, $type = 'info', $group = '0'){
+            return \Gaaarfild\LaravelNotifications\Notifications::add($message, $type, $group);
+        }
+        
+        /**
+         * Get all messages
+         *
+         * @return array 
+         * @static 
+         */
+        public static function all(){
+            return \Gaaarfild\LaravelNotifications\Notifications::all();
+        }
+        
+        /**
+         * Filter messages by group
+         *
+         * @param $group
+         * @return $this 
+         * @static 
+         */
+        public static function byGroup($group){
+            return \Gaaarfild\LaravelNotifications\Notifications::byGroup($group);
+        }
+        
+        /**
+         * Filter messages by type
+         *
+         * @param $type
+         * @return $this 
+         * @static 
+         */
+        public static function byType($type){
+            return \Gaaarfild\LaravelNotifications\Notifications::byType($type);
+        }
+        
+        /**
+         * Return filtered messages
+         *
+         * @return array 
+         * @static 
+         */
+        public static function get(){
+            return \Gaaarfild\LaravelNotifications\Notifications::get();
+        }
+        
+        /**
+         * Get first filtered message
+         *
+         * @param array $default
+         * @return array 
+         * @static 
+         */
+        public static function first($default = array()){
+            return \Gaaarfild\LaravelNotifications\Notifications::first($default);
+        }
+        
+        /**
+         * Count filtered messages amount
+         *
+         * @return array 
+         * @static 
+         */
+        public static function count(){
+            return \Gaaarfild\LaravelNotifications\Notifications::count();
+        }
+        
+        /**
+         * Format filtered messages to JSON
+         *
+         * @return mixed 
+         * @static 
+         */
+        public static function toJson(){
+            return \Gaaarfild\LaravelNotifications\Notifications::toJson();
+        }
+        
+        /**
+         * Format filtered messages as Twitter Bootstrap alerts
+         *
+         * @return string 
+         * @static 
+         */
+        public static function toBootstrap(){
+            return \Gaaarfild\LaravelNotifications\Notifications::toBootstrap();
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Gaaarfild\LaravelNotifications\Notifications::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Gaaarfild\LaravelNotifications\Notifications::hasMacro($name);
+        }
+        
+    }
+
+
 }
 
