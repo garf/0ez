@@ -4,7 +4,7 @@
         (function (d, w, c) {
             (w[c] = w[c] || []).push(function () {
                 try {
-                    w.yaCounter31569918 = new Ya.Metrika({
+                    w.yaCounter{{ $id }} = new Ya.Metrika({
                         id: {{ $id }},
                         clickmap: true,
                         trackLinks: true,

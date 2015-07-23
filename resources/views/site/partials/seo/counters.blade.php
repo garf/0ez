@@ -1,0 +1,2 @@
+@include('site.partials.seo.google-counter', ['id' => Conf::get('seo.counters.google_analytics', null)])
+@include('site.partials.seo.yandex-counter', ['id' => Conf::get('seo.counters.yandex_metrika', null)])

@@ -1,0 +1,1 @@
+{!! Conf::get('seo.more_meta') !!}

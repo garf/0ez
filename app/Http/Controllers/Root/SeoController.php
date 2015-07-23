@@ -41,7 +41,8 @@ class SeoController extends Controller
             'google_analytics' => Input::get('google_analytics', ''),
             'yandex_metrika' => Input::get('yandex_metrika', ''),
         ];
-        Conf::set('counters', $counters);
+        Conf::set('seo.counters', $counters);
+        Conf::set('seo.more_meta', Input::get('more_meta', ''));
         return Redirect::route('root-counters');
     }
 }
