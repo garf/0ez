@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use View;
 use Redirect;
+use Notifications;
 
 class TagsController extends Controller
 {
@@ -33,6 +34,7 @@ class TagsController extends Controller
                 Tags::destroy($tag->id);
             }
         }
+        Notifications::add('Empty tags removed', 'success');
         return Redirect::back();
     }
 
@@ -41,6 +43,7 @@ class TagsController extends Controller
         Tags::destroy($tag_id);
         PostTag::where(['tag_id' => $tag_id])->delete();
 
+        Notifications::add('Tag removed', 'success');
         return Redirect::back();
     }
 }

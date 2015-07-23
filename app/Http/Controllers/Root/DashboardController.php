@@ -24,6 +24,8 @@ class DashboardController extends Controller
             'users_total' => Users::count(),
             'users_active' => Users::where('active', '1')->count(),
             'users_inactive' => Users::where('active', '0')->count(),
+            'latest_posts' => Posts::active()->orderBy('published_at', 'desc')->limit(5)->get(),
+            'popular_posts' => Posts::active()->orderBy('views', 'desc')->limit(5)->get(),
         ];
         $this->title->prepend($data['title']);
         return view('root.dashboard.index', $data);

@@ -23,8 +23,8 @@ class CleateCategoriesTable extends Migration
         });
         $category = new \App\Models\Categories;
         $category->id = 1;
-        $category->title = 'Без рубрики';
-        $category->slug = 'unbound';
+        $category->title = 'Uncategorized';
+        $category->slug = 'uncategorized';
         $category->save();
     }
 

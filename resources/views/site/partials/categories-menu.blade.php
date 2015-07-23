@@ -1,17 +1,16 @@
-<ul class="list-group">
-    <li class="list-group-item {{ (!isset($active_category) ? 'active' : '') }}">
-        <span class="badge">{{ $posts_count }}</span>
+<div class="list-group">
+
         <a href="{{ route('index') }}"
-           class="collection-item">
+           class="list-group-item {{ (!isset($active_category) ? 'active' : '') }}">
             Все
+            <span class="badge">{{ $posts_count }}</span>
         </a>
-    </li>
     @foreach($categories as $category)
-    <li class="list-group-item {{ (isset($active_category) && $active_category == $category->id) ? 'active' : '' }}">
-        <span class="badge">{{ $category->num }}</span>
-        <a href="{{ route('category', ['slug' => $category->slug]) }}" class="collection-item">
+
+        <a href="{{ route('category', ['slug' => $category->slug]) }}"
+           class="list-group-item {{ (isset($active_category) && $active_category == $category->id) ? 'active' : '' }}">
             {{ $category->title }}
+            <span class="badge">{{ $category->num }}</span>
         </a>
-    </li>
     @endforeach
-</ul>
+</div>

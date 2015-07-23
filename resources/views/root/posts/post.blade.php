@@ -3,7 +3,14 @@
 @section('body')
 
     <div class="container">
+        <h1>{{ $title }}</h1>
+
         {!! Form::open(['url' => $save_url, 'enctype' => 'multipart/form-data']) !!}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{{ route('root-posts') }}" class="btn btn-sm btn-warning">Back</a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <div class="form-group">
@@ -12,10 +19,41 @@
                     </div>
                     @if(!empty($post))
                         <div class="well">
-                            <div><span class="text-muted">URL:</span>
+                            <div>
+                                <span class="text-muted">URL:</span>
                                 <a href="{{ route('view', ['slug' => $post->slug]) }}" target="_blank">
                                     {{ route('view', ['slug' => $post->slug]) }}
                                 </a>
+                            </div>
+                            <div>
+                                <hr />
+                                <div class="post-options">
+                                    <a href="{{ route('view', ['slug' => $post->slug]) }}" target="_blank"
+                                       class="brown-text">View</a>
+                                    <a href="{{ route('root-post-edit', ['post_id' => $post->id]) }}"
+                                       class="brown-text">Edit</a>
+                                    @if($post->status == 'active')
+                                        <a href="{{ route('root-post-to-draft', ['post_id' => $post->id]) }}"
+                                           class="brown-text">To Draft</a>
+                                    @else
+                                        <a href="{{ route('root-post-to-active', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Publish</a>
+                                    @endif
+                                    @if($post->status != 'deleted')
+                                        <a href="{{ route('root-post-to-deleted', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Delete</a>
+                                    @else
+                                        <a href="{{ route('root-post-to-draft', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Recover</a>
+                                    @endif
+                                    @if($post->is_pinned)
+                                        <a href="{{ route('root-post-unpin', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Unpin</a>
+                                    @else
+                                        <a href="{{ route('root-post-pin', ['post_id' => $post->id]) }}"
+                                           class="brown-text">Pin</a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     @endif
@@ -104,6 +142,9 @@
                     <hr/>
                     <div>
                         <input type="submit" value="Save" class="btn btn-block btn-success" >
+                    </div>
+                    <div class="text-center">
+                        <a href="{{ route('root-posts') }}" class="btn btn-default btn-block">Cancel</a>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,11 @@
         <h1>{{ $title }}</h1>
         <div>
             {!! Form::open(['url' => $save_url, 'method' => 'post']) !!}
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a href="{{ URL::previous() }}" class="btn btn-sm btn-warning">Back</a>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="inputTitle">Title</label>
                     <input type="text" name="title" value="{{ $category->title or Input::old('title', '') }}" class="form-control" id="inputTitle">
@@ -27,7 +32,7 @@
                     <input type="text" name="seo_keywords" value="{{ $category->seo_keywords or Input::old('seo_keywords', '') }}" class="form-control" id="inputSeoKeywords">
                 </div>
                 <div class="text-right">
-                    <a href="{{ route('root-categories') }}" class="btn">Cancel</a>
+                    <a href="{{ route('root-categories') }}" class="btn btn-default">Cancel</a>
                     <input type="submit" value="Save" class="btn btn-success">
                 </div>
             {!! Form::close() !!}

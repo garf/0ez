@@ -21,13 +21,14 @@ class PostsController extends Controller
     public function index()
     {
         if(Input::has('status')) {
-            $posts = Posts::byStatus(Input::get('status'))->sort()->paginate(20);
+            $posts = Posts::with('category')->byStatus(Input::get('status'))->sort()->paginate(20);
         } else {
-            $posts = Posts::whereNotIn('status', ['deleted', 'refused'])->sort()->paginate(20);
+            $posts = Posts::with('category')->whereNotIn('status', ['deleted', 'refused'])->sort()->paginate(20);
         }
         $data = [
             'posts' => $posts,
             'title' => 'Posts',
+            'categories' => Categories::all(),
         ];
 
         $this->title->prepend($data['title']);
@@ -132,6 +133,25 @@ class PostsController extends Controller
     {
         $this->_setPostStatus($post_id, 'deleted');
         Notifications::add('Post deleted', 'success');
+        return Redirect::back();
+    }
+
+    public function toCategory($post_id, $category_id)
+    {
+        $category = Categories::find($category_id);
+
+        if(empty($category)) {
+            Notifications::add('Category doesn\'t exist', 'danger');
+
+            return Redirect::back();
+        }
+
+        $post = Posts::find($post_id);
+        $post->category_id = $category_id;
+        $post->save();
+
+        Notifications::add('Post "' . str_limit($post->title, '35', '...') . '" moved to category "' . e($category->title) . '"', 'info');
+
         return Redirect::back();
     }
 

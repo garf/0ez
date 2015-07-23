@@ -45,6 +45,11 @@ class PostsController extends Controller
         View::share('seo_description', $post->seo_description);
         View::share('seo_keywords', $post->seo_keywords);
         $this->title->prepend($post->seo_title);
+
+        if($post->status == 'active') {
+            $post->increment('views');
+        }
+
         return view('site.posts.view', ['post' => $post]);
     }
 

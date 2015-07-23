@@ -4,6 +4,11 @@
     <div class="container">
         <h1>{{ $title }}</h1>
         {!! Form::open(['route' => 'root-counters-save']) !!}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{{ route('root-settings') }}" class="btn btn-sm btn-warning">Back</a>
+                </div>
+            </div>
             <div>
                 <div class="form-group">
                     <label for="inputGoogle">Google counter ID <span
@@ -22,7 +27,10 @@
                     <textarea name="more_meta" id="inputMeta" class="form-control">{{ Conf::get('seo.more_meta', '') }}</textarea>
                 </div>
             </div>
-            <div class="text-right"><input type="submit" value="SAVE" class="btn btn-success"/></div>
+            <div class="text-right">
+                <a href="{{ route('root-settings') }}" class="btn btn-default">Cancel</a>
+                <input type="submit" value="SAVE" class="btn btn-success"/>
+            </div>
         {!! Form::close() !!}
     </div>
 @stop

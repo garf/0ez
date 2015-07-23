@@ -14,8 +14,8 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->integer('category_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->text('excerpt');
             $table->longText('content');
@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('seo_keywords', 255);
             $table->string('seo_description', 512);
             $table->boolean('is_pinned')->default(0);
+            $table->boolean('views')->default(0)->unsigned();
             $table->enum('status', ['active', 'moderation', 'deleted', 'refused', 'draft'])->default('active');
             $table->dateTime('published_at');
             $table->timestamps();

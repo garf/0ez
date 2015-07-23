@@ -89,6 +89,11 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\PostsController@toDeleted',
     ])->where(['post_id' => '[0-9]+']);
 
+    Route::get('/posts/to-category/{post_id}/{category_id}', [
+        'as' => 'root-post-to-category',
+        'uses' => 'Root\PostsController@toCategory',
+    ])->where(['post_id' => '[0-9]+', 'category_id' => '[0-9]+']);
+
     //=======CATEGORIES=======//
 
     Route::get('/categories', [
@@ -170,3 +175,9 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
     ]);
 
 });
+
+
+Route::get('/{page_name}', [
+    'as' => 'static-page',
+    'uses' => 'PagesController@view',
+]);
