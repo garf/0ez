@@ -4,11 +4,6 @@
     <div class="container">
         <h1>{{ $title }}</h1>
         {!! Form::open(['route' => 'root-tobots-txt-save']) !!}
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <a href="{{ route('root-settings') }}" class="btn btn-sm btn-warning">Back</a>
-                </div>
-            </div>
             <div>
                 <div class="form-group">
                     <label for="inputRobotsTxt">
