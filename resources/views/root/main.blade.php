@@ -22,6 +22,7 @@
 {{--@include('root.partials.footer')--}}
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.12.8/vue.min.js"></script>
 <script src="{{ elixir('t/root/js/root.js') }}"></script>
 @yield('js-bottom')
 </body>
