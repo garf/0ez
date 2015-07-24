@@ -22,6 +22,9 @@
                                 <input type="checkbox" id="remember" name="remember"> Remeber me
                             </label>
                         </div>
+                        <div>
+                            {!! Notifications::byGroup('login')->toBootstrap() !!}
+                        </div>
                     </div>
                     <div class="panel-footer">
                         <div class="text-right">

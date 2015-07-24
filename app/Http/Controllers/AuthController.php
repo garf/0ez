@@ -11,6 +11,7 @@ use Input;
 use Auth;
 use Hash;
 use Redirect;
+use Notifications;
 
 class AuthController extends Controller
 {
@@ -30,14 +31,20 @@ class AuthController extends Controller
         $user = Users::where('email', $email)->first();
 
         if (empty($user)) {
-            return Redirect::route('login', ['target' => $redirectTarget, 'error' => '1'])->withInput();
+            Notifications::add('User not registered', 'danger', 'login');
+
+            return Redirect::route('login', ['target' => $redirectTarget])->withInput();
         }
 
         if (!Hash::check($password, $user->password)) {
-            return Redirect::route('login', ['target' => $redirectTarget, 'error' => '2'])->withInput();
+            Notifications::add('Wrong password', 'danger', 'login');
+
+            return Redirect::route('login', ['target' => $redirectTarget])->withInput();
         }
         if ($user->active != '1') {
-            return Redirect::route('login', ['target' => $redirectTarget, 'error' => '3'])->withInput();
+            Notifications::add('User is not allowed to log in', 'danger', 'login');
+
+            return Redirect::route('login', ['target' => $redirectTarget])->withInput();
         }
 
         Auth::login($user, $isRemember);
