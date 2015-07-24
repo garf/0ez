@@ -55,7 +55,8 @@ Database password
 php artisan migrate
 ```
 
-**7.** Point your webserver (Apache ot NGINX) to /public folder.
+
+**7.** Point your webserver (Apache ot NGINX) to `/public` folder.
 
 
 Done!
