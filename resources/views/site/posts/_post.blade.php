@@ -14,7 +14,7 @@
             <p>{!! $post->excerpt !!}</p>
             <hr />
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div>
                         <span class="text-muted">Категория:</span>
                         <a href="{{ route('category', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a>
@@ -25,9 +25,6 @@
                     <div>
                         <span class="text-muted">Теги:</span> @include('site.partials.tags-list', ['tags' => $post->tags])
                     </div>
-                </div>
-                <div class="col-lg-6 text-right">
-
                 </div>
             </div>
         </div>
