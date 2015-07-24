@@ -49,6 +49,16 @@ view()->creator('root.partials.top-nav', function($view) {
             'blank' => false,
         ],
         [
+            'url' => route('root-menu'),
+            'title' => 'Menu',
+            'route' => 'root-menu',
+            'item' => 'menu',
+            'class' => '',
+            'icon' => 'fa fa-bars',
+            'id' => '',
+            'blank' => false,
+        ],
+        [
             'url' => route('root-users'),
             'title' => 'Users',
             'route' => 'root-users',

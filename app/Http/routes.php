@@ -191,6 +191,19 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
 
 });
 
+//=======MENU=======//
+
+Route::get('/menu', [
+    'as' => 'root-menu',
+    'uses' => 'Root\MenuController@index',
+]);
+
+Route::post('/menu', [
+    'as' => 'root-menu-save',
+    'uses' => 'Root\MenuController@store',
+]);
+
+//=======STATIC PAGES=======//
 
 Route::get('/{page_name}', [
     'as' => 'static-page',
