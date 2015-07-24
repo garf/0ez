@@ -5,7 +5,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Меню</span>
+                    <span class="sr-only">Menu</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -16,7 +16,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Главная</a></li>
+                    @foreach($items as $item)
+                        <?php
+                            $uri = '/' . trim(Request::path(), '/');
+                        ?>
+                        <li class="{{ isset($menu_item_active) && $menu_item_active == $item->active_item ? 'active' : ($uri == $item->url) ? 'active' : '' }}">
+                            <a href="{{ $item->url }}" {{ $item->on_blank == 1 ? 'target="_blank"' : '' }}>
+                                {{ $item->title }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -104,3 +104,8 @@ view()->creator('root.partials.top-nav', function($view) {
     ];
     $view->with('menu_items_left', $menu_items_left)->with('menu_items_right', $menu_items_right);
 });
+
+view()->creator('site.partials.top-nav', function ($view) {
+    $items = \App\Models\Menu::where('position', 'top')->orderBy('sort', 'asc')->get();
+    $view->with('items', $items);
+});
