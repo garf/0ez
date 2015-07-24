@@ -26,7 +26,6 @@ class Users extends Model implements AuthenticatableContract, CanResetPasswordCo
         return self::$_instance;
     }
 
-
     public function posts()
     {
         return $this->hasMany(Posts::class, 'user_id');

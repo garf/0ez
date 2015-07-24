@@ -751,12 +751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/gaaarfild/laravel-notifications.git",
-                "reference": "5ceda37d0c9f0996d42e1c232c17ceec8921cc3a"
+                "reference": "2716b99954035803fee7985a9333f1f1df588ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gaaarfild/laravel-notifications/zipball/5ceda37d0c9f0996d42e1c232c17ceec8921cc3a",
-                "reference": "5ceda37d0c9f0996d42e1c232c17ceec8921cc3a",
+                "url": "https://api.github.com/repos/gaaarfild/laravel-notifications/zipball/2716b99954035803fee7985a9333f1f1df588ff6",
+                "reference": "2716b99954035803fee7985a9333f1f1df588ff6",
                 "shasum": ""
             },
             "require": {
@@ -784,7 +784,7 @@
                 "laravel",
                 "notifications"
             ],
-            "time": "2015-07-23 10:05:39"
+            "time": "2015-07-23 11:39:54"
         },
         {
             "name": "guzzlehttp/psr7",
