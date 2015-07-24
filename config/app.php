@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://0ez.ru'),
+    'url' => env('APP_URL', 'http://localhost'),
     'sitename' => env('APP_SITENAME', '0ez'),
 
     /*

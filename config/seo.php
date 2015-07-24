@@ -2,8 +2,8 @@
 
 return [
     'default' => [
-        'seo_title' => 'Как я поехал в Америку',
-        'seo_description' => 'Этот блог о том, как я поехал в Америку. Блог пишется в реальном времени.',
-        'seo_keywords' => 'путешествия, Америка, США, интересные истории, события',
+        'seo_title' => 'Very Conveniet blogging',
+        'seo_description' => '0ez is a lightweight blogging system, that helps you to make easy things easy way.',
+        'seo_keywords' => 'blog, laravel, easy-way, convenient',
     ],
 ];
