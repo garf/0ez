@@ -10,19 +10,19 @@ Try 0ez. It's soo ez!
 
 Currently, 0ez is under development. There are no Installer. You have to use [Composer](https://getcomposer.org/), to install 0ez.
 
-#### 1. Clone or download repository to your web-folder.
+**1.** Clone or download repository to your web-folder.
 
-#### 2. In the root directory, type:
+**2.** In the root directory, type:
 
 ``` bash
 composer install
 ```
 
-#### 3. Then, you have to set up your DB.
+**3.** Then, you have to set up your DB.
 
-#### 4. Rename `.env.example` file to `.env` in root folder.
+**4.** Rename `.env.example` file to `.env` in root folder.
 
-#### 5. Open it with your favorite text editor and set up your database credentials.
+**5.** Open it with your favorite text editor and set up your database credentials.
 
 Database host
 
@@ -48,7 +48,7 @@ Database password
     DB_PASSWORD=123456
 ```
 
-#### 6. In command line, type 
+**6.** In command line, type 
 
 ``` bash
 php artisan migrate
