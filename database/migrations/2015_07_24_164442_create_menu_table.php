@@ -18,7 +18,9 @@ class CreateMenuTable extends Migration
             $table->string('position', 50)->default('top');
             $table->string('title', 255);
             $table->string('url', 255);
-            $table->integer('sort')->default('0');
+            $table->string('active_item', 50);
+            $table->boolean('on_blank')->default(0);
+            $table->integer('sort')->default(0);
             $table->timestamps();
         });
     }
