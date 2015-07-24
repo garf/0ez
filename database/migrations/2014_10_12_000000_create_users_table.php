@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
         $user = new \App\Models\Users;
         $user->name = '0ez';
         $user->email = '0ez@example.com';
-        $user->password = 'admin';
+        $user->password = '123456';
         $user->active = '1';
         $user->save();
     }
