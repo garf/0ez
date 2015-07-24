@@ -8,7 +8,7 @@ Try 0ez. It's soo ez!
 
 ## Installation
 
-
+Currently, 0ez is under development. There are no Installer
 
 ## Contributing
 
