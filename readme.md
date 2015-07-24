@@ -24,6 +24,7 @@ composer install
 
 **5.** Open it with your favorite text editor and set up your database credentials.
 
+
 Database host
 
 ```
@@ -53,6 +54,9 @@ Database password
 ``` bash
 php artisan migrate
 ```
+
+**7.** Point your webserver (Apache ot NGINX) to /public folder.
+
 
 Done!
 
