@@ -17,6 +17,7 @@
 <body>
     @include('site.partials.seo.counters')
     @include('site.partials.header')
+    {!! Notifications::byGroup('0')->toBootstrap() !!}
     @yield('body')
     @include('site.partials.footer')
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
