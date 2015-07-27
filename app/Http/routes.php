@@ -189,6 +189,21 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\UsersController@index',
     ]);
 
+    Route::get('/users/add', [
+        'as' => 'root-users-new',
+        'uses' => 'Root\UsersController@add',
+    ]);
+
+    Route::get('/users/edit/{user_id}', [
+        'as' => 'root-users-edit',
+        'uses' => 'Root\UsersController@edit',
+    ])->where(['user_id' => '[0-9]+']);
+
+    Route::post('/users/save/{user_id?}', [
+        'as' => 'root-users-save',
+        'uses' => 'Root\UsersController@store',
+    ])->where(['user_id' => '[0-9]+']);
+
 });
 
 //=======MENU=======//

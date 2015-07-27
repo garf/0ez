@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-lg-2">
                         <div class="form-group">
-                            <label for="inputBlank">Taget Blank</label>
+                            <label for="inputBlank">Taget Blank</label><br />
                             <input type="checkbox" name="on_blank" data-toggle="switch" id="inputBlank" />
                         </div>
                     </div>
