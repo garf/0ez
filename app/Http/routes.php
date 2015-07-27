@@ -203,6 +203,22 @@ Route::post('/menu', [
     'uses' => 'Root\MenuController@store',
 ]);
 
+Route::get('/menu/remove/{menu_id}', [
+    'as' => 'root-menu-remove',
+    'uses' => 'Root\MenuController@remove',
+])->where(['menu_id' => '[0-9]+']);
+
+Route::get('/menu/up/{menu_id}', [
+    'as' => 'root-menu-up',
+    'uses' => 'Root\MenuController@up',
+])->where(['menu_id' => '[0-9]+']);
+
+Route::get('/menu/down/{menu_id}', [
+    'as' => 'root-menu-down',
+    'uses' => 'Root\MenuController@down',
+])->where(['menu_id' => '[0-9]+']);
+
+
 //=======STATIC PAGES=======//
 
 Route::get('/{page_name}', [

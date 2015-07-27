@@ -23,6 +23,16 @@ class CreateMenuTable extends Migration
             $table->integer('sort')->default(0);
             $table->timestamps();
         });
+
+        $menu = new App\Models\Menu;
+        $menu->parent_id = 0;
+        $menu->position = 'top';
+        $menu->title = 'Home';
+        $menu->url = '/';
+        $menu->active_item = 'index';
+        $menu->on_blank = false;
+        $menu->sort = 100;
+        $menu->save();
     }
 
     /**
