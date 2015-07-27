@@ -7,14 +7,6 @@ body {
   margin-bottom: 182px;
 }
 
-.footer {
-  bottom: 0;
-  height: 182px;
-  position: absolute;
-  width: 100%;
-}
-
-
 @-moz-document url-prefix() {
   fieldset {
     display: table-cell;

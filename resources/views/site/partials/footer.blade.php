@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">© {{ date('Y') }} <a href="{{ route('index') }}">{{ Conf::get('app.sitename') }}</a></div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right"><a class="" href="{{ route('index') }}">На главную</a></div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-right"></div>
             </div>
         </div>
     </div>

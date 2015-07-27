@@ -7,7 +7,8 @@
     @include('site.partials.seo-meta')
     @yield('meta')
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">
+    {{--<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">--}}
+    <link rel="stylesheet" href="/plugins/flat-ui/css/flat-ui.min.css">
     <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ elixir('t/root/css/root.css') }}">
     @yield('css')
@@ -22,6 +23,7 @@
 {{--@include('root.partials.footer')--}}
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/plugins/flat-ui/js/flat-ui.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/0.12.8/vue.min.js"></script>
 <script src="{{ elixir('t/root/js/root.js') }}"></script>
 @yield('js-bottom')

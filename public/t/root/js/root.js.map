@@ -1,1 +1,1 @@
-{"version":3,"sources":["root.js"],"names":[],"mappings":"AAAA","file":"root.js","sourcesContent":[""],"sourceRoot":"/source/"}
+{"version":3,"sources":["root.js"],"names":[],"mappings":"AAAA;AACA;AACA","file":"root.js","sourcesContent":["if ($('[data-toggle=\"switch\"]').length) {\n    $('[data-toggle=\"switch\"]').bootstrapSwitch();\n}"],"sourceRoot":"/source/"}

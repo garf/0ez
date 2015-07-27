@@ -1,9 +1,9 @@
 <div class="list-group">
 
-        <a href="{{ route('index') }}"
+    <a href="{{ route('index') }}"
            class="list-group-item {{ (!isset($active_category) ? 'active' : '') }}">
-            Все
-            <span class="badge">{{ $posts_count }}</span>
+        <span class="badge">{{ $posts_count }}</span>
+        Все
         </a>
     @foreach($categories as $category)
 
