@@ -60,6 +60,7 @@ class UsersController extends Controller
 
         $user->email = Input::get('email');
         $user->name = Input::get('name');
+        $user->role = Input::get('role');
 
         $password = trim(Input::get('password'));
 
