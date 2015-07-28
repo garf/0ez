@@ -54,7 +54,7 @@
                     @endif
                     <div class="form-group">
                         <label for="textarea1">Content</label>
-                        <textarea id="textarea1" name="content" class="materialize-textarea">{!! $post->content or Input::old('content')  !!} </textarea>
+                        <textarea id="textarea1" name="content">{!! $post->content or Input::old('content')  !!} </textarea>
                     </div>
 
                     <div class="form-group">
@@ -85,12 +85,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputImg">Miniature</label>
-                        <div>
-                            @if(!empty($post) && !empty($post->img))
-                                <img src="/upload/{{ $post->img }}" alt="" style="max-width: 100%;" >
-                            @endif
-                        </div>
-                        <input type="file" id="inputImg" name="img" class="form-control" >
+                        <input type="file" id="inputImg" name="img" class="" >
                     </div>
                     <div class="form-group">
                         <label for="inputStatus">Status</label>
@@ -151,6 +146,7 @@
     <script src="/plugins/moment/moment.min.js"></script>
     <script src="/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
     <script src="/plugins/bootstrap-tokenfield/bootstrap-tokenfield.min.js"></script>
+    <script src="/plugins/bootstrap-file-input/js/fileinput.min.js"></script>
     <script src="/plugins/ckeditor/ckeditor.js"
             type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript">
@@ -178,6 +174,29 @@
         {
             filebrowserBrowseUrl : '/elfinder/ckeditor'
         });
+
+        $("#inputImg").fileinput({
+            showUpload:false,
+            maxFileCount: 1,
+            showRemove: false,
+            previewFileType:'image',
+            initialPreviewCount: 1,
+            autoReplace: true,
+            allowedFileTypes: ['image'],
+            previewTemplates: {
+                image: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
+                '   <img src="{data}" style="max-width: 100%;" class="" title="{caption}" alt="{caption}">\n' +
+                '</div>\n',
+                generic: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
+                '   {content}\n' +
+                '</div>\n'
+            },
+            @if(!empty($post) && !empty($post->img))
+                initialPreview: [
+                    '<img src="/upload/{{ $post->img }}" alt="" style="max-width: 100%;" >'
+                ]
+            @endif
+        });
     </script>
 
 @stop
@@ -186,4 +205,5 @@
     <link rel="stylesheet" href="/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="/plugins/bootstrap-tokenfield/css/bootstrap-tokenfield.min.css">
     <link rel="stylesheet" href="/plugins/bootstrap-tokenfield/css/tokenfield-typeahead.min.css">
+    <link rel="stylesheet" href="/plugins/bootstrap-file-input/css/fileinput.min.css">
 @stop
