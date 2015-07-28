@@ -181,6 +181,16 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\SettingsController@websiteSave',
     ]);
 
+    Route::get('/settings/appearance', [
+        'as' => 'root-settings-appearance',
+        'uses' => 'Root\SettingsController@appearance',
+    ]);
+
+    Route::post('/settings/appearance', [
+        'as' => 'root-settings-appearance-save',
+        'uses' => 'Root\SettingsController@appearanceSave',
+    ]);
+
 
     //=======USERS=======//
 

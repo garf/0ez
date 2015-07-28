@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 60);
+            $table->string('role', 60)->default('author');
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('active')->default(0);
@@ -26,6 +27,7 @@ class CreateUsersTable extends Migration
         $user->name = '0ez';
         $user->email = '0ez@example.com';
         $user->password = '123456';
+        $user->role = 'admin';
         $user->active = '1';
         $user->save();
     }

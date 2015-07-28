@@ -8,7 +8,10 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="list-group">
                     <a class="list-group-item" href="{{ route('root-settings-website') }}">
-                        <i class="fa fa-globe"></i> Website Settings
+                        <i class="fa fa-globe"></i> Website
+                    </a>
+                    <a class="list-group-item" href="{{ route('root-settings-appearance') }}">
+                        <i class="fa fa-leaf"></i> Appearance
                     </a>
                     <a class="list-group-item" href="{{ route('root-counters') }}">
                         <i class="fa fa-area-chart"></i> Meta and Counters

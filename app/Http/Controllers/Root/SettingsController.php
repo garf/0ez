@@ -116,4 +116,37 @@ class SettingsController extends Controller
         return Redirect::back();
     }
 
+
+    public function appearance()
+    {
+        $data = [
+            'title' => 'Appearance',
+            'logo' => Conf::get('appearance.logo', null),
+        ];
+        $this->title->prepend('Settings');
+        $this->title->prepend($data['title']);
+        View::share('menu_item_active', 'settings');
+
+        return view('root.settings.appearance', $data);
+    }
+
+    public function appearanceSave()
+    {
+        if (Input::hasFile('logo')) {
+            $file = Input::file('logo');
+
+            $path = public_path('upload');
+            $filename = generate_filename($path, $file->getClientOriginalExtension());
+            $file->move($path, $filename);
+
+            Conf::set('appearance.logo', $filename);
+        }
+
+        Notifications::add('Settings saved', 'success');
+
+        return Redirect::route('root-settings-appearance');
+
+    }
+
+
 }
