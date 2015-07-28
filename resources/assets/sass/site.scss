@@ -2,6 +2,10 @@ body {
     background: url('/t/common/bgs/main.jpg') left top no-repeat fixed;
 }
 
+img {
+    max-width: 100%;
+}
+
 .post-pinned {
     background: #fffae1;
 }
