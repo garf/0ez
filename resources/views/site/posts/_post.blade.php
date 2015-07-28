@@ -6,11 +6,9 @@
     </div>
     <div class="col-lg-8">
         <div class="post-content">
-            <h2 class="media-heading">
-                <a href="{{ route('view', ['slug' => $post->slug]) }}"
-                                         class="card-title activator grey-text text-darken-4">{{ $post->title }}</a>
+            <h2 class="post-title">
+                <a href="{{ route('view', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
             </h2>
-
             <p>{!! $post->excerpt !!}</p>
             <hr />
             <div class="row">

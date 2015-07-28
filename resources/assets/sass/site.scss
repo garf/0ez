@@ -1,5 +1,5 @@
 body {
-    background: url('/t/common/bgs/bg.png') left top repeat;
+    background: url('/t/common/bgs/main.jpg') left top no-repeat fixed;
 }
 
 .post-pinned {
@@ -11,10 +11,19 @@ body {
 }
 
 .post {
-    box-shadow: 0 0 6px #999;
+    //box-shadow: 0 0 6px #999;
 
     .post-content {
-        padding: 15px 0 15px 15px;
+        padding: 15px 0 25px 15px;
+
+        //h2.post-title {
+        //    font-size: 32px;
+        //    line-height: 40px;
+        //    a {
+        //        //font-size: 32px;
+        //        //line-height: 40px;
+        //    }
+        //}
     }
     .post-image {
         padding: 0;

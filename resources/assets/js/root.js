@@ -1,3 +1,3 @@
-if ($('[data-toggle="switch"]').length) {
-    $('[data-toggle="switch"]').bootstrapSwitch();
-}
+//if ($('[data-toggle="switch"]').length) {
+//    $('[data-toggle="switch"]').bootstrapSwitch();
+//}

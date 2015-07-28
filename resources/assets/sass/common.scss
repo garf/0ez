@@ -1,12 +1,3 @@
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 182px;
-}
-
 @-moz-document url-prefix() {
   fieldset {
     display: table-cell;

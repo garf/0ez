@@ -9,7 +9,8 @@
     @yield('meta')
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
     {{--<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">--}}
-    <link rel="stylesheet" href="/plugins/flat-ui/css/flat-ui.min.css">
+    {{--<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-theme.min.css">--}}
+    {{--<link rel="stylesheet" href="/plugins/flat-ui/css/flat-ui.min.css">--}}
     <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ elixir('t/site/css/site.css') }}">
     @yield('css')
@@ -23,7 +24,7 @@
     @include('site.partials.footer')
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/plugins/flat-ui/js/flat-ui.min.js"></script>
+    {{--<script src="/plugins/flat-ui/js/flat-ui.min.js"></script>--}}
     <script src="{{ elixir('t/site/js/site.js') }}"></script>
     @yield('js-bottom')
 </body>
