@@ -109,3 +109,7 @@ view()->creator('site.partials.top-nav', function ($view) {
     $items = \App\Models\Menu::where('position', 'top')->orderBy('sort', 'asc')->get();
     $view->with('items', $items);
 });
+view()->creator('site.partials.bottom-nav', function ($view) {
+    $items = \App\Models\Menu::where('position', 'bottom')->orderBy('sort', 'asc')->get();
+    $view->with('items', $items);
+});

@@ -7,13 +7,7 @@
                     <p class="grey-text text-lighten-4">{!! nl2br(e(Conf::get('app.description'))) !!}</p>
                 </div>
                 <div class="col-lg-4 col-sm-12">
-                    {{--<h5 class="white-text">Инфо</h5>--}}
-                    {{--<ul>--}}
-                        {{--<li><a class="grey-text text-lighten-3" href="#!">Интересное</a></li>--}}
-                        {{--<li><a class="grey-text text-lighten-3" href="#!">Написать мне</a></li>--}}
-                        {{--<li><a class="grey-text text-lighten-3" href="#!">Карта</a></li>--}}
-                        {{--<li><a class="grey-text text-lighten-3" href="#!">О блоге</a></li>--}}
-                    {{--</ul>--}}
+                    @include('site.partials.bottom-nav')
                 </div>
             </div>
         </div>
