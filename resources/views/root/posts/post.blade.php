@@ -121,11 +121,12 @@
                                class="form-control">
 
                         <div class="well well-sm tags-list">
-                            <b>Popular Tags</b><br />
-                            <a href="#!">tags</a>
-                            <a href="#!">list</a>
-                            <a href="#!">goes</a>
-                            <a href="#!">here</a>
+                            <a class="btn btn-link" onclick="$('#popularTags').slideToggle(100);">Popular Tags</a>
+                            <div id="popularTags" style="display:none;">
+                                @foreach($tags as $tag)
+                                    <a href="#{{ $tag->tag }}" class="add-tag" data-tag="{{ $tag->tag }}">{{ $tag->tag }}</a>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
 
@@ -149,31 +150,10 @@
     <script src="/plugins/bootstrap-file-input/js/fileinput.min.js"></script>
     <script src="/plugins/ckeditor/ckeditor.js"
             type="text/javascript" charset="utf-8"></script>
+    <script src="/t/site/js/posts/post.js"></script>
     <script type="text/javascript">
         //TagsInput
-        $('#inputTags').tokenfield({
-        });
-        $('#inputTags').on('tokenfield:createtoken', function (event) {
-            var existingTokens = $(this).tokenfield('getTokens');
-            $.each(existingTokens, function (index, token) {
-                if (token.value === event.attrs.value)
-                    event.preventDefault();
-            });
-        });
 
-        //DateTimePicker
-        $(function () {
-            $('#inputPublishedAt').datetimepicker({
-                locale: 'en',
-                format: 'YYYY-MM-DD HH:mm:ss'
-            });
-        });
-
-        //CKEditor
-        var editor = CKEDITOR.replace('textarea1',
-        {
-            filebrowserBrowseUrl : '/elfinder/ckeditor'
-        });
 
         $("#inputImg").fileinput({
             showUpload:false,

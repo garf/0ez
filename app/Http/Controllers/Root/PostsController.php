@@ -43,6 +43,7 @@ class PostsController extends Controller
             'title' => 'New Post',
             'post' => null,
             'save_url' => route('root-posts-store'),
+            'tags' => Tags::all(),
         ];
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'posts');
@@ -94,6 +95,7 @@ class PostsController extends Controller
             'post' => $post,
             'title' => $post->id . ' : Edit Post',
             'save_url' => route('root-posts-store', ['post_id' => $post_id]),
+            'tags' => Tags::all(),
         ];
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'posts');
