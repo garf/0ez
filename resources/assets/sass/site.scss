@@ -25,6 +25,10 @@ img {
 .post-body {
     background: #fff;
     box-shadow: 0 0 6px #999;
+
+    .post-content {
+        padding: 25px 25px 25px 25px;
+    }
 }
 
 .posts-content {
