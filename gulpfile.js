@@ -13,24 +13,29 @@ var elixir = require('laravel-elixir');
 
 elixir(function (mix) {
     mix.scripts(['site.js'], 'public/t/site/js/site.js');
-});
-elixir(function (mix) {
+
+    mix.sass([
+        "bootstrap-0ez.scss"
+    ], "public/plugins/bootstrap/css/bootstrap-0ez.css");
+
     mix.sass([
         "common.scss",
-        "site.scss",
+        "site.scss"
     ], "public/t/site/css/site.css");
-});
 
-elixir(function (mix) {
-    mix.scripts(['root.js'], 'public/t/root/js/root.js');
-});
-elixir(function (mix) {
     mix.sass([
         "common.scss",
         "root.scss"
     ], "public/t/root/css/root.css");
-});
 
-elixir(function (mix) {
-    mix.version(["t/site/js/site.js", "t/site/css/site.css", "t/root/js/root.js", "t/root/css/root.css"]);
+    mix.scripts(['root.js'], 'public/t/root/js/root.js');
+
+
+    mix.version([
+        "t/site/js/site.js",
+        "t/site/css/site.css",
+        "t/root/js/root.js",
+        "t/root/css/root.css",
+        "plugins/bootstrap/css/bootstrap-0ez.css"
+    ]);
 });

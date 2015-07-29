@@ -39,6 +39,32 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if (config('app.debug')) {
+            if ($request->ajax()) {
+                return response()->json([
+                    'error' => $e->getMessage() . ' in "' . $e->getFile() . '" on line ' . $e->getLine(),
+                ], 500);
+            } else {
+                return parent::render($request, $e);
+            }
+        }
+
+        if ($this->isHttpException($e)) {
+            if ($request->ajax()) {
+                return response()->json([
+                    'error' => 'Page not found',
+                ], 404);
+            } else {
+                return \Response::make(view('errors.404', ['title' => '404 Not Found'])->render(), 404);
+            }
+        }
+
+        if ($request->ajax()) {
+            return response()->json([
+                'error' => 'Internal Server Error',
+            ], 500);
+        } else {
+            return \Response::make(view('errors.500', ['title' => '500 Server Error'])->render(), 500);
+        }
     }
 }
