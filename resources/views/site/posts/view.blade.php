@@ -20,17 +20,20 @@
                                 <hr />
                                 <div>
                                     <div>
-                                        Категория:
+                                        <i class="fa fa-square"></i>
+
                                         <a href="{{ route('category', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-clock-o"></i>
+                                        Опубликовано: {{ hdate($post->published_at) }}
+                                        <small class="text-muted">({{ date('d.m.Y', strtotime($post->published_at)) }})</small>
                                     </div>
                                     <div>
                                         Автор: {{ $post->user->name }}
                                     </div>
                                     <div>
-                                        Опубликовано: {{ hdate($post->published_at) }}
-                                    </div>
-                                    <div>
-                                        Теги: @include('site.partials.tags-list', ['tags' => $post->tags])
+                                        @include('site.partials.tags-list', ['tags' => $post->tags])
                                     </div>
                                 </div>
 
