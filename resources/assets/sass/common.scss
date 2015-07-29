@@ -1,9 +1,13 @@
 @-moz-document url-prefix() {
-  fieldset {
-    display: table-cell;
-  }
+    fieldset {
+        display: table-cell;
+    }
+}
+
+.footer {
+    margin-top: 30px;
 }
 
 .brown-text {
-  color: #512800;
+    color: #512800;
 }

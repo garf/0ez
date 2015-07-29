@@ -122,6 +122,7 @@ class SettingsController extends Controller
         $data = [
             'title' => 'Appearance',
             'logo' => Conf::get('appearance.logo', null),
+            'bg' => Conf::get('appearance.bg.image', null),
         ];
         $this->title->prepend('Settings');
         $this->title->prepend($data['title']);
@@ -140,6 +141,29 @@ class SettingsController extends Controller
             $file->move($path, $filename);
 
             Conf::set('appearance.logo', $filename);
+        }
+
+        if (Input::hasFile('background')) {
+            $file = Input::file('background');
+
+            $path = public_path('upload');
+            $filename = generate_filename($path, $file->getClientOriginalExtension());
+            $file->move($path, $filename);
+
+            $bg = [
+                'image' => $filename,
+                'horizontal' => Input::get('horizontal', 'left'),
+                'vertical' => Input::get('vertical', 'top'),
+                'repeat' => Input::get('repeat', 'repeat'),
+                'is_fixed' => Input::get('is_fixed', ''),
+            ];
+
+            Conf::set('appearance.bg', $bg);
+        } else {
+            Conf::set('appearance.bg.horizontal', Input::get('horizontal', 'left'));
+            Conf::set('appearance.bg.vertical', Input::get('vertical', 'top'));
+            Conf::set('appearance.bg.repeat', Input::get('repeat', 'repeat'));
+            Conf::set('appearance.bg.is_fixed', Input::get('is_fixed', ''));
         }
 
         Notifications::add('Settings saved', 'success');

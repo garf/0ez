@@ -3,7 +3,7 @@
 @section('body')
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-9">
+            <div class="col-sm-12 col-md-12 col-lg-8">
                 <div class="row" data-equalizer>
                     @foreach($posts as $post)
                         @include('site.posts._post', ['post' => $post])
@@ -15,9 +15,8 @@
                     @endif
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-3">
+            <div class="col-sm-12 col-md-12 col-lg-4">
                 <div style="padding-left: 15px;">
-                    <h4>Категории</h4>
                     @include('site.partials.categories-menu')
                 </div>
             </div>

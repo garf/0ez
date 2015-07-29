@@ -9,14 +9,23 @@
     @yield('meta')
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
     {{--<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">--}}
-    {{--<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-theme.min.css">--}}
     {{--<link rel="stylesheet" href="/plugins/flat-ui/css/flat-ui.min.css">--}}
+    <link rel="stylesheet" href="{{ elixir('plugins/bootstrap/css/bootstrap-0ez.css') }}">
     <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ elixir('t/site/css/site.css') }}">
     @yield('css')
     @yield('js-top')
 </head>
-<body>
+<body style="
+@if(Conf::has('appearance.bg.image'))
+        background: url('/upload/{{ Conf::get('appearance.bg.image') }}')
+        {{ Conf::get('appearance.bg.horizontal') }}
+        {{ Conf::get('appearance.bg.vertical') }}
+        {{ Conf::get('appearance.bg.repeat') }}
+        {{ Conf::get('appearance.bg.is_fixed') }}
+        ;
+@endif
+">
     @include('site.partials.seo.counters')
     @include('site.partials.header')
     {!! Notifications::byGroup('0')->toBootstrap() !!}

@@ -2,11 +2,11 @@
   fieldset {
     display: table-cell; } }
 
+.footer {
+  margin-top: 30px; }
+
 .brown-text {
   color: #512800; }
-
-body {
-  background: url("/t/common/bgs/main.jpg") left top no-repeat fixed; }
 
 img {
   max-width: 100%; }
@@ -17,11 +17,13 @@ img {
 .post-regular {
   background: #ffffff; }
 
-.post .post-content {
-  padding: 15px 0 25px 15px; }
-
-.post .post-image {
-  padding: 0; }
+.post {
+  box-shadow: 0 0 4px #999;
+  margin-bottom: 30px; }
+  .post .post-content {
+    padding: 15px 15px 25px 15px; }
+  .post .post-image {
+    padding: 0; }
 
 .post-body {
   background: #fff;
@@ -31,7 +33,7 @@ img {
   background: #fff; }
 
 .related-list {
-  margin-bottom: 20px; }
+  margin-bottom: 30px; }
   .related-list .related-item .related-img img {
     max-width: 100%; }
   .related-list .related-item .related-link {

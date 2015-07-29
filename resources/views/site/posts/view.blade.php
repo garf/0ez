@@ -39,8 +39,6 @@
 
                         </div>
                         <div class="">
-                            <hr />
-                            <h3>Похожие посты</h3>
                             @include('site.partials.related', ['post' => $post])
                         </div>
                     </div>

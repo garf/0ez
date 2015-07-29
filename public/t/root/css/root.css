@@ -2,6 +2,9 @@
   fieldset {
     display: table-cell; } }
 
+.footer {
+  margin-top: 30px; }
+
 .brown-text {
   color: #512800; }
 
