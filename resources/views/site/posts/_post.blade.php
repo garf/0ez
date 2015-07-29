@@ -1,6 +1,6 @@
 <div class="{{ $post->is_pinned == '1' ? 'post-pinned' : 'post-regular' }} post">
     <a href="{{ route('view', ['slug' => $post->slug]) }}">
-        <img class="media-object" style="max-width: 100%;" src="/upload/{{ $post->img }}" alt="">
+        <img class="post-image" src="/upload/{{ $post->img }}" alt="">
     </a>
     <div class="row">
         <div class="col-lg-12">

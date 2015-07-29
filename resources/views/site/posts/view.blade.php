@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-9">
                 <div class="post-body">
-                    <img src="/upload/{{ $post->img }}" alt="" style="max-width: 100%;" class="circle responsive-img">
+                    <img src="/upload/{{ $post->img }}" alt="" style="max-width: 100%;" class="post-image">
                     <article>
                         <div class=" post-content">
                             <div class="">

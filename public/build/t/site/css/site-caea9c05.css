@@ -23,7 +23,10 @@ img {
   .post .post-content {
     padding: 15px 15px 25px 15px; }
   .post .post-image {
-    padding: 0; }
+    width: 100%; }
+
+.post-image {
+  width: 100%; }
 
 .post-body {
   background: #fff;
