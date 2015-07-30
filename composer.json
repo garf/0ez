@@ -23,6 +23,7 @@
         "barryvdh/laravel-elfinder": "^0.3.4",
         "gaaarfild/laravel-conf": "dev-master",
         "gaaarfild/laravel-notifications": "dev-master",
+        "gaaarfild/laravel-pinger": "dev-master",
         "cviebrock/eloquent-sluggable": "^3.0"
     },
     "require-dev": {

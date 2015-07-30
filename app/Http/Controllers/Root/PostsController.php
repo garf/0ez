@@ -15,6 +15,7 @@ use Input;
 use Auth;
 use Redirect;
 use Notifications;
+use Pinger;
 
 class PostsController extends Controller
 {
@@ -82,6 +83,10 @@ class PostsController extends Controller
         $post->save();
 
         $this->_setTags(Input::get('tags'), $post->id);
+
+        if (Input::has('ping')) {
+            Pinger::pingAll($post->title, route('view', ['slug' => $post->slug]));
+        }
 
         Notifications::add('Blog post saved', 'success');
         return Redirect::route('root-post-edit', ['post_id' => $post->id]);

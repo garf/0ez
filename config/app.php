@@ -182,6 +182,8 @@ return [
         Gaaarfild\LaravelConf\LaravelConfServiceProvider::class,
         //https://github.com/gaaarfild/laravel-notifications
         Gaaarfild\LaravelNotifications\LaravelNotificationsServiceProvider::class,
+        //https://github.com/gaaarfild/laravel-pinger
+        Gaaarfild\LaravelPinger\LaravelPingerServiceProvider::class,
         //https://github.com/cviebrock/eloquent-sluggable
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
@@ -242,6 +244,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Conf' => Gaaarfild\LaravelConf\ConfFacade::class,
         'Notifications' => Gaaarfild\LaravelNotifications\NotificationsFacade::class,
+        'Pinger' => Gaaarfild\LaravelPinger\PingerFacade::class,
     ],
 
 ];

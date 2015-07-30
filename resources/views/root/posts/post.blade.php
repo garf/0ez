@@ -129,7 +129,11 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="ping" value="1"> Ping Blog Services
+                        </label>
+                    </div>
                     <hr/>
                     <div>
                         <input type="submit" value="Save" class="btn btn-block btn-success" >

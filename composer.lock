@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e8082c3cd769476f9502ec15499bc6a9",
+    "hash": "a7abb93d14789382610c9276a2543dd8",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -751,12 +751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/gaaarfild/laravel-notifications.git",
-                "reference": "2716b99954035803fee7985a9333f1f1df588ff6"
+                "reference": "ab3b65762177edc726142d60874fadf254e2efff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gaaarfild/laravel-notifications/zipball/2716b99954035803fee7985a9333f1f1df588ff6",
-                "reference": "2716b99954035803fee7985a9333f1f1df588ff6",
+                "url": "https://api.github.com/repos/gaaarfild/laravel-notifications/zipball/ab3b65762177edc726142d60874fadf254e2efff",
+                "reference": "ab3b65762177edc726142d60874fadf254e2efff",
                 "shasum": ""
             },
             "require": {
@@ -784,7 +784,53 @@
                 "laravel",
                 "notifications"
             ],
-            "time": "2015-07-23 11:39:54"
+            "time": "2015-07-28 22:43:09"
+        },
+        {
+            "name": "gaaarfild/laravel-pinger",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gaaarfild/laravel-pinger.git",
+                "reference": "65332e14875267e521b8ec5db9ce04dbe284d348"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gaaarfild/laravel-pinger/zipball/65332e14875267e521b8ec5db9ce04dbe284d348",
+                "reference": "65332e14875267e521b8ec5db9ce04dbe284d348",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.2",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Gaaarfild\\LaravelPinger\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dinar Garipov",
+                    "email": "garipov.dinar@gmail.com"
+                }
+            ],
+            "description": "Ping search engines about website updates",
+            "keywords": [
+                "bing",
+                "google",
+                "laravel",
+                "ping",
+                "search engines",
+                "yahoo",
+                "yandex"
+            ],
+            "time": "2015-07-30 09:20:15"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1391,16 +1437,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.10",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3475ce0b1b5cab41f012905c4c58ad645088f7c9"
+                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3475ce0b1b5cab41f012905c4c58ad645088f7c9",
-                "reference": "3475ce0b1b5cab41f012905c4c58ad645088f7c9",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/c16222fdc02467eaa12cb6d6d0e65527741f6040",
+                "reference": "c16222fdc02467eaa12cb6d6d0e65527741f6040",
                 "shasum": ""
             },
             "require": {
@@ -1468,7 +1514,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-07-21 19:35:53"
+            "time": "2015-07-28 20:41:58"
         },
         {
             "name": "maximebf/debugbar",
@@ -4172,7 +4218,8 @@
     "stability-flags": {
         "styde/blade-pagination": 20,
         "gaaarfild/laravel-conf": 20,
-        "gaaarfild/laravel-notifications": 20
+        "gaaarfild/laravel-notifications": 20,
+        "gaaarfild/laravel-pinger": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

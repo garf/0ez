@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.8 (LTS) on 2015-07-27.
+ * Generated for Laravel 5.1.8 (LTS) on 2015-07-30.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -13594,6 +13594,88 @@ namespace {
          */
         public static function hasMacro($name){
             return \Gaaarfild\LaravelNotifications\Notifications::hasMacro($name);
+        }
+        
+    }
+
+
+    class Pinger extends \Gaaarfild\LaravelPinger\PingerFacade{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function pingYandex($title, $url, $rss = null){
+            return \Gaaarfild\LaravelPinger\Pinger::pingYandex($title, $url, $rss);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function pingGoogle($title, $url, $rss = null){
+            return \Gaaarfild\LaravelPinger\Pinger::pingGoogle($title, $url, $rss);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function pingYahoo($title, $url, $rss = null){
+            return \Gaaarfild\LaravelPinger\Pinger::pingYahoo($title, $url, $rss);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function pingFeedburner($title, $url, $rss = null){
+            return \Gaaarfild\LaravelPinger\Pinger::pingFeedburner($title, $url, $rss);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function pingWeblogs($title, $url, $rss = null){
+            return \Gaaarfild\LaravelPinger\Pinger::pingWeblogs($title, $url, $rss);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function pingAll($title, $url, $rss = null){
+            return \Gaaarfild\LaravelPinger\Pinger::pingAll($title, $url, $rss);
+        }
+        
+        /**
+         * Register a custom macro.
+         *
+         * @param string $name
+         * @param callable $macro
+         * @return void 
+         * @static 
+         */
+        public static function macro($name, $macro){
+            \Gaaarfild\LaravelPinger\Pinger::macro($name, $macro);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */
+        public static function hasMacro($name){
+            return \Gaaarfild\LaravelPinger\Pinger::hasMacro($name);
         }
         
     }
