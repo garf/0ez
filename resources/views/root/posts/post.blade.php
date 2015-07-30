@@ -85,6 +85,10 @@
                     </div>
                     <div class="form-group">
                         <label for="inputImg">Miniature</label>
+                        @if(!empty($post) && !empty($post->img))
+                            <br />
+                            <img src="/upload/{{ $post->img }}" alt="">
+                        @endif
                         <input type="file" id="inputImg" name="img" class="" >
                     </div>
                     <div class="form-group">
@@ -155,33 +159,6 @@
     <script src="/plugins/ckeditor/ckeditor.js"
             type="text/javascript" charset="utf-8"></script>
     <script src="/t/site/js/posts/post.js"></script>
-    <script type="text/javascript">
-        //TagsInput
-
-
-        $("#inputImg").fileinput({
-            showUpload:false,
-            maxFileCount: 1,
-            showRemove: false,
-            previewFileType:'image',
-            initialPreviewCount: 1,
-            autoReplace: true,
-            allowedFileTypes: ['image'],
-            previewTemplates: {
-                image: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
-                '   <img src="{data}" style="max-width: 100%;" class="" title="{caption}" alt="{caption}">\n' +
-                '</div>\n',
-                generic: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
-                '   {content}\n' +
-                '</div>\n'
-            },
-            @if(!empty($post) && !empty($post->img))
-                initialPreview: [
-                    '<img src="/upload/{{ $post->img }}" alt="" style="max-width: 100%;" >'
-                ]
-            @endif
-        });
-    </script>
 
 @stop
 
