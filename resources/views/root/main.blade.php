@@ -21,7 +21,7 @@
     {!! Notifications::byGroup('0')->toBootstrap() !!}
 </div>
 @yield('body')
-{{--@include('root.partials.footer')--}}
+@include('root.partials.footer')
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
 {{--<script src="/plugins/flat-ui/js/flat-ui.min.js"></script>--}}

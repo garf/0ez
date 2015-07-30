@@ -5,16 +5,23 @@
         <h1>{{ $title }}</h1>
         <div>
             {!! Form::open(['route' => 'root-settings-appearance-save', 'enctype' => 'multipart/form-data']) !!}
+            <h2>Images</h2>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="inputLogo">Logo</label>
+                        @if(!empty($logo))
+                            <br /><img src="/upload/{{ $logo }}" style="max-width: 100%;" alt="">
+                        @endif
                         <input type="file" name="logo" class="" id="inputLogo" />
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="inputBg">Background</label>
+                        @if(!empty($bg))
+                            <br/><img src="/upload/{{ $bg }}" style="max-width: 100%;" alt="">
+                        @endif
                         <input type="file" name="background" class="" id="inputBg" />
                     </div>
                     <div class="row">
@@ -65,6 +72,73 @@
 
                 </div>
             </div>
+            <h2>Colors</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="inputHeaderBg">Header Background</label>
+
+                        <div class="input-group" id="inputHeaderBg">
+                            <input type="text" name="header_bg"
+                                   value="{{ Conf::get('appearance.header.bg', '#FFFFFF') }}"
+                                   class="form-control"/>
+                            <span class="input-group-addon"><i></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMenuColor">Menu color</label>
+                        <select name="menu_color" class="form-control" id="inputMenuColor">
+                            <option value="default" {{ (Conf::get('appearance.menu.color', '') == 'default') ? 'selected' : '' }}>
+                                Light
+                            </option>
+                            <option value="inverse" {{ (Conf::get('appearance.menu.color', '') == 'inverse') ? 'selected' : '' }}>
+                                Dark
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="inputFooterTopBg">Footer Top Background</label>
+                        <div class="input-group" id="inputFooterTopBg">
+                            <input type="text" name="footer_top_bg"
+                                   value="{{ Conf::get('appearance.footer.top_bg', '#ecf0f1') }}"
+                                   class="form-control"/>
+                            <span class="input-group-addon"><i></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFooterTopText">Footer Top Text</label>
+                        <div class="input-group" id="inputFooterTopText">
+                            <input type="text" name="footer_top_text"
+                                   value="{{ Conf::get('appearance.footer.top_text', '#2b4646') }}"
+                                   class="form-control"/>
+                            <span class="input-group-addon"><i></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="inputFooterBottomBg">Footer Bottom Background</label>
+                        <div class="input-group" id="inputFooterBottomBg">
+                            <input type="text" name="footer_bottom_bg"
+                                   value="{{ Conf::get('appearance.footer.bottom_bg', '#c7dae5') }}"
+                                   class="form-control"/>
+                            <span class="input-group-addon"><i></i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFooterBottomText">Footer Bottom Text</label>
+
+                        <div class="input-group" id="inputFooterBottomText">
+                            <input type="text" name="footer_bottom_text"
+                                   value="{{ Conf::get('appearance.footer.bottom_text', '#111111') }}"
+                                   class="form-control"/>
+                            <span class="input-group-addon"><i></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="text-right">
                 <input type="submit" value="Save" class="btn btn-success" >
             </div>
@@ -75,54 +149,11 @@
 
 @section('css')
     <link rel="stylesheet" href="/plugins/bootstrap-file-input/css/fileinput.min.css">
+    <link rel="stylesheet" href="/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
 @stop
 
 @section('js-bottom')
     <script src="/plugins/bootstrap-file-input/js/fileinput.min.js"></script>
-    <script >
-        $("#inputLogo").fileinput({
-            showUpload:false,
-            maxFileCount: 1,
-            showRemove: false,
-            previewFileType:'image',
-            initialPreviewCount: 1,
-            autoReplace: true,
-            allowedFileTypes: ['image'],
-            previewTemplates: {
-                image: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
-                '   <img src="{data}" style="max-width: 100%;" class="" title="{caption}" alt="{caption}">\n' +
-                '</div>\n',
-                generic: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
-                '   {content}\n' +
-                '</div>\n'
-            },
-            @if(!empty($logo))
-                initialPreview: [
-                '<img src="/upload/{{ $logo }}" alt="" style="max-width: 100%;" >'
-            ]
-            @endif
-        });
-        $("#inputBg").fileinput({
-            showUpload:false,
-            maxFileCount: 1,
-            showRemove: false,
-            previewFileType:'image',
-            initialPreviewCount: 1,
-            autoReplace: true,
-            allowedFileTypes: ['image'],
-            previewTemplates: {
-                image: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
-                '   <img src="{data}" style="max-width: 100%;" class="" title="{caption}" alt="{caption}">\n' +
-                '</div>\n',
-                generic: '<div class="" id="{previewId}" data-fileindex="{fileindex}">\n' +
-                '   {content}\n' +
-                '</div>\n'
-            },
-            @if(!empty($bg))
-                initialPreview: [
-                '<img src="/upload/{{ $bg }}" alt="" style="max-width: 100%;" >'
-            ]
-            @endif
-        });
-    </script>
+    <script src="/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+    <script src="/t/root/js/settings/appearance.js"></script>
 @stop

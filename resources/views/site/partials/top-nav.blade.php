@@ -1,5 +1,5 @@
 <div class="">
-    <nav class="navbar navbar-inverse ">
+    <nav class="navbar navbar-{{ Conf::get('appearance.menu.color', 'inverse') }} ">
         <div class="container container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">

@@ -1,5 +1,6 @@
 <footer class="footer page-footer">
-    <div class="footer-content">
+    <div class="footer-content"
+         style="background: {{ Conf::get('appearance.footer.top_bg', '#ecf0f1') }}; color: {{ Conf::get('appearance.footer.top_text', '#2b4646') }};">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 col-lg-6">
@@ -13,7 +14,8 @@
         </div>
     </div>
 
-    <div class="footer-copyright">
+    <div class="footer-copyright"
+         style="background: {{ Conf::get('appearance.footer.bottom_bg', '#c7dae5') }}; color: {{ Conf::get('appearance.footer.bottom_text', '#111111') }};">
         <div class="container">
             <div class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">© {{ date('Y') }} <a href="{{ route('index') }}">{{ Conf::get('app.sitename') }}</a></div>

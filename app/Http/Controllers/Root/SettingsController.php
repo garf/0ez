@@ -165,6 +165,15 @@ class SettingsController extends Controller
             Conf::set('appearance.bg.repeat', Input::get('repeat', 'repeat'));
             Conf::set('appearance.bg.is_fixed', Input::get('is_fixed', ''));
         }
+        Conf::set('appearance.header.bg', Input::get('header_bg', '#FFFFFF'));
+        Conf::set('appearance.menu.color', Input::get('menu_color', 'default'));
+
+        Conf::set('appearance.footer.top_bg', Input::get('footer_top_bg', '#ecf0f1'));
+        Conf::set('appearance.footer.top_text', Input::get('footer_top_text', '#2b4646'));
+        Conf::set('appearance.footer.bottom_bg', Input::get('footer_bottom_bg', '#c7dae5'));
+        Conf::set('appearance.footer.bottom_text', Input::get('footer_bottom_text', '#111111'));
+
+
 
         Notifications::add('Settings saved', 'success');
 
