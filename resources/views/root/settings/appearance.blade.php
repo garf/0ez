@@ -81,7 +81,7 @@
                         <div class="input-group" id="inputHeaderBg">
                             <input type="text" name="header_bg"
                                    value="{{ Conf::get('appearance.header.bg', '#FFFFFF') }}"
-                                   class="form-control"/>
+                                   class="form-control colorpicker"/>
                             <span class="input-group-addon"><i></i></span>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                         <div class="input-group" id="inputFooterTopBg">
                             <input type="text" name="footer_top_bg"
                                    value="{{ Conf::get('appearance.footer.top_bg', '#ecf0f1') }}"
-                                   class="form-control"/>
+                                   class="form-control colorpicker"/>
                             <span class="input-group-addon"><i></i></span>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                         <div class="input-group" id="inputFooterTopText">
                             <input type="text" name="footer_top_text"
                                    value="{{ Conf::get('appearance.footer.top_text', '#2b4646') }}"
-                                   class="form-control"/>
+                                   class="form-control colorpicker"/>
                             <span class="input-group-addon"><i></i></span>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                         <div class="input-group" id="inputFooterBottomBg">
                             <input type="text" name="footer_bottom_bg"
                                    value="{{ Conf::get('appearance.footer.bottom_bg', '#c7dae5') }}"
-                                   class="form-control"/>
+                                   class="form-control colorpicker"/>
                             <span class="input-group-addon"><i></i></span>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                         <div class="input-group" id="inputFooterBottomText">
                             <input type="text" name="footer_bottom_text"
                                    value="{{ Conf::get('appearance.footer.bottom_text', '#111111') }}"
-                                   class="form-control"/>
+                                   class="form-control colorpicker"/>
                             <span class="input-group-addon"><i></i></span>
                         </div>
                     </div>
