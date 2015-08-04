@@ -71,6 +71,14 @@ http://your.host/root
 
 **Password:** 123456
 
+## Demo 
+
+http://0ez.ru/root
+
+**Login:** 0ez@example.com
+
+**Password:** 123456
+
 ## Contributing
 
 Contributions are highly appreciated! Send your pull requests to master branch.
