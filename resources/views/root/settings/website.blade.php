@@ -10,6 +10,10 @@
                     <input type="text" value="{{ Conf::get('app.sitename') }}" name="sitename" class="form-control" id="inputSiteName">
                 </div>
                 <div class="form-group">
+                    <label for="inputSiteUrl">Site URL</label>
+                    <input type="text" value="{{ Conf::get('app.url') }}" name="siteurl" class="form-control" id="inputSiteUrl">
+                </div>
+                <div class="form-group">
                     <label for="inputSiteTitle">Site Title</label>
                     <input type="text" value="{{ Conf::get('seo.default.seo_title') }}" name="site_title" class="form-control" id="inputSiteTitle">
                 </div>

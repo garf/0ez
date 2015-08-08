@@ -54,7 +54,7 @@ class UsersController extends Controller
         return view('root.users.user', $data);
     }
 
-    public function store($user_id = null)
+    public function store(Requests\StoreUserRequest $request, $user_id = null)
     {
         $user = Users::findOrNew($user_id);
 

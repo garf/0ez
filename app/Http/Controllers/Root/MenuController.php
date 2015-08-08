@@ -27,7 +27,7 @@ class MenuController extends Controller
         return view('root.menu.index', $data);
     }
 
-    public function store($id= null)
+    public function store(Requests\StoreMenuRequest $request, $id= null)
     {
         $menu = Menu::findOrNew($id);
 

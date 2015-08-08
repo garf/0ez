@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Root;
 
+use App\Jobs\CreateSitemap;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -90,6 +91,15 @@ class SettingsController extends Controller
         return view('root.settings.sitemap', $data);
     }
 
+    public function sitemapGenerate()
+    {
+        $this->dispatch(new CreateSitemap());
+
+        Notifications::add('Sitemap generation scheduled', 'info');
+
+        return Redirect::back();
+    }
+
     public function website()
     {
         $data = [
@@ -105,6 +115,7 @@ class SettingsController extends Controller
     public function websiteSave()
     {
         Conf::set('app.sitename', Input::get('sitename'));
+        Conf::set('app.url', Input::get('siteurl'));
         Conf::set('app.description', Input::get('site_description'));
 
         Conf::set('seo.index', Input::get('seo_index'));

@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://0ez.local'),
     'sitename' => env('APP_SITENAME', '0ez'),
 
     /*

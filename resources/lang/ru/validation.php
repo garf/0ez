@@ -86,30 +86,28 @@ return [
     |
     */
 
-
     'custom' => [
         'title' => [
-            'required' => 'Title is empty',
+            'required' => 'Заголовок не может быть пустым',
         ],
         'published_at' => [
-            'required' => 'Publish date is empty',
-            'regex' => 'Publish date format is incorrect',
+            'required' => 'Не указана дата публикации',
+            'regex' => 'Формат даты публикации неверный',
         ],
         'url' => [
-            'required' => 'URL is required',
+            'required' => 'URL не задан',
         ],
         'name' => [
-            'required' => 'Name is required',
+            'required' => 'Имя не указано',
         ],
         'email' => [
-            'required' => 'Email is required',
-            'email' => 'Email format is incorrect',
+            'required' => 'Email не указан',
+            'email' => 'Формат email неверный',
         ],
         'password' => [
-            'required' => 'Password is required',
+            'required' => 'Пароль не указан',
         ],
     ],
-
 
     /*
     |--------------------------------------------------------------------------

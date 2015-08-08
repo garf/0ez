@@ -52,7 +52,7 @@ class PostsController extends Controller
         return view('root.posts.post', $data);
     }
 
-    public function store($post_id=null)
+    public function store(Requests\StorePostRequest $request, $post_id=null)
     {
         $post = Posts::findOrNew($post_id);
 

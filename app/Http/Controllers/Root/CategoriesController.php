@@ -51,7 +51,7 @@ class CategoriesController extends Controller
         return view('root.categories.category', $data);
     }
 
-    public function store($category_id=null)
+    public function store(Requests\StoreCategoryRequest $request, $category_id=null)
     {
         $category = Categories::findOrNew($category_id);
         $category->title = strip_tags(Input::get('title'));
