@@ -6,6 +6,10 @@ view()->creator('site.partials.categories-menu', function($view) {
     $view->with('categories', $categories)->with('posts_count', $posts_count);
 });
 
+view()->creator('site.partials.social-links', function($view) {
+    $view->with('services', trans('socials.services'));
+});
+
 view()->creator('root.partials.top-nav', function($view) {
     $menu_items_left = [
         [

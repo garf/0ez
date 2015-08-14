@@ -18,6 +18,7 @@
             <div class="col-sm-12 col-md-12 col-lg-4">
                 <div style="padding-left: 15px;">
                     @include('site.partials.categories-menu')
+                    @include('site.partials.social-links')
                 </div>
             </div>
         </div>

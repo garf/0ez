@@ -197,7 +197,7 @@ class SettingsController extends Controller
     {
         $data = [
             'title' => 'Social Integration',
-            'services' => $this->_socialsList(),
+            'services' => trans('socials.services'),
         ];
         $this->title->prepend('Settings');
         $this->title->prepend($data['title']);
@@ -210,61 +210,25 @@ class SettingsController extends Controller
     {
         $socials = [];
 
-        $services = $this->_socialsList();
+        $services = trans('socials.services');
         foreach ($services as $service) {
-            if (trim(Input::get($service['name'] . '_link')) != '') {
-                $socials[$service['name']]['link'] = Input::get($service['name'] . '_link');
+            $input = trim(Input::get($service['name'] . '_link'));
+            if ($input != '') {
+                $socials[$service['name']] =
+                    (!starts_with($input, ['http://', 'https://']))
+                    ? 'http://' . $input
+                    : $input;
             }
         }
 
         if (count($socials) != 0) {
-            Conf::set('social', $socials);
+            Conf::set('social.links', $socials);
         }
+
+        Conf::set('social.show_titles', Input::has('show_titles'));
+
         Notifications::add('Settings saved', 'success');
 
         return Redirect::route('root-settings-social');
     }
-
-    private function _socialsList()
-    {
-        return [
-            [
-                'name' => 'facebook',
-                'icon' => 'fa-facebook-official',
-                'title' => 'Facebook',
-                'color' => '#103944',
-            ],
-            [
-                'name' => 'vk',
-                'icon' => 'fa-vk',
-                'title' => 'VK',
-                'color' => '#303f44',
-            ],
-            [
-                'name' => 'youtube',
-                'icon' => 'fa-youtube-play',
-                'title' => 'YouTube',
-                'color' => '#9f0800',
-            ],
-            [
-                'name' => 'gplus',
-                'icon' => 'fa-google-plus',
-                'title' => 'Google+',
-                'color' => '#9f4d00',
-            ],
-            [
-                'name' => 'twitter',
-                'icon' => 'fa-twitter',
-                'title' => 'Twitter',
-                'color' => '#008fa3',
-            ],
-            [
-                'name' => 'Twitch',
-                'icon' => 'fa-twitch',
-                'title' => 'Twitch',
-                'color' => '#741e9f',
-            ],
-        ];
-    }
-
 }

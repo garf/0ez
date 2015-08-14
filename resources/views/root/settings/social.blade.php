@@ -3,7 +3,17 @@
 @section('body')
     <div class="container">
         <h1>{{ $title }}</h1>
+        <br />
         {!! Form::open(['url' => route('root-settings-social-save'), 'method' => 'post']) !!}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="showTitles" name="show_titles" {{ Conf::has('social.show_titles') ? 'checked' : '' }}> Show Link Titles
+                        </label>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 @foreach($services as $service)
                     <div class="col-md-6 col-sm-12">
@@ -19,7 +29,8 @@
                                            name="{{ $service['name'] }}_link"
                                            id="input{{ ucfirst($service['name']) }}Link"
                                            class="form-control"
-                                           value="{{ Conf::get('social.' . $service['name'] . '.link', '') }}" />
+                                           value="{{ Conf::get('social.links.' . $service['name'], '') }}"
+                                            />
                                 </div>
                             </div>
                         </fieldset>
