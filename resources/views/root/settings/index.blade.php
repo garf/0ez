@@ -13,13 +13,16 @@
                     <a class="list-group-item" href="{{ route('root-settings-appearance') }}">
                         <i class="fa fa-leaf"></i> Appearance
                     </a>
-                    <a class="list-group-item" href="{{ route('root-counters') }}">
+                    <a class="list-group-item" href="{{ route('root-settings-counters') }}">
                         <i class="fa fa-area-chart"></i> Meta and Counters
                     </a>
-                    <a class="list-group-item" href="{{ route('root-robots-txt') }}">
+                    <a class="list-group-item" href="{{ route('root-settings-social') }}">
+                        <i class="fa fa-facebook"></i> Social Integration
+                    </a>
+                    <a class="list-group-item" href="{{ route('root-settings-robots-txt') }}">
                         <i class="fa fa-file-text-o"></i> Robots.txt
                     </a>
-                    <a class="list-group-item" href="{{ route('root-sitemap') }}">
+                    <a class="list-group-item" href="{{ route('root-settings-sitemap') }}">
                         <i class="fa fa-sitemap"></i> Sitemap
                     </a>
                 </div>

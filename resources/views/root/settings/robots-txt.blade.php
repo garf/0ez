@@ -3,7 +3,7 @@
 @section('body')
     <div class="container">
         <h1>{{ $title }}</h1>
-        {!! Form::open(['route' => 'root-tobots-txt-save']) !!}
+        {!! Form::open(['route' => 'root-settings-robots-txt-save']) !!}
             <div>
                 <div class="form-group">
                     <label for="inputRobotsTxt">

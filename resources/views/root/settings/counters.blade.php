@@ -3,7 +3,7 @@
 @section('body')
     <div class="container">
         <h1>{{ $title }}</h1>
-        {!! Form::open(['route' => 'root-counters-save']) !!}
+        {!! Form::open(['route' => 'root-settings-counters-save']) !!}
             <div>
                 <div class="form-group">
                     <label for="inputGoogle">Google counter ID <span

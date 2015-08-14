@@ -146,33 +146,33 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('/settings/counters', [
-        'as' => 'root-counters',
+        'as' => 'root-settings-counters',
         'uses' => 'Root\SettingsController@counters',
     ]);
 
 
     Route::post('/settings/counters/save', [
-        'as' => 'root-counters-save',
+        'as' => 'root-settings-counters-save',
         'uses' => 'Root\SettingsController@countersSave',
     ]);
 
     Route::get('/settings/robots-txt', [
-        'as' => 'root-robots-txt',
+        'as' => 'root-settings-robots-txt',
         'uses' => 'Root\SettingsController@robotsTxt',
     ]);
 
     Route::post('/settings/robots-txt', [
-        'as' => 'root-tobots-txt-save',
+        'as' => 'root-settings-robots-txt-save',
         'uses' => 'Root\SettingsController@robotsTxtSave',
     ]);
 
     Route::get('/settings/sitemap', [
-        'as' => 'root-sitemap',
+        'as' => 'root-settings-sitemap',
         'uses' => 'Root\SettingsController@sitemap',
     ]);
 
     Route::get('/settings/sitemap/generate', [
-        'as' => 'root-sitemap-generate',
+        'as' => 'root-settings-sitemap-generate',
         'uses' => 'Root\SettingsController@sitemapGenerate',
     ]);
 
@@ -194,6 +194,16 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
     Route::post('/settings/appearance', [
         'as' => 'root-settings-appearance-save',
         'uses' => 'Root\SettingsController@appearanceSave',
+    ]);
+
+    Route::get('/settings/social', [
+        'as' => 'root-settings-social',
+        'uses' => 'Root\SettingsController@social',
+    ]);
+
+    Route::post('/settings/social', [
+        'as' => 'root-settings-social-save',
+        'uses' => 'Root\SettingsController@socialSave',
     ]);
 
 

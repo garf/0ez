@@ -6,7 +6,7 @@
         <br />
         <div class="row">
             <div class="col-md-3">
-                <a href="{{ route('root-sitemap-generate') }}" class="btn btn-info btn-block">Generate Sitemap</a>
+                <a href="{{ route('root-settings-sitemap-generate') }}" class="btn btn-info btn-block">Generate Sitemap</a>
             </div>
             <div class="col-md-9">
                 <div class="list-group">

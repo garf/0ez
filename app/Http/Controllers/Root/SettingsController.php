@@ -47,7 +47,7 @@ class SettingsController extends Controller
         Conf::set('seo.counters', $counters);
         Conf::set('seo.more_meta', Input::get('more_meta', ''));
         Notifications::add('Counters info saved', 'success');
-        return Redirect::route('root-counters');
+        return Redirect::route('root-settings-counters');
     }
 
     public function robotsTxt()
@@ -76,7 +76,7 @@ class SettingsController extends Controller
         file_put_contents(public_path('robots.txt'), Input::get('robots_txt', ''));
         file_put_contents(public_path('humans.txt'), Input::get('humans_txt', ''));
         Notifications::add('robots.txt and humans.txt file saved', 'success');
-        return Redirect::route('root-robots-txt');
+        return Redirect::route('root-settings-robots-txt');
     }
 
     public function sitemap()
@@ -97,7 +97,7 @@ class SettingsController extends Controller
 
         Notifications::add('Sitemap generation scheduled', 'info');
 
-        return Redirect::back();
+        return Redirect::route('root-settings-sitemap');
     }
 
     public function website()
@@ -124,7 +124,8 @@ class SettingsController extends Controller
         Conf::set('seo.default.seo_description', Input::get('seo_description'));
         Conf::set('seo.default.seo_keywords', Input::get('seo_keywords'));
         Notifications::add('Settings Saved', 'success');
-        return Redirect::back();
+
+        return Redirect::route('root-settings-website');
     }
 
 
@@ -192,5 +193,78 @@ class SettingsController extends Controller
 
     }
 
+    public function social()
+    {
+        $data = [
+            'title' => 'Social Integration',
+            'services' => $this->_socialsList(),
+        ];
+        $this->title->prepend('Settings');
+        $this->title->prepend($data['title']);
+        View::share('menu_item_active', 'settings');
+
+        return view('root.settings.social', $data);
+    }
+
+    public function socialSave()
+    {
+        $socials = [];
+
+        $services = $this->_socialsList();
+        foreach ($services as $service) {
+            if (trim(Input::get($service['name'] . '_link')) != '') {
+                $socials[$service['name']]['link'] = Input::get($service['name'] . '_link');
+            }
+        }
+
+        if (count($socials) != 0) {
+            Conf::set('social', $socials);
+        }
+        Notifications::add('Settings saved', 'success');
+
+        return Redirect::route('root-settings-social');
+    }
+
+    private function _socialsList()
+    {
+        return [
+            [
+                'name' => 'facebook',
+                'icon' => 'fa-facebook-official',
+                'title' => 'Facebook',
+                'color' => '#103944',
+            ],
+            [
+                'name' => 'vk',
+                'icon' => 'fa-vk',
+                'title' => 'VK',
+                'color' => '#303f44',
+            ],
+            [
+                'name' => 'youtube',
+                'icon' => 'fa-youtube-play',
+                'title' => 'YouTube',
+                'color' => '#9f0800',
+            ],
+            [
+                'name' => 'gplus',
+                'icon' => 'fa-google-plus',
+                'title' => 'Google+',
+                'color' => '#9f4d00',
+            ],
+            [
+                'name' => 'twitter',
+                'icon' => 'fa-twitter',
+                'title' => 'Twitter',
+                'color' => '#008fa3',
+            ],
+            [
+                'name' => 'Twitch',
+                'icon' => 'fa-twitch',
+                'title' => 'Twitch',
+                'color' => '#741e9f',
+            ],
+        ];
+    }
 
 }
