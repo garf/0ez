@@ -214,8 +214,7 @@ class SettingsController extends Controller
         foreach ($services as $service) {
             $input = trim(Input::get($service['name'] . '_link'));
             if ($input != '') {
-                $socials[$service['name']] =
-                    (!starts_with($input, ['http://', 'https://']))
+                $socials[$service['name']] = (!starts_with($input, ['http://', 'https://']))
                     ? 'http://' . $input
                     : $input;
             }
