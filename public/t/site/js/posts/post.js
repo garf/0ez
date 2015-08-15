@@ -16,10 +16,11 @@ $(function () {
 });
 
 $('.add-tag').on('click', function(){
+    var inputTags = $('#inputTags');
     var newTag = $(this).attr('data-tag');
-    var tags = $('#inputTags').tokenfield('getTokens');
+    var tags = inputTags.tokenfield('getTokens');
     tags.push(newTag);
-    $('#inputTags').tokenfield('setTokens', tags);
+    inputTags.tokenfield('setTokens', tags);
 });
 
 $("#inputImg").fileinput({
