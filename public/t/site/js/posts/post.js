@@ -15,9 +15,6 @@ $(function () {
     });
 });
 
-//CKEditor
-var editor = CKEDITOR.replace('textarea1', {});
-
 $('.add-tag').on('click', function(){
     var newTag = $(this).attr('data-tag');
     var tags = $('#inputTags').tokenfield('getTokens');
@@ -41,4 +38,28 @@ $("#inputImg").fileinput({
         '   {content}\n' +
         '</div>\n'
     }
+});
+
+$(function() {
+    $('#textarea1').trumbowyg({
+        btnsDef: {
+            image: {
+                dropdown: ['insertImage', 'upload', 'base64'],
+                ico: 'insertImage'
+            }
+        },
+        upload:{serverPath: '/upload-image-ajax'},
+        btns: ['viewHTML',
+            '|', 'formatting',
+            '|', 'btnGrp-design',
+            '|', 'link',
+            '|', 'image',
+            '|', 'btnGrp-justify',
+            '|', 'btnGrp-lists',
+            '|', 'foreColor', 'backColor'],
+        mobile: true,
+        tablet: true,
+        autogrow: true
+
+    });
 });

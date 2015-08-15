@@ -229,39 +229,48 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\UsersController@store',
     ])->where(['user_id' => '[0-9]+']);
 
-});
 
 //=======MENU=======//
 
-Route::get('/menu', [
-    'as' => 'root-menu',
-    'uses' => 'Root\MenuController@index',
-]);
+    Route::get('/menu', [
+        'as' => 'root-menu',
+        'uses' => 'Root\MenuController@index',
+    ]);
 
-Route::post('/menu', [
-    'as' => 'root-menu-save',
-    'uses' => 'Root\MenuController@store',
-]);
+    Route::post('/menu', [
+        'as' => 'root-menu-save',
+        'uses' => 'Root\MenuController@store',
+    ]);
 
-Route::get('/menu/remove/{menu_id}', [
-    'as' => 'root-menu-remove',
-    'uses' => 'Root\MenuController@remove',
-])->where(['menu_id' => '[0-9]+']);
+    Route::get('/menu/remove/{menu_id}', [
+        'as' => 'root-menu-remove',
+        'uses' => 'Root\MenuController@remove',
+    ])->where(['menu_id' => '[0-9]+']);
 
-Route::get('/menu/up/{menu_id}', [
-    'as' => 'root-menu-up',
-    'uses' => 'Root\MenuController@up',
-])->where(['menu_id' => '[0-9]+']);
+    Route::get('/menu/up/{menu_id}', [
+        'as' => 'root-menu-up',
+        'uses' => 'Root\MenuController@up',
+    ])->where(['menu_id' => '[0-9]+']);
 
-Route::get('/menu/down/{menu_id}', [
-    'as' => 'root-menu-down',
-    'uses' => 'Root\MenuController@down',
-])->where(['menu_id' => '[0-9]+']);
+    Route::get('/menu/down/{menu_id}', [
+        'as' => 'root-menu-down',
+        'uses' => 'Root\MenuController@down',
+    ])->where(['menu_id' => '[0-9]+']);
+
+
+//=======FILES=======//
+
+    Route::any('/upload-image-ajax', [
+        'as' => 'root-upload-image-ajax',
+        'uses' => 'Root\FilesController@uploadImageAjax',
+    ]);
 
 
 //=======STATIC PAGES=======//
 
-Route::get('/{page_name}', [
-    'as' => 'static-page',
-    'uses' => 'PagesController@view',
-])->where(['page_name' => '[A-z0-9-_]+']);
+    Route::get('/{page_name}', [
+        'as' => 'static-page',
+        'uses' => 'PagesController@view',
+    ])->where(['page_name' => '[A-z0-9-_]+']);
+
+});

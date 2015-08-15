@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use View;
 use Input;
 use Auth;
@@ -76,7 +77,6 @@ class PostsController extends Controller
 //        $post->slug = str_slug($seo_title, '-');
         $post->seo_title = strip_tags($seo_title);
         $post->seo_description = strip_tags(Input::get('seo_description'));
-        $post->seo_keywords = strip_tags(Input::get('seo_keywords'));
         $post->seo_keywords = mb_strtolower(strip_tags(Input::get('seo_keywords')));
         $post->status = Input::get('status');
         $post->published_at = Input::get('published_at');
