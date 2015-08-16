@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="vkAppId">App ID</label>
+                <label for="vkAppId">App ID <small><a href="https://vk.com/dev/Comments">Get App ID</a></small></label>
                 <input type="text" name="vk_app_id" id="vkAppId" value="{{ Conf::get('social.vk.app_id', '') }}" class="form-control">
             </div>
         </div>
