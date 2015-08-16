@@ -158,7 +158,7 @@
     <script src="/plugins/bootstrap-file-input/js/fileinput.min.js"></script>
     <script src="/plugins/trumbowyg/trumbowyg.min.js"></script>
     <script src="/plugins/trumbowyg/plugins/upload/trumbowyg.upload.min.js"></script>
-    <script src="/plugins/trumbowyg/plugins/colors/trumbowyg.colors.min.js"></script>
+    {{--<script src="/plugins/trumbowyg/plugins/colors/trumbowyg.colors.min.js"></script>--}}
     <script src="/plugins/trumbowyg/plugins/base64/trumbowyg.base64.min.js"></script>
     <script src="/t/site/js/posts/post.js"></script>
 
@@ -170,5 +170,5 @@
     <link rel="stylesheet" href="/plugins/bootstrap-tokenfield/css/tokenfield-typeahead.min.css">
     <link rel="stylesheet" href="/plugins/bootstrap-file-input/css/fileinput.min.css">
     <link rel="stylesheet" href="/plugins/trumbowyg/ui/trumbowyg.min.css">
-    <link rel="stylesheet" href="/plugins/trumbowyg/plugins/colors/ui/trumbowyg.colors.min.css">
+    {{--<link rel="stylesheet" href="/plugins/trumbowyg/plugins/colors/ui/trumbowyg.colors.min.css">--}}
 @stop

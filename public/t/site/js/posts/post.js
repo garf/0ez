@@ -57,7 +57,7 @@ $(function() {
             '|', 'image',
             '|', 'btnGrp-justify',
             '|', 'btnGrp-lists',
-            '|', 'foreColor', 'backColor'],
+            '|', 'more'],
         mobile: true,
         tablet: true,
         autogrow: true
