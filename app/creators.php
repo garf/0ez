@@ -10,6 +10,19 @@ view()->creator('site.partials.social-links', function($view) {
     $view->with('services', trans('socials.services'));
 });
 
+view()->creator('site.partials.top-nav', function ($view) {
+    $items = \App\Models\Menu::where('position', 'top')->orderBy('sort', 'asc')->get();
+    $view->with('items', $items);
+});
+
+view()->creator('site.partials.bottom-nav', function ($view) {
+    $items = \App\Models\Menu::where('position', 'bottom')->orderBy('sort', 'asc')->get();
+    $view->with('items', $items);
+});
+
+
+//---------------ROOT-----------------//
+
 view()->creator('root.partials.top-nav', function($view) {
     $menu_items_left = [
         [
@@ -109,11 +122,46 @@ view()->creator('root.partials.top-nav', function($view) {
     $view->with('menu_items_left', $menu_items_left)->with('menu_items_right', $menu_items_right);
 });
 
-view()->creator('site.partials.top-nav', function ($view) {
-    $items = \App\Models\Menu::where('position', 'top')->orderBy('sort', 'asc')->get();
-    $view->with('items', $items);
-});
-view()->creator('site.partials.bottom-nav', function ($view) {
-    $items = \App\Models\Menu::where('position', 'bottom')->orderBy('sort', 'asc')->get();
+
+view()->creator('root.partials.settings-menu', function($view) {
+    $items = [
+        [
+            'title' => 'Website',
+            'icon' => 'fa-globe',
+            'url' => route('root-settings-website'),
+            'route' => 'root-settings-website',
+        ],
+        [
+            'title' => 'Appearance',
+            'icon' => 'fa-leaf',
+            'url' => route('root-settings-appearance'),
+            'route' => 'root-settings-appearance',
+        ],
+        [
+            'title' => 'Meta and Counters',
+            'icon' => 'fa-area-chart',
+            'url' => route('root-settings-counters'),
+            'route' => 'root-settings-counters',
+        ],
+        [
+            'title' => 'Social Integration',
+            'icon' => 'fa-facebook',
+            'url' => route('root-settings-social'),
+            'route' => 'root-settings-social',
+        ],
+        [
+            'title' => 'Robots.txt',
+            'icon' => 'fa-file-text-o',
+            'url' => route('root-settings-robots-txt'),
+            'route' => 'root-settings-robots-txt',
+        ],
+        [
+            'title' => 'Sitemap',
+            'icon' => 'fa-sitemap',
+            'url' => route('root-settings-sitemap'),
+            'route' => 'root-settings-sitemap',
+        ],
+    ];
+
     $view->with('items', $items);
 });
