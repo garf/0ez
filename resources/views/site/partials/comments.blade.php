@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs" role="tablist">
     @if(Conf::get('social.comments.facebook.enabled', false))
         <li role="presentation" class="active">
-            <a href="#facebook" aria-controls="facebook" role="tab" data-toggle="tab">
+            <a href="#facebook" aria-controls="facebook" onclick="FB.XFBML.parse();" role="tab" data-toggle="tab">
                 @lang('socials.services.facebook.title')
             </a>
         </li>
