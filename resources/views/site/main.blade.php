@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('site.partials.seo-meta')
     @include('site.partials.seo.more-meta')
+    @include('site.partials.social-meta')
     @yield('meta')
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
     {{--<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">--}}
@@ -26,6 +27,7 @@
         ;
 @endif
 ">
+    @include('site.partials.social-sdk')
     @include('site.partials.seo.counters')
     @include('site.partials.header')
     {!! Notifications::byGroup('0')->toBootstrap() !!}

@@ -226,6 +226,19 @@ class SettingsController extends Controller
 
         Conf::set('social.show_titles', Input::has('show_titles'));
 
+        if (trim(Input::get('vk_app_id')) != '') {
+            Conf::set('social.vk.app_id', Input::get('vk_app_id'));
+        }
+
+        Conf::set('social.comments.vk.enabled', Input::has('comments_vk_enabled'));
+        Conf::set('social.comments.vk.width', Input::get('comments_vk_width', 848));
+        Conf::set('social.comments.vk.limit', Input::get('comments_vk_limit', 5));
+
+        Conf::set('social.comments.facebook.enabled', Input::has('comments_facebook_enabled'));
+        Conf::set('social.comments.facebook.width', Input::get('comments_facebook_width', 848));
+        Conf::set('social.comments.facebook.limit', Input::get('comments_facebook_limit', 5));
+        Conf::set('social.comments.facebook.color_scheme', Input::get('comments_facebook_color_scheme', 'light'));
+
         Notifications::add('Settings saved', 'success');
 
         return Redirect::route('root-settings-social');

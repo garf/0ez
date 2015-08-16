@@ -43,6 +43,7 @@
                             </div>
                         </div>
                     </article>
+                    @include('site.partials.comments')
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-3">
