@@ -73,7 +73,7 @@ http://your.host/root
 
 ## Demo 
 
-http://0ez.ru/root
+http://demo.0ez.ru/root
 
 **Login:** 0ez@example.com
 
