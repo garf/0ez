@@ -26,7 +26,7 @@ class Blog
             $left = $limit - $related->count();
             $excluded = $related->lists('id')->toArray();
             $excluded[] = $except;
-            $additional = Posts::whereNotIn('id', $excluded)->active()->limit($left)->get();
+            $additional = Posts::whereNotIn('id', $excluded)->active()->orderByRaw('RAND()')->limit($left)->get();
             $related = $related->merge($additional);
         }
         return $related;
