@@ -21,9 +21,9 @@
         "laracasts/testdummy": "^2.3",
         "barryvdh/laravel-debugbar": "^2.0",
         "barryvdh/laravel-elfinder": "^0.3.4",
-        "gaaarfild/laravel-conf": "dev-master",
-        "gaaarfild/laravel-notifications": "dev-master",
-        "gaaarfild/laravel-pinger": "dev-master",
+        "gaaarfild/laravel-conf": "~1.0",
+        "gaaarfild/laravel-notifications": "~1.0",
+        "gaaarfild/laravel-pinger": "~1.0",
         "cviebrock/eloquent-sluggable": "^3.0"
     },
     "require-dev": {
