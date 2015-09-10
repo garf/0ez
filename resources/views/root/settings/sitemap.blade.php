@@ -15,7 +15,7 @@
                     Sitemap generates automatically hourly if you set cron job correclty.
                 </div>
                 <div class="list-group">
-                    <a href="{{ Conf::get('app.url') }}/sitemap.xml" class="list-group-item">{{ Conf::get('app.url') }}/sitemap.xml</a>
+                    <a href="{{ starts_with(Conf::get('app.url'), ['http://', 'https://']) ? '' : 'http://' }}{{ Conf::get('app.url') }}/sitemap.xml" class="list-group-item">{{ Conf::get('app.url') }}/sitemap.xml</a>
                 </div>
             </div>
         </div>
