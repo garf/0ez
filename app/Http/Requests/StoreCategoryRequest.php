@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace app\Http\Requests;
 
 use App\Http\Requests\Request;
-use Redirect;
-use Notifications;
 use Illuminate\Contracts\Validation\Validator;
+use Notifications;
+use Redirect;
 
 class StoreCategoryRequest extends Request
 {
@@ -31,14 +31,13 @@ class StoreCategoryRequest extends Request
         ];
     }
 
-
-    public function response(Array $errors)
+    public function response(array $errors)
     {
         return Redirect::back()->withInput();
     }
 
-
-    public function formatErrors(Validator $validator){
+    public function formatErrors(Validator $validator)
+    {
         foreach ($validator->errors()->all() as $error) {
             Notifications::add($error, 'danger');
         }

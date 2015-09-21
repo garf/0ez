@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CleateCategoriesTable extends Migration
 {
@@ -21,7 +21,7 @@ class CleateCategoriesTable extends Migration
             $table->string('slug', 512);
             $table->timestamps();
         });
-        $category = new \App\Models\Categories;
+        $category = new \App\Models\Categories();
         $category->id = 1;
         $category->title = 'Uncategorized';
         $category->slug = 'uncategorized';

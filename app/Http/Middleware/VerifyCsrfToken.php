@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace app\Http\Middleware;
 
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 use Illuminate\Contracts\Encryption\Encrypter;
-use Redirect;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 use Notifications;
+use Redirect;
 
 class VerifyCsrfToken extends BaseVerifier
 {
@@ -24,22 +24,22 @@ class VerifyCsrfToken extends BaseVerifier
             'root-upload-image-ajax',
         ];
 
-        foreach($routes as $route) {
+        foreach ($routes as $route) {
             $this->except[] = trim(route($route, [], false), '/');
         }
 
         parent::__construct($encrypter);
     }
 
-
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
-     * @return mixed
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
      *
      * @throws \Illuminate\Session\TokenMismatchException
+     *
+     * @return mixed
      */
     public function handle($request, \Closure $next)
     {
@@ -48,6 +48,7 @@ class VerifyCsrfToken extends BaseVerifier
         }
 
         Notifications::add('Token Expired', 'warning');
+
         return Redirect::back()->withInput($request->except(['_token']));
     }
 }

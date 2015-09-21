@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Root;
+namespace app\Http\Controllers\Root;
 
-use App\Models\Menu;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use View;
-use Redirect;
-use Notifications;
+use App\Http\Requests;
+use App\Models\Menu;
 use Input;
+use Notifications;
+use Redirect;
+use View;
 
 class MenuController extends Controller
 {
@@ -27,7 +25,7 @@ class MenuController extends Controller
         return view('root.menu.index', $data);
     }
 
-    public function store(Requests\StoreMenuRequest $request, $id= null)
+    public function store(Requests\StoreMenuRequest $request, $id = null)
     {
         $menu = Menu::findOrNew($id);
 
@@ -41,6 +39,7 @@ class MenuController extends Controller
         $menu->save();
 
         Notifications::add('Menu item added', 'success');
+
         return Redirect::route('root-menu');
     }
 
@@ -73,7 +72,7 @@ class MenuController extends Controller
 
         $neighbour = Menu::where('sort', $operator, $menu->sort)->first();
 
-        if(empty($neighbour)) {
+        if (empty($neighbour)) {
             return false;
         }
 

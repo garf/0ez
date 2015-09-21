@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Root;
+namespace app\Http\Controllers\Root;
 
+use App\Http\Controllers\Controller;
 use App\Models\PostTag;
 use App\Models\Tags;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use View;
-use Redirect;
 use Notifications;
+use Redirect;
+use View;
 
 class TagsController extends Controller
 {
@@ -18,7 +15,7 @@ class TagsController extends Controller
     {
         $data = [
             'title' => 'Tags',
-            'tags' => Tags::i()->allWithPostsCount(),
+            'tags'  => Tags::i()->allWithPostsCount(),
         ];
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'tags');
@@ -30,11 +27,12 @@ class TagsController extends Controller
     {
         $tags = Tags::i()->allWithPostsCount();
         foreach ($tags as $tag) {
-            if($tag->num == 0) {
+            if ($tag->num == 0) {
                 Tags::destroy($tag->id);
             }
         }
         Notifications::add('Empty tags removed', 'success');
+
         return Redirect::back();
     }
 
@@ -44,6 +42,7 @@ class TagsController extends Controller
         PostTag::where(['tag_id' => $tag_id])->delete();
 
         Notifications::add('Tag removed', 'success');
+
         return Redirect::back();
     }
 }

@@ -86,14 +86,13 @@ return [
     |
     */
 
-
     'custom' => [
         'title' => [
             'required' => 'Title is empty',
         ],
         'published_at' => [
             'required' => 'Publish date is empty',
-            'regex' => 'Publish date format is incorrect',
+            'regex'    => 'Publish date format is incorrect',
         ],
         'url' => [
             'required' => 'URL is required',
@@ -103,13 +102,12 @@ return [
         ],
         'email' => [
             'required' => 'Email is required',
-            'email' => 'Email format is incorrect',
+            'email'    => 'Email format is incorrect',
         ],
         'password' => [
             'required' => 'Password is required',
         ],
     ],
-
 
     /*
     |--------------------------------------------------------------------------

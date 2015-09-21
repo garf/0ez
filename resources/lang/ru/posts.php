@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'categories' => 'Категории',
+    'categories'    => 'Категории',
     'related_posts' => 'Похожие посты',
 ];

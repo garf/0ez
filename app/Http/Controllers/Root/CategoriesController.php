@@ -1,35 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Root;
+namespace app\Http\Controllers\Root;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\Models\Categories;
 use App\Models\Posts;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use View;
 use Input;
-use Redirect;
 use Notifications;
+use Redirect;
+use View;
 
 class CategoriesController extends Controller
 {
     public function index()
     {
         $data = [
-            'title' => 'Categories',
+            'title'      => 'Categories',
             'categories' => Categories::i()->allWithPostsCount(),
         ];
         $this->title->prepend($data['title']);
         View::share('menu_item_active', 'categories');
+
         return view('root.categories.index', $data);
     }
 
     public function newCategory()
     {
         $data = [
-            'title' => 'New Category',
+            'title'    => 'New Category',
             'category' => null,
             'save_url' => route('root-categories-store'),
         ];
@@ -42,7 +41,7 @@ class CategoriesController extends Controller
     {
         $category = Categories::find($category_id);
         $data = [
-            'title' => 'Edit Category - ' . $category->title,
+            'title'    => 'Edit Category - '.$category->title,
             'category' => $category,
             'save_url' => route('root-categories-store', ['category_id' => $category->id]),
         ];
@@ -51,7 +50,7 @@ class CategoriesController extends Controller
         return view('root.categories.category', $data);
     }
 
-    public function store(Requests\StoreCategoryRequest $request, $category_id=null)
+    public function store(Requests\StoreCategoryRequest $request, $category_id = null)
     {
         $category = Categories::findOrNew($category_id);
         $category->title = strip_tags(Input::get('title'));
@@ -63,6 +62,7 @@ class CategoriesController extends Controller
         $category->save();
 
         Notifications::add('Category saved', 'success');
+
         return Redirect::route('root-categories-edit', ['category_id' => $category->id]);
     }
 
@@ -70,7 +70,7 @@ class CategoriesController extends Controller
     {
         $category = Categories::find($category_id);
         $category->delete();
-        if(Input::get('with_posts', '0') == '1') {
+        if (Input::get('with_posts', '0') == '1') {
             Posts::where('category_id', $category_id)->delete();
             Notifications::add('Category removed with posts', 'success');
         } else {

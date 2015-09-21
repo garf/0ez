@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace app\Http\Requests;
 
 use App\Http\Requests\Request;
-use Redirect;
-use Notifications;
 use Illuminate\Contracts\Validation\Validator;
+use Notifications;
+use Redirect;
 
 class StoreUserRequest extends Request
 {
@@ -27,20 +27,19 @@ class StoreUserRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
+            'name'     => 'required',
+            'email'    => 'required|email',
             'password' => 'required',
         ];
     }
 
-
-    public function response(Array $errors)
+    public function response(array $errors)
     {
         return Redirect::back()->withInput();
     }
 
-
-    public function formatErrors(Validator $validator){
+    public function formatErrors(Validator $validator)
+    {
         foreach ($validator->errors()->all() as $error) {
             Notifications::add($error, 'danger');
         }
