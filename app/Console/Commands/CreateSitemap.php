@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Console\Commands;
+namespace app\Console\Commands;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Console\Command;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 
 class CreateSitemap extends Command
 {

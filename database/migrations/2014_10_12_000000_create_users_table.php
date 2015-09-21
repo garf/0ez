@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateUsersTable extends Migration
 {
@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->boolean('active')->default(0);
         });
 
-        $user = new \App\Models\Users;
+        $user = new \App\Models\Users();
         $user->name = '0ez';
         $user->email = '0ez@example.com';
         $user->password = '123456';

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,5 +17,4 @@ class PostTag extends Model
 
         return self::$_instance;
     }
-
 }

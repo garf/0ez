@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Cache;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
-use Cache;
+use Illuminate\Database\Eloquent\Model;
 
 class Posts extends Model implements SluggableInterface
 {
@@ -13,7 +13,7 @@ class Posts extends Model implements SluggableInterface
 
     protected $sluggable = [
         'build_from' => 'seo_title',
-        'save_to' => 'slug',
+        'save_to'    => 'slug',
     ];
 
     protected $table = 'posts';
@@ -46,42 +46,46 @@ class Posts extends Model implements SluggableInterface
 
     public function getPostsByCategoryId($category_id)
     {
-        $posts = Posts::with(['category', 'user']);
-        if(!empty($category_id)) {
+        $posts = self::with(['category', 'user']);
+        if (!empty($category_id)) {
             $posts = $posts->where('category_id', $category_id);
         }
+
         return $posts->active()->sort()->paginate(10);
     }
 
     public function getPostsByTag($tag)
     {
         $slug = str_slug($tag, '_');
-        $key = 'post_tag_' . $slug;
-        if(Cache::has($key)) {
+        $key = 'post_tag_'.$slug;
+        if (Cache::has($key)) {
             return Cache::get($key);
         } else {
             $posts = Tags::where('tag', 'like', $tag)->first()->posts()->active()->paginate(10);
             Cache::put($key, $posts, 5);
         }
+
         return $posts;
     }
 
     public function getBySlug($slug)
     {
-        return Posts::with(['user', 'category', 'tags'])->where('slug', 'like', $slug)->first();
+        return self::with(['user', 'category', 'tags'])->where('slug', 'like', $slug)->first();
     }
 
-    public function scopeActive($query) {
+    public function scopeActive($query)
+    {
         return $query->where('status', 'active');
     }
 
-    public function scopeSort($query) {
+    public function scopeSort($query)
+    {
         return $query->orderBy('is_pinned', 'desc')->orderBy('published_at', 'desc');
     }
 
-    public function scopeByStatus($query, $statuses) {
-
-        if(is_array($statuses)) {
+    public function scopeByStatus($query, $statuses)
+    {
+        if (is_array($statuses)) {
             return $query->whereIn('status', $statuses);
         } else {
             return $query->where('status', $statuses);

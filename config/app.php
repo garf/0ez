@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://0ez.local'),
+    'url'      => env('APP_URL', 'http://0ez.local'),
     'sitename' => env('APP_SITENAME', '0ez'),
 
     /*
@@ -157,7 +157,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-
         Illuminate\Html\HtmlServiceProvider::class,
 
         //https://github.com/anhskohbo/no-captcha
@@ -236,15 +235,15 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'Date' => Jenssegers\Date\Date::class,
-        'Image' => Intervention\Image\Facades\Image::class,
-        'Agent' => Jenssegers\Agent\Facades\Agent::class,
-        'Form' => Illuminate\Html\FormFacade::class,
-        'HTML' => Illuminate\Html\HtmlFacade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Conf' => Gaaarfild\LaravelConf\ConfFacade::class,
+        'Date'          => Jenssegers\Date\Date::class,
+        'Image'         => Intervention\Image\Facades\Image::class,
+        'Agent'         => Jenssegers\Agent\Facades\Agent::class,
+        'Form'          => Illuminate\Html\FormFacade::class,
+        'HTML'          => Illuminate\Html\HtmlFacade::class,
+        'Debugbar'      => Barryvdh\Debugbar\Facade::class,
+        'Conf'          => Gaaarfild\LaravelConf\ConfFacade::class,
         'Notifications' => Gaaarfild\LaravelNotifications\NotificationsFacade::class,
-        'Pinger' => Gaaarfild\LaravelPinger\PingerFacade::class,
+        'Pinger'        => Gaaarfild\LaravelPinger\PingerFacade::class,
     ],
 
 ];

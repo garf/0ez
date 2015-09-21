@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Root;
+namespace app\Http\Controllers\Root;
 
-use App\Models\Users;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use View;
-use Auth;
+use App\Http\Requests;
+use App\Models\Users;
 use Input;
-use Redirect;
 use Notifications;
+use Redirect;
+use View;
 
 class UsersController extends Controller
 {
@@ -30,8 +27,8 @@ class UsersController extends Controller
     public function add()
     {
         $data = [
-            'title' => 'New User',
-            'user' => null,
+            'title'    => 'New User',
+            'user'     => null,
             'save_url' => route('root-users-save'),
         ];
         $this->title->prepend($data['title']);
@@ -44,8 +41,8 @@ class UsersController extends Controller
     {
         $user = Users::find($user_id);
         $data = [
-            'title' => 'Edit User ' . $user->name,
-            'user' => $user,
+            'title'    => 'Edit User '.$user->name,
+            'user'     => $user,
             'save_url' => route('root-users-save', ['user_id' => $user->id]),
         ];
         $this->title->prepend($data['title']);

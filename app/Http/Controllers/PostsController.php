@@ -1,37 +1,34 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Categories;
 use App\Models\Posts;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Agent;
 use View;
 
 class PostsController extends Controller
 {
-
-    public function index($slug='')
+    public function index($slug = '')
     {
-        if($slug != '') {
+        if ($slug != '') {
             $category = Categories::i()->getBySlug($slug);
             if (empty($category)) {
                 abort(404);
             }
             $category_id = $category->id;
             View::share('active_category', $category_id);
-            View::share('seo_title', 'Категория: ' . $category->seo_title);
+            View::share('seo_title', 'Категория: '.$category->seo_title);
             View::share('seo_description', $category->seo_description);
             View::share('seo_keywords', $category->seo_keywords);
-            $this->title->prepend('Категория: ' . $category->seo_title);
+            $this->title->prepend('Категория: '.$category->seo_title);
         } else {
             $category = null;
             $category_id = null;
         }
 
         $data = [
-            'posts' => Posts::i()->getPostsByCategoryId($category_id),
+            'posts'    => Posts::i()->getPostsByCategoryId($category_id),
             'category' => $category,
         ];
 
@@ -46,7 +43,7 @@ class PostsController extends Controller
         View::share('seo_keywords', $post->seo_keywords);
         $this->title->prepend($post->seo_title);
 
-        if($post->status == 'active') {
+        if ($post->status == 'active') {
             $post->increment('views');
         }
 
@@ -57,7 +54,7 @@ class PostsController extends Controller
     {
         $data = [
             'posts' => Posts::i()->getPostsByTag($tag),
-            'title' => 'Тэг: ' . $tag,
+            'title' => 'Тэг: '.$tag,
         ];
         View::share('seo_title', $data['title']);
         $this->title->prepend($data['title']);

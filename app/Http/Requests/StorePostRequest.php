@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace app\Http\Requests;
 
 use App\Http\Requests\Request;
-use Redirect;
-use Notifications;
 use Illuminate\Contracts\Validation\Validator;
+use Notifications;
+use Redirect;
 
 class StorePostRequest extends Request
 {
@@ -27,18 +27,18 @@ class StorePostRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title'        => 'required',
             'published_at' => ['required', 'regex:#^[0-9]{4}-[0-9]{2}-[0-9]{2}\s[0-9]{2}:[0-9]{2}:[0-9]{2}$#s'],
         ];
     }
 
-    public function response(Array $errors)
+    public function response(array $errors)
     {
         return Redirect::back()->withInput();
     }
 
-
-    public function formatErrors(Validator $validator){
+    public function formatErrors(Validator $validator)
+    {
         foreach ($validator->errors()->all() as $error) {
             Notifications::add($error, 'danger');
         }

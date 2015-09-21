@@ -1,8 +1,9 @@
-<?php namespace App\Classes;
+<?php
+
+namespace app\Classes;
 
 /**
- * Class Title
- * @package App\Classes
+ * Class Title.
  */
 class Title
 {
@@ -11,30 +12,29 @@ class Title
      */
     protected $values = [];
     /**
-     * Delimiter between title sections
+     * Delimiter between title sections.
      *
      * @var string
      */
     protected $delimiter;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param $value
      * @param string $delimiter
      */
-    function __construct($value, $delimiter = ' :: ')
+    public function __construct($value, $delimiter = ' :: ')
     {
         $this->values[] = $value;
         $this->delimiter = $delimiter;
     }
 
-
     /**
-     * Stick section after existing title
+     * Stick section after existing title.
      *
      * @param string $value
-     * @param null $delimiter
+     * @param null   $delimiter
      */
     public function append($value = '', $delimiter = null)
     {
@@ -43,10 +43,10 @@ class Title
     }
 
     /**
-     * Stick section before existing title
+     * Stick section before existing title.
      *
      * @param string $value
-     * @param null $delimiter
+     * @param null   $delimiter
      */
     public function prepend($value = '', $delimiter = null)
     {
@@ -54,7 +54,7 @@ class Title
     }
 
     /**
-     * Render title
+     * Render title.
      *
      * @return string
      */
@@ -64,7 +64,7 @@ class Title
     }
 
     /**
-     * Get Last section
+     * Get Last section.
      *
      * @return mixed
      */
@@ -74,7 +74,7 @@ class Title
     }
 
     /**
-     * Get first section
+     * Get first section.
      *
      * @return mixed
      */
@@ -84,12 +84,12 @@ class Title
     }
 
     /**
-     * Stringify sections
+     * Stringify sections.
      *
      * @return string
      */
-    function __toString()
+    public function __toString()
     {
         return $this->render();
     }
-} 
+}

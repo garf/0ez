@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace app\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Conf;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,8 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include(app_path('helpers.php'));
-        include(app_path('creators.php'));
+        include app_path('helpers.php');
+        include app_path('creators.php');
     }
 
     /**

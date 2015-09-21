@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Root;
+namespace app\Http\Controllers\Root;
 
-use App\Jobs\CreateSitemap;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use View;
-use Input;
-use Redirect;
+use App\Jobs\CreateSitemap;
 use Conf;
+use Input;
 use Notifications;
+use Redirect;
+use View;
 
 class SettingsController extends Controller
 {
@@ -42,11 +39,12 @@ class SettingsController extends Controller
     {
         $counters = [
             'google_analytics' => Input::get('google_analytics', ''),
-            'yandex_metrika' => Input::get('yandex_metrika', ''),
+            'yandex_metrika'   => Input::get('yandex_metrika', ''),
         ];
         Conf::set('seo.counters', $counters);
         Conf::set('seo.more_meta', Input::get('more_meta', ''));
         Notifications::add('Counters info saved', 'success');
+
         return Redirect::route('root-settings-counters');
     }
 
@@ -60,7 +58,7 @@ class SettingsController extends Controller
         }
 
         $data = [
-            'title' => 'robots.txt file',
+            'title'      => 'robots.txt file',
             'robots_txt' => file_get_contents(public_path('robots.txt')),
             'humans_txt' => file_get_contents(public_path('humans.txt')),
         ];
@@ -76,6 +74,7 @@ class SettingsController extends Controller
         file_put_contents(public_path('robots.txt'), Input::get('robots_txt', ''));
         file_put_contents(public_path('humans.txt'), Input::get('humans_txt', ''));
         Notifications::add('robots.txt and humans.txt file saved', 'success');
+
         return Redirect::route('root-settings-robots-txt');
     }
 
@@ -128,13 +127,12 @@ class SettingsController extends Controller
         return Redirect::route('root-settings-website');
     }
 
-
     public function appearance()
     {
         $data = [
             'title' => 'Appearance',
-            'logo' => Conf::get('appearance.logo', null),
-            'bg' => Conf::get('appearance.bg.image', null),
+            'logo'  => Conf::get('appearance.logo', null),
+            'bg'    => Conf::get('appearance.bg.image', null),
         ];
         $this->title->prepend('Settings');
         $this->title->prepend($data['title']);
@@ -163,11 +161,11 @@ class SettingsController extends Controller
             $file->move($path, $filename);
 
             $bg = [
-                'image' => $filename,
+                'image'      => $filename,
                 'horizontal' => Input::get('horizontal', 'left'),
-                'vertical' => Input::get('vertical', 'top'),
-                'repeat' => Input::get('repeat', 'repeat'),
-                'is_fixed' => Input::get('is_fixed', ''),
+                'vertical'   => Input::get('vertical', 'top'),
+                'repeat'     => Input::get('repeat', 'repeat'),
+                'is_fixed'   => Input::get('is_fixed', ''),
             ];
 
             Conf::set('appearance.bg', $bg);
@@ -185,18 +183,15 @@ class SettingsController extends Controller
         Conf::set('appearance.footer.bottom_bg', Input::get('footer_bottom_bg', '#c7dae5'));
         Conf::set('appearance.footer.bottom_text', Input::get('footer_bottom_text', '#111111'));
 
-
-
         Notifications::add('Settings saved', 'success');
 
         return Redirect::route('root-settings-appearance');
-
     }
 
     public function social()
     {
         $data = [
-            'title' => 'Social Integration',
+            'title'    => 'Social Integration',
             'services' => trans('socials.services'),
         ];
         $this->title->prepend('Settings');
@@ -212,10 +207,10 @@ class SettingsController extends Controller
 
         $services = trans('socials.services');
         foreach ($services as $service) {
-            $input = trim(Input::get($service['name'] . '_link'));
+            $input = trim(Input::get($service['name'].'_link'));
             if ($input != '') {
                 $socials[$service['name']] = (!starts_with($input, ['http://', 'https://']))
-                    ? 'http://' . $input
+                    ? 'http://'.$input
                     : $input;
             }
         }

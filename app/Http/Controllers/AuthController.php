@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
-use App\Models\Users;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Input;
+use App\Models\Users;
 use Auth;
 use Hash;
-use Redirect;
+use Input;
 use Notifications;
+use Redirect;
 
 class AuthController extends Controller
 {
@@ -55,6 +52,7 @@ class AuthController extends Controller
     public function logout()
     {
         auth()->logout();
+
         return Redirect::route('login');
     }
 }

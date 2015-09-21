@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace app\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Database\Eloquent\Model;
 
 class Tags extends Model
 {
@@ -24,7 +24,6 @@ class Tags extends Model
         return $this->belongsTo(Users::class, 'user_id');
     }
 
-
     public function posts()
     {
         return $this->belongsToMany(Posts::class, 'post_tag', 'tag_id', 'post_id');
@@ -32,10 +31,9 @@ class Tags extends Model
 
     public function allWithPostsCount()
     {
-        return Tags::leftJoin('post_tag', 'post_tag.tag_id', '=', 'tags.id')
+        return self::leftJoin('post_tag', 'post_tag.tag_id', '=', 'tags.id')
             ->groupBy('tags.id')
             ->orderBy('tags.tag')
             ->get(['tags.*', DB::raw('COUNT(post_tag.id) as num')]);
     }
-
 }

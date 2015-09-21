@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return array(
     */
 
     'route' => [
-        'prefix' => 'elfinder',
+        'prefix'     => 'elfinder',
         'middleware' => null, //Set to null to disable middleware filter
     ],
 
@@ -76,14 +76,14 @@ return array(
     |
     */
 
-    'options' => array(
-        'roots' => array(
-            array(
+    'options' => [
+        'roots' => [
+            [
                 'driver' => 'LocalFileSystem',
-                'path' => public_path() . '/upload',
-                'URL' => env('APP_URL') . '/upload'
-            ),
-        )
-    ),
+                'path'   => public_path().'/upload',
+                'URL'    => env('APP_URL').'/upload',
+            ],
+        ],
+    ],
 
-);
+];

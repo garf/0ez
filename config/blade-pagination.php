@@ -7,6 +7,6 @@
  * Please submit a pull request to: https://github.com/styde/blade-pagination
  * Or send me the template to admin@styde.net
  */
-return array(
-    'theme' => 'bootstrap'
-);
+return [
+    'theme' => 'bootstrap',
+];
