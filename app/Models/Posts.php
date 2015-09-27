@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Models;
+namespace App\Models;
 
 use Cache;
 use Cviebrock\EloquentSluggable\SluggableInterface;
