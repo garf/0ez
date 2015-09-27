@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Http\Controllers\Root;
+namespace App\Http\Controllers\Root;
 
 use App\Http\Controllers\Controller;
 use App\Models\PostTag;
