@@ -13,7 +13,9 @@
                 </div>
                 @if($sitemap_exists)
                     <div class="list-group">
-                        <a href="{{ starts_with(Conf::get('app.url'), ['http://', 'https://']) ? '' : 'http://' }}{{ Conf::get('app.url') }}/{{ $sitemap_filename }}" class="list-group-item">{{ Conf::get('app.url') }}/{{ $sitemap_filename }}</a>
+                        <a href="{{ starts_with(Conf::get('app.url'), ['http://', 'https://']) ? '' : 'http://' }}{{ Conf::get('app.url') }}/{{ $sitemap_filename }}" class="list-group-item">
+                            <i class="fa fa-file-code-o text-danger"></i> {{ Conf::get('app.url') }}/{{ $sitemap_filename }}
+                        </a>
                     </div>
                 @else
                     <div class="alert alert-warning">Sitemap doesn't exist. You have to press "Generate Sitemap" button.</div>
