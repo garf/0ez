@@ -82,8 +82,8 @@ class SettingsController extends Controller
     {
         $sitemap_filename = Conf::get('sitemap.filename', 'sitemap.xml', false);
         $data = [
-            'title' => 'Sitemap.xml file',
-            'sitemap_exists' => file_exists(public_path($sitemap_filename)),
+            'title'            => 'Sitemap.xml file',
+            'sitemap_exists'   => file_exists(public_path($sitemap_filename)),
             'sitemap_filename' => $sitemap_filename,
         ];
         $this->title->prepend($data['title']);
@@ -98,7 +98,7 @@ class SettingsController extends Controller
         $old = Conf::get('sitemap.filename', 'sitemap.xml');
         $new = Input::get('sitemap_filename', 'sitemap.xml');
 
-        if($old != $new) {
+        if ($old != $new) {
             if (file_exists(public_path($old))) {
                 unlink(public_path($old));
             }

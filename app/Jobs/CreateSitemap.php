@@ -3,11 +3,11 @@
 namespace App\Jobs;
 
 use App\Models\Posts;
+use Conf;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Conf;
 
 class CreateSitemap extends Job implements SelfHandling, ShouldQueue
 {
