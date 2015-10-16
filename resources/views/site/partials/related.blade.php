@@ -10,7 +10,7 @@
             <div class="col-sm-12 col-md-6 col-lg-3 related-item">
                 <div class="related-img">
                     <a href="{{ route('view', ['slug' => $post->slug]) }}">
-                        <img src="/upload/{{ $post->img }}" alt="" >
+                        <img src="{{ starts_with($post->img, ['http://', 'https://']) ? '' : '/upload/' }}{{ $post->img }}" alt="" >
                     </a>
                 </div>
                 <div class="related-link">
