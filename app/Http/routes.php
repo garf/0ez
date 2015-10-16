@@ -169,6 +169,11 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\SettingsController@sitemap',
     ]);
 
+    Route::post('/settings/sitemap', [
+        'as'   => 'root-settings-sitemap-save',
+        'uses' => 'Root\SettingsController@sitemapSave',
+    ]);
+
     Route::get('/settings/sitemap/generate', [
         'as'   => 'root-settings-sitemap-generate',
         'uses' => 'Root\SettingsController@sitemapGenerate',

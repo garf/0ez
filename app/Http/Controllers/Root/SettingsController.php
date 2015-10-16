@@ -80,14 +80,34 @@ class SettingsController extends Controller
 
     public function sitemap()
     {
+        $sitemap_filename = Conf::get('sitemap.filename', 'sitemap.xml', false);
         $data = [
             'title' => 'Sitemap.xml file',
+            'sitemap_exists' => file_exists(public_path($sitemap_filename)),
+            'sitemap_filename' => $sitemap_filename,
         ];
         $this->title->prepend($data['title']);
         $this->title->prepend('Settings');
         View::share('menu_item_active', 'settings');
 
         return view('root.settings.sitemap', $data);
+    }
+
+    public function sitemapSave()
+    {
+        $old = Conf::get('sitemap.filename', 'sitemap.xml');
+        $new = Input::get('sitemap_filename', 'sitemap.xml');
+
+        if($old != $new) {
+            if (file_exists(public_path($old))) {
+                unlink(public_path($old));
+            }
+            Conf::set('sitemap.filename', $new);
+        }
+
+        Notifications::add('Sitemap settings saved', 'success');
+
+        return Redirect::route('root-settings-sitemap');
     }
 
     public function sitemapGenerate()
@@ -122,7 +142,7 @@ class SettingsController extends Controller
         Conf::set('seo.default.seo_title', Input::get('site_title'));
         Conf::set('seo.default.seo_description', Input::get('seo_description'));
         Conf::set('seo.default.seo_keywords', Input::get('seo_keywords'));
-        Notifications::add('Settings Saved', 'success');
+        Notifications::add('Settings saved', 'success');
 
         return Redirect::route('root-settings-website');
     }

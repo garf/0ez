@@ -7,6 +7,7 @@ use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Conf;
 
 class CreateSitemap extends Job implements SelfHandling, ShouldQueue
 {
@@ -30,7 +31,7 @@ class CreateSitemap extends Job implements SelfHandling, ShouldQueue
     public function handle()
     {
         $posts = Posts::active()->get();
-        $fh = fopen(public_path('sitemap.xml'), 'w');
+        $fh = fopen(public_path(Conf::get('sitemap.filename', 'sitemap.xml', false)), 'w');
         fwrite($fh, view('files.sitemap', compact('posts'))->render());
         fclose($fh);
     }
