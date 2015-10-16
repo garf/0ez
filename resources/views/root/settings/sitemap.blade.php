@@ -13,7 +13,8 @@
                 </div>
                 @if($sitemap_exists)
                     <div class="list-group">
-                        <a href="{{ starts_with(Conf::get('app.url'), ['http://', 'https://']) ? '' : 'http://' }}{{ Conf::get('app.url') }}/{{ $sitemap_filename }}" class="list-group-item">
+                        <a href="{{ starts_with(Conf::get('app.url'), ['http://', 'https://']) ? '' : 'http://' }}{{ Conf::get('app.url') }}/{{ $sitemap_filename }}"
+                           class="list-group-item" target="_blank">
                             <i class="fa fa-file-code-o text-danger"></i> {{ Conf::get('app.url') }}/{{ $sitemap_filename }}
                         </a>
                     </div>
