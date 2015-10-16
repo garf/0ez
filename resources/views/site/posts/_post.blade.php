@@ -8,7 +8,7 @@
                 <h2 class="post-title">
                     <a href="{{ route('view', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
                 </h2>
-                <p class="lead">{!! $post->excerpt !!}</p>
+                <p class="lead">{!! nl2br($post->excerpt) !!}</p>
                 <hr />
                 <div class="row">
                     <div class="col-lg-12">

@@ -42,7 +42,7 @@ $("#inputImg").fileinput({
 });
 
 $(function() {
-    $('#textarea1').trumbowyg({
+    $('#inputContent').trumbowyg({
         btnsDef: {
             image: {
                 dropdown: ['insertImage', 'upload', 'base64'],

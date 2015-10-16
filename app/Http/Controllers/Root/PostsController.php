@@ -69,8 +69,7 @@ class PostsController extends Controller
         $post->user_id = Auth::user()->id;
         $post->category_id = Input::get('category_id');
         $post->title = Input::get('title');
-        $content = explode('<!--more-->', Input::get('content'));
-        $post->excerpt = (count($content) == 2) ? $content[0].'</p>' : '';
+        $post->excerpt = Input::get('excerpt');
         $post->content = Input::get('content');
 //        $post->slug = str_slug($seo_title, '-');
         $post->seo_title = strip_tags($seo_title);

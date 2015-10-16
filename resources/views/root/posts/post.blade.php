@@ -53,8 +53,13 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for="textarea1">Content</label>
-                        <textarea id="textarea1" name="content">{!! $post->content or Input::old('content')  !!} </textarea>
+                        <label for="inputExcerpt">Excerpt</label>
+                        <textarea id="inputExcerpt"
+                                  name="excerpt" class="form-control">{!! $post->excerpt or Input::old('excerpt')  !!} </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputContent">Content</label>
+                        <textarea id="inputContent" name="content">{!! $post->content or Input::old('content')  !!} </textarea>
                     </div>
 
                     <div class="form-group">
