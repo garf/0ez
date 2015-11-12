@@ -15,7 +15,7 @@ before_script:
   - php artisan db:seed
 
 # Commands you want to run that will verify build.
-script: phpunit
+script: php vendor/bin/phpunit
 
 # Customize when the notification emails are sent.
 notifications:
