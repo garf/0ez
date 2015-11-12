@@ -15,7 +15,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         include app_path('helpers.php');
-        include app_path('creators.php');
     }
 
     /**
