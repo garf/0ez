@@ -7,8 +7,12 @@ php:
 
 # Commands to be run before environment runs.
 before_script:
+  - cp .env.travis .env
+  - mysql -e 'create database testing;'
   - composer self-update
-  - composer install
+  - composer install --no-interaction
+  - php artisan migrate
+  - php artisan db:seed
 
 # Commands you want to run that will verify build.
 script: phpunit
