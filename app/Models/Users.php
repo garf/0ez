@@ -18,6 +18,17 @@ class Users extends Model implements AuthenticatableContract,
     protected $table = 'users';
     protected $fillable = ['name', 'email', 'password'];
     protected $hidden = ['password', 'remember_token'];
+    public static $_instance = null;
+
+    public static function i()
+    {
+        $class = get_called_class();
+        if (!static::$_instance) {
+            static::$_instance = new $class();
+        }
+
+        return static::$_instance;
+    }
 
     public function posts()
     {

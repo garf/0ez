@@ -15,6 +15,17 @@ class Categories extends Model implements SluggableInterface
         'save_to'    => 'slug',
     ];
     protected $table = 'categories';
+    public static $_instance = null;
+
+    public static function i()
+    {
+        $class = get_called_class();
+        if (!static::$_instance) {
+            static::$_instance = new $class();
+        }
+
+        return static::$_instance;
+    }
 
 
     public function posts()
@@ -24,7 +35,8 @@ class Categories extends Model implements SluggableInterface
 
     public function withPostsCount()
     {
-        return $this->leftJoin('posts', 'posts.category_id', '=', 'categories.id')
+        $class = get_called_class();
+        return $class::leftJoin('posts', 'posts.category_id', '=', 'categories.id')
             ->where('posts.status', 'active')
             ->groupBy('categories.id')
             ->orderBy('categories.title')
@@ -33,7 +45,7 @@ class Categories extends Model implements SluggableInterface
 
     public function allWithPostsCount()
     {
-        return $this->leftJoin('posts', 'posts.category_id', '=', 'categories.id')
+        return static::leftJoin('posts', 'posts.category_id', '=', 'categories.id')
             ->groupBy('categories.id')
             ->orderBy('categories.title')
             ->get(['categories.*', DB::raw('COUNT(posts.id) as num')]);
@@ -41,6 +53,6 @@ class Categories extends Model implements SluggableInterface
 
     public function getBySlug($slug)
     {
-        return $this->where('slug', 'like', $slug)->first();
+        return static::where('slug', 'like', $slug)->first();
     }
 }
