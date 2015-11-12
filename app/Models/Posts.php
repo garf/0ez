@@ -5,7 +5,6 @@ namespace App\Models;
 use Cache;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
-use Illuminate\Database\Eloquent\Model;
 
 class Posts extends Model implements SluggableInterface
 {
@@ -18,16 +17,6 @@ class Posts extends Model implements SluggableInterface
 
     protected $table = 'posts';
     protected $fillable = ['*'];
-    protected static $_instance = null;
-
-    public static function i()
-    {
-        if (null === self::$_instance) {
-            self::$_instance = new self();
-        }
-
-        return self::$_instance;
-    }
 
     public function user()
     {
@@ -46,7 +35,7 @@ class Posts extends Model implements SluggableInterface
 
     public function getPostsByCategoryId($category_id)
     {
-        $posts = self::with(['category', 'user']);
+        $posts = $this->with(['category', 'user']);
         if (!empty($category_id)) {
             $posts = $posts->where('category_id', $category_id);
         }
@@ -70,7 +59,7 @@ class Posts extends Model implements SluggableInterface
 
     public function getBySlug($slug)
     {
-        return self::with(['user', 'category', 'tags'])->where('slug', 'like', $slug)->first();
+        return $this->with(['user', 'category', 'tags'])->where('slug', $slug)->first();
     }
 
     public function scopeActive($query)

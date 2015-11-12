@@ -5,7 +5,6 @@ namespace App\Models;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 use DB;
-use Illuminate\Database\Eloquent\Model;
 
 class Categories extends Model implements SluggableInterface
 {
@@ -15,18 +14,8 @@ class Categories extends Model implements SluggableInterface
         'build_from' => 'seo_title',
         'save_to'    => 'slug',
     ];
-
     protected $table = 'categories';
-    public static $_instance = null;
 
-    public static function i()
-    {
-        if (null === self::$_instance) {
-            self::$_instance = new self();
-        }
-
-        return self::$_instance;
-    }
 
     public function posts()
     {
@@ -35,7 +24,7 @@ class Categories extends Model implements SluggableInterface
 
     public function withPostsCount()
     {
-        return self::leftJoin('posts', 'posts.category_id', '=', 'categories.id')
+        return $this->leftJoin('posts', 'posts.category_id', '=', 'categories.id')
             ->where('posts.status', 'active')
             ->groupBy('categories.id')
             ->orderBy('categories.title')
@@ -44,7 +33,7 @@ class Categories extends Model implements SluggableInterface
 
     public function allWithPostsCount()
     {
-        return self::leftJoin('posts', 'posts.category_id', '=', 'categories.id')
+        return $this->leftJoin('posts', 'posts.category_id', '=', 'categories.id')
             ->groupBy('categories.id')
             ->orderBy('categories.title')
             ->get(['categories.*', DB::raw('COUNT(posts.id) as num')]);
@@ -52,6 +41,6 @@ class Categories extends Model implements SluggableInterface
 
     public function getBySlug($slug)
     {
-        return self::where('slug', 'like', $slug)->first();
+        return $this->where('slug', 'like', $slug)->first();
     }
 }
