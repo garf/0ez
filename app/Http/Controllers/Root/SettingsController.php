@@ -149,10 +149,19 @@ class SettingsController extends Controller
 
     public function appearance()
     {
+        $theme_css = public_path(config('files.theme_css'));
+        if (!file_exists($theme_css)) {
+            file_put_contents($theme_css, "/* Put your CSS directives here */ \r\n\r\n");
+        }
+
+        $theme_css_content = file_get_contents($theme_css);
+
         $data = [
-            'title' => 'Appearance',
-            'logo'  => Conf::get('appearance.logo', null),
-            'bg'    => Conf::get('appearance.bg.image', null),
+            'title'     => 'Appearance',
+            'logo'      => Conf::get('appearance.logo', null),
+            'bg'        => Conf::get('appearance.bg.image', null),
+            'theme_css' => $theme_css_content,
+            'active_tab' => Input::get('tab', 'simple'),
         ];
         $this->title->prepend('Settings');
         $this->title->prepend($data['title']);
@@ -206,6 +215,19 @@ class SettingsController extends Controller
         Notifications::add('Settings saved', 'success');
 
         return Redirect::route('root-settings-appearance');
+    }
+
+    public function cssSave()
+    {
+        $theme_css_content = Input::get('css');
+
+        $theme_css = public_path(config('files.theme_css'));
+
+        file_put_contents($theme_css, $theme_css_content);
+
+        Notifications::add('Custom CSS Saved', 'success');
+
+        return Redirect::route('root-settings-appearance', ['tab' => 'css']);
     }
 
     public function social()

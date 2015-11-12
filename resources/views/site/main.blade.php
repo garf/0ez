@@ -9,12 +9,11 @@
     @include('site.partials.social-meta')
     @yield('meta')
     <link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap.min.css">
-    {{--<link rel="stylesheet" href="/plugins/bootstrap/css/bootstrap-sandstorm.min.css">--}}
-    {{--<link rel="stylesheet" href="/plugins/flat-ui/css/flat-ui.min.css">--}}
     <link rel="stylesheet" href="{{ elixir('plugins/bootstrap/css/bootstrap-0ez.css') }}">
     <link rel="stylesheet" href="/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ elixir('t/site/css/site.css') }}">
     @yield('css')
+    <link rel="stylesheet" href="/{{ config('files.theme_css') }}">
     @yield('js-top')
 </head>
 <body style="

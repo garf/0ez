@@ -7,5 +7,6 @@ Homestead.yaml
 /app/packages/
 /public/robots.txt
 /public/humans.txt
-/public/sitemap.xml
+/public/*.xml
+/public/t/site/css/theme.css
 _ide_helper.php

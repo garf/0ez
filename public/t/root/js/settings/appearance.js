@@ -33,6 +33,18 @@ $("#inputBg").fileinput({
     }
 });
 
+var editor = ace.edit("editorCss");
+editor.setTheme("ace/theme/chrome");
+editor.getSession().setMode("ace/mode/css");
+editor.setOption("minLines", 30);
+editor.setOption("maxLines", 30);
+
+var textarea = $('#inputCss');
+textarea.closest('form').submit(function () {
+    textarea.val(editor.getSession().getValue());
+
+});
+
 $(function () {
     $('#inputHeaderBg').colorpicker();
     $('#inputFooterTopBg').colorpicker();

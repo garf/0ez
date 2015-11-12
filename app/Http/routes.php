@@ -199,6 +199,11 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\SettingsController@appearanceSave',
     ]);
 
+    Route::post('/settings/css', [
+        'as'   => 'root-settings-css-save',
+        'uses' => 'Root\SettingsController@cssSave',
+    ]);
+
     Route::get('/settings/social', [
         'as'   => 'root-settings-social',
         'uses' => 'Root\SettingsController@social',
