@@ -1,6 +1,8 @@
 ## 0ez. Laravel Lightweight Blogging CMS
 
 [![Built on Laravel 5.1](https://img.shields.io/badge/laravel-5-orange.svg?style=flat)](http://laravel.com)
+[![TravisCI](https://img.shields.io/travis/gaaarfild/0ez.svg?style=flat)](https://travis-ci.org/gaaarfild/0ez)
+[![StyleCI](https://styleci.io/repos/39617364/shield)](https://styleci.io/repos/39617364)
 
 Wordpress is old and slow? Too much functions for easy stuff? 
 
