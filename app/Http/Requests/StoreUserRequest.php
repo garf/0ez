@@ -27,12 +27,13 @@ class StoreUserRequest extends Request
     public function rules(Req $request)
     {
         $rules = [
-            'name' => 'required',
+            'name'  => 'required',
             'email' => 'required|email',
         ];
         if (is_null($request->user_id)) {
             $rules['password'] = 'required';
         }
+
         return $rules;
     }
 

@@ -7,7 +7,6 @@ use Illuminate\Contracts\View\View;
 
 class SocialLinksComposer
 {
-
     public function compose(View $view)
     {
         $links = Conf::get('social.links');
@@ -17,5 +16,4 @@ class SocialLinksComposer
         }
         $view->with('services', $links);
     }
-
 }
