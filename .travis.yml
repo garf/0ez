@@ -1,10 +1,19 @@
+# Required to run project under the correct environment.
 language: php
 
-php: 
+# Versions of PHP to run with.
+php:
   - 5.5
 
+# Commands to be run before environment runs.
 before_script:
-  - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev
+  - composer self-update
+  - composer install
 
+# Commands you want to run that will verify build.
 script: phpunit
+
+# Customize when the notification emails are sent.
+notifications:
+    on_success: never
+    on_failure: always
