@@ -83,7 +83,7 @@ http://demo.0ez.ru/root
 
 ## Contributing
 
-Contributions are highly appreciated! Send your pull requests to master branch.
+Contributions are highly appreciated! Send your pull requests to `master` branch.
 
 ### License
 
