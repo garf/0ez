@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label for="commentsFacebookWidth">Width</label>
                 <div class="input-group">
-                    <input type="text" name="comments_facebook_width" value="{{ Conf::get('social.comments.facebook.width', '848') }}" id="commentsFacebookWidth" class="form-control">
+                    <input type="text" name="comments_facebook_width" value="{{ Conf::get('social.comments.facebook.width', '100%') }}" id="commentsFacebookWidth" class="form-control">
                     <span class="input-group-addon" id="basic-addon2">px</span>
                 </div>
             </div>
