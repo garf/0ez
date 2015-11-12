@@ -71,13 +71,16 @@ class PostsController extends Controller
         $post->title = Input::get('title');
         $post->excerpt = Input::get('excerpt');
         $post->content = Input::get('content');
-//        $post->slug = str_slug($seo_title, '-');
         $post->seo_title = strip_tags($seo_title);
         $post->seo_description = strip_tags(Input::get('seo_description'));
         $post->seo_keywords = mb_strtolower(strip_tags(Input::get('seo_keywords')));
         $post->status = Input::get('status');
         $post->published_at = Input::get('published_at');
+        if (Input::has('update_slug')) {
+            $post->resluggify();
+        }
         $post->save();
+
 
         $this->_setTags(Input::get('tags'), $post->id);
 

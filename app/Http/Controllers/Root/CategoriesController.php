@@ -58,8 +58,12 @@ class CategoriesController extends Controller
         $category->seo_title = (trim($seo_title) == '') ? $category->title : $seo_title;
         $category->seo_description = strip_tags(Input::get('seo_description'));
         $category->seo_keywords = strip_tags(Input::get('seo_keywords'));
-//        $category->slug = str_slug($category->seo_title);
+        if (Input::has('update_slug')) {
+            $category->resluggify();
+        }
         $category->save();
+
+
 
         Notifications::add('Category saved', 'success');
 

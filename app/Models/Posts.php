@@ -13,6 +13,7 @@ class Posts extends Model implements SluggableInterface
     protected $sluggable = [
         'build_from' => 'seo_title',
         'save_to'    => 'slug',
+        'unique'     => true,
     ];
 
     protected $table = 'posts';

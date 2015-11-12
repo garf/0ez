@@ -14,10 +14,19 @@
                         {{ route('category', ['slug' => $category->slug]) }}
                     </div>
                 @endif
+
                 <div class="form-group">
                     <label for="inputSeoTitle">SEO Title</label>
                     <input type="text" name="seo_title" value="{{ $category->seo_title or Input::old('seo_title', '') }}" class="form-control" id="inputSeoTitle">
                 </div>
+                @if(!empty($category))
+                    <div class="checkbox">
+                        <label>
+                            <input name="update_slug" type="checkbox"> Update URL too
+                        </label>
+                    </div>
+                    <br/>
+                @endif
                 <div class="form-group">
                     <label for="inputSeoDescription">SEO Description</label>
                     <textarea name="seo_description" id="inputSeoDescription" class="form-control">{{ $category->seo_description or Input::old('seo_description', '') }}</textarea>
