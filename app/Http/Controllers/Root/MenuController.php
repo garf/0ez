@@ -70,7 +70,9 @@ class MenuController extends Controller
     {
         $menu = Menu::find($menu_id);
 
-        $neighbour = Menu::where('sort', $operator, $menu->sort)->first();
+        $order = ($operator == '>') ? 'asc' : 'desc';
+
+        $neighbour = Menu::where('sort', $operator, $menu->sort)->orderBy('sort', $order)->first();
 
         if (empty($neighbour)) {
             return false;
