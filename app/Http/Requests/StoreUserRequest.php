@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Request as Req;
 use Notifications;
 use Redirect;
 
@@ -23,13 +24,16 @@ class StoreUserRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(Req $request)
     {
-        return [
-            'name'     => 'required',
-            'email'    => 'required|email',
-            'password' => 'required',
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email',
         ];
+        if (is_null($request->user_id)) {
+            $rules['password'] = 'required';
+        }
+        return $rules;
     }
 
     public function response(array $errors)
