@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewComposers;
 
+use Conf;
 use Illuminate\Contracts\View\View;
 
 class SocialLinksComposer
@@ -9,7 +10,7 @@ class SocialLinksComposer
 
     public function compose(View $view)
     {
-        $view->with('services', trans('socials.services'));
+        $view->with('services', Conf::get('social.links'));
     }
 
 }

@@ -214,6 +214,16 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
         'uses' => 'Root\SettingsController@socialSave',
     ]);
 
+    Route::post('/settings/social-links', [
+        'as'   => 'root-settings-social-links-save',
+        'uses' => 'Root\SettingsController@socialLinksSave',
+    ]);
+
+    Route::get('/settings/social-links/{index}/delete', [
+        'as'   => 'root-settings-social-links-delete',
+        'uses' => 'Root\SettingsController@socialLinksDelete',
+    ]);
+
     //=======USERS=======//
 
     Route::get('/users', [

@@ -232,9 +232,17 @@ class SettingsController extends Controller
 
     public function social()
     {
+        $links = Conf::get('social.links', [], false);
+
+        if (!isset($links[0]['url'])) {
+            $links = [];
+            Conf::set('social.links', $links);
+        }
+
         $data = [
             'title'    => 'Social Integration',
             'services' => trans('socials.services'),
+            'created' => $links,
         ];
         $this->title->prepend('Settings');
         $this->title->prepend($data['title']);
@@ -245,24 +253,6 @@ class SettingsController extends Controller
 
     public function socialSave()
     {
-        $socials = [];
-
-        $services = trans('socials.services');
-        foreach ($services as $service) {
-            $input = trim(Input::get($service['name'].'_link'));
-            if ($input != '') {
-                $socials[$service['name']] = (!starts_with($input, ['http://', 'https://']))
-                    ? 'http://'.$input
-                    : $input;
-            }
-        }
-
-        if (count($socials) != 0) {
-            Conf::set('social.links', $socials);
-        }
-
-        Conf::set('social.show_titles', Input::has('show_titles'));
-
         if (trim(Input::get('vk_app_id')) != '') {
             Conf::set('social.vk.app_id', Input::get('vk_app_id'));
         }
@@ -275,6 +265,36 @@ class SettingsController extends Controller
         Conf::set('social.comments.facebook.width', Input::get('comments_facebook_width', 848));
         Conf::set('social.comments.facebook.limit', Input::get('comments_facebook_limit', 5));
         Conf::set('social.comments.facebook.color_scheme', Input::get('comments_facebook_color_scheme', 'light'));
+
+        Notifications::add('Settings saved', 'success');
+
+        return Redirect::route('root-settings-social');
+    }
+
+    public function socialLinksSave()
+    {
+        $socials = Conf::get('social.links');
+
+        $socials[] = [
+            'service' => Input::get('service'),
+            'url' => Input::get('url'),
+            'show_title' => Input::has('show_title'),
+        ];
+
+        Conf::set('social.links', $socials);
+
+        Notifications::add('Settings saved', 'success');
+
+        return Redirect::route('root-settings-social');
+    }
+
+    public function socialLinksDelete($index)
+    {
+        $socials = Conf::get('social.links');
+
+        unset($socials[$index]);
+
+        Conf::set('social.links', $socials);
 
         Notifications::add('Settings saved', 'success');
 
