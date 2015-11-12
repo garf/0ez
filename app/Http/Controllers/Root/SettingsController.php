@@ -157,10 +157,10 @@ class SettingsController extends Controller
         $theme_css_content = file_get_contents($theme_css);
 
         $data = [
-            'title'     => 'Appearance',
-            'logo'      => Conf::get('appearance.logo', null),
-            'bg'        => Conf::get('appearance.bg.image', null),
-            'theme_css' => $theme_css_content,
+            'title'      => 'Appearance',
+            'logo'       => Conf::get('appearance.logo', null),
+            'bg'         => Conf::get('appearance.bg.image', null),
+            'theme_css'  => $theme_css_content,
             'active_tab' => Input::get('tab', 'simple'),
         ];
         $this->title->prepend('Settings');
@@ -242,7 +242,7 @@ class SettingsController extends Controller
         $data = [
             'title'    => 'Social Integration',
             'services' => trans('socials.services'),
-            'created' => $links,
+            'created'  => $links,
         ];
         $this->title->prepend('Settings');
         $this->title->prepend($data['title']);
@@ -276,8 +276,8 @@ class SettingsController extends Controller
         $socials = Conf::get('social.links');
 
         $socials[] = [
-            'service' => Input::get('service'),
-            'url' => Input::get('url'),
+            'service'    => Input::get('service'),
+            'url'        => Input::get('url'),
             'show_title' => Input::has('show_title'),
         ];
 

@@ -54,43 +54,43 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('/posts/edit/{post_id}', [
-        'as'   => 'root-post-edit',
-        'uses' => 'Root\PostsController@edit',
+        'as'             => 'root-post-edit',
+        'uses'           => 'Root\PostsController@edit',
     ])->where(['post_id' => '[0-9]+']);
 
     Route::post('/posts/store/{post_id?}', [
-        'as'   => 'root-posts-store',
-        'uses' => 'Root\PostsController@store',
+        'as'             => 'root-posts-store',
+        'uses'           => 'Root\PostsController@store',
     ])->where(['post_id' => '[0-9]+']);
 
     Route::get('/posts/pin/{post_id}', [
-        'as'   => 'root-post-pin',
-        'uses' => 'Root\PostsController@pin',
+        'as'             => 'root-post-pin',
+        'uses'           => 'Root\PostsController@pin',
     ])->where(['post_id' => '[0-9]+']);
 
     Route::get('/posts/unpin/{post_id}', [
-        'as'   => 'root-post-unpin',
-        'uses' => 'Root\PostsController@unpin',
+        'as'             => 'root-post-unpin',
+        'uses'           => 'Root\PostsController@unpin',
     ])->where(['post_id' => '[0-9]+']);
 
     Route::get('/posts/to-draft/{post_id}', [
-        'as'   => 'root-post-to-draft',
-        'uses' => 'Root\PostsController@toDraft',
+        'as'             => 'root-post-to-draft',
+        'uses'           => 'Root\PostsController@toDraft',
     ])->where(['post_id' => '[0-9]+']);
 
     Route::get('/posts/to-active/{post_id}', [
-        'as'   => 'root-post-to-active',
-        'uses' => 'Root\PostsController@toActive',
+        'as'             => 'root-post-to-active',
+        'uses'           => 'Root\PostsController@toActive',
     ])->where(['post_id' => '[0-9]+']);
 
     Route::get('/posts/to-deleted/{post_id}', [
-        'as'   => 'root-post-to-deleted',
-        'uses' => 'Root\PostsController@toDeleted',
+        'as'             => 'root-post-to-deleted',
+        'uses'           => 'Root\PostsController@toDeleted',
     ])->where(['post_id' => '[0-9]+']);
 
     Route::get('/posts/to-category/{post_id}/{category_id}', [
-        'as'   => 'root-post-to-category',
-        'uses' => 'Root\PostsController@toCategory',
+        'as'             => 'root-post-to-category',
+        'uses'           => 'Root\PostsController@toCategory',
     ])->where(['post_id' => '[0-9]+', 'category_id' => '[0-9]+']);
 
     //=======CATEGORIES=======//
@@ -133,8 +133,8 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('/tags/remove/{tag_id}', [
-        'as'   => 'root-tags-remove',
-        'uses' => 'Root\TagsController@remove',
+        'as'            => 'root-tags-remove',
+        'uses'          => 'Root\TagsController@remove',
     ])->where(['tag_id' => '[0-9]+']);
 
     //=======SETTINGS=======//
@@ -237,13 +237,13 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('/users/edit/{user_id}', [
-        'as'   => 'root-users-edit',
-        'uses' => 'Root\UsersController@edit',
+        'as'             => 'root-users-edit',
+        'uses'           => 'Root\UsersController@edit',
     ])->where(['user_id' => '[0-9]+']);
 
     Route::post('/users/save/{user_id?}', [
-        'as'   => 'root-users-save',
-        'uses' => 'Root\UsersController@store',
+        'as'             => 'root-users-save',
+        'uses'           => 'Root\UsersController@store',
     ])->where(['user_id' => '[0-9]+']);
 
 //=======MENU=======//
@@ -259,18 +259,18 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
     ]);
 
     Route::get('/menu/remove/{menu_id}', [
-        'as'   => 'root-menu-remove',
-        'uses' => 'Root\MenuController@remove',
+        'as'             => 'root-menu-remove',
+        'uses'           => 'Root\MenuController@remove',
     ])->where(['menu_id' => '[0-9]+']);
 
     Route::get('/menu/up/{menu_id}', [
-        'as'   => 'root-menu-up',
-        'uses' => 'Root\MenuController@up',
+        'as'             => 'root-menu-up',
+        'uses'           => 'Root\MenuController@up',
     ])->where(['menu_id' => '[0-9]+']);
 
     Route::get('/menu/down/{menu_id}', [
-        'as'   => 'root-menu-down',
-        'uses' => 'Root\MenuController@down',
+        'as'             => 'root-menu-down',
+        'uses'           => 'Root\MenuController@down',
     ])->where(['menu_id' => '[0-9]+']);
 
 //=======FILES=======//
@@ -283,8 +283,8 @@ Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
 //=======STATIC PAGES=======//
 
     Route::get('/{page_name}', [
-        'as'   => 'static-page',
-        'uses' => 'PagesController@view',
+        'as'               => 'static-page',
+        'uses'             => 'PagesController@view',
     ])->where(['page_name' => '[A-z0-9-_]+']);
 
 });

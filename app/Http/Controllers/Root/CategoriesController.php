@@ -63,8 +63,6 @@ class CategoriesController extends Controller
         }
         $category->save();
 
-
-
         Notifications::add('Category saved', 'success');
 
         return Redirect::route('root-categories-edit', ['category_id' => $category->id]);

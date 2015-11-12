@@ -28,7 +28,6 @@ class Categories extends Model implements SluggableInterface
         return static::$_instance;
     }
 
-
     public function posts()
     {
         return $this->hasMany(Posts::class, 'category_id');
@@ -37,6 +36,7 @@ class Categories extends Model implements SluggableInterface
     public function withPostsCount()
     {
         $class = get_called_class();
+
         return $class::leftJoin('posts', 'posts.category_id', '=', 'categories.id')
             ->where('posts.status', 'active')
             ->groupBy('categories.id')

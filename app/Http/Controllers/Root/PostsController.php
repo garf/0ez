@@ -81,7 +81,6 @@ class PostsController extends Controller
         }
         $post->save();
 
-
         $this->_setTags(Input::get('tags'), $post->id);
 
         if (Input::has('ping')) {

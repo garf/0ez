@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 class PostTag extends Model
 {
     protected $table = 'post_tag';
@@ -17,5 +16,4 @@ class PostTag extends Model
 
         return static::$_instance;
     }
-
 }
