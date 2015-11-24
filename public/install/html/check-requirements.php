@@ -14,6 +14,6 @@
         <?php } ?>
     </div>
     <div class="text-right">
-        <a href="index.php?action=step3" class="btn btn-primary">Step 3</a>
+        <a href="/install/index.php?action=step3" class="btn btn-primary">Step 3</a>
     </div>
 </div>

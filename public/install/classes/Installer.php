@@ -73,13 +73,38 @@ class Installer
     {
         $response = '';
         passthru('cd ' . __DIR__ . '/../../../ && php -r "readfile(\'https://getcomposer.org/installer\');" | php && php composer.phar install', $response);
-        echo $response;
 
         $data = [
             'title' => 'Install 0ez',
             'current_action' => 'step5',
+            'response' => $response,
         ];
 
         return $this->tpl->render('composer-install.php', $data);
+    }
+
+    public function installComposer()
+    {
+        //TODO: AJAX Composer Installation
+    }
+
+    public function installPackages()
+    {
+        //TODO: AJAX Composer Packages Install
+    }
+
+    public function writeEnv()
+    {
+        //TODO: AJAX .env file fill up
+    }
+
+    public function makeMigration()
+    {
+        //TODO: AJAX Migration Start
+    }
+
+    public function createAdmin()
+    {
+        //TODO: AJAX CreateAdmin
     }
 }
