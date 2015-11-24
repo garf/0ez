@@ -10,3 +10,4 @@ Homestead.yaml
 /public/*.xml
 /public/t/site/css/theme.css
 _ide_helper.php
+composer.phar
