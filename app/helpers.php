@@ -22,3 +22,14 @@ if (!function_exists('generate_filename')) {
         return $name;
     }
 }
+
+if (!function_exists('highlight_str')) {
+    function highlight_str($haystack, $needle, $filter=true) {
+        if ($filter) {
+            $needle = e($needle);
+            $haystack = e($haystack);
+        }
+
+        return str_replace($needle, '<span class="highlight">'.$needle.'</span>', $haystack);
+    }
+}

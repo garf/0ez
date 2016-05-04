@@ -1,7 +1,7 @@
 {
-  "t/site/js/site.js": "t/site/js/site-d41d8cd9.js",
-  "t/site/css/site.css": "t/site/css/site-cf060fcf.css",
-  "t/root/js/root.js": "t/root/js/root-d41d8cd9.js",
-  "t/root/css/root.css": "t/root/css/root-eb249d44.css",
-  "plugins/bootstrap/css/bootstrap-0ez.css": "plugins/bootstrap/css/bootstrap-0ez-d41d8cd9.css"
+  "plugins/bootstrap/css/bootstrap-0ez.css": "plugins/bootstrap/css/bootstrap-0ez-31f4a23751.css",
+  "t/root/css/root.css": "t/root/css/root-6ab63e3355.css",
+  "t/root/js/root.js": "t/root/js/root-b3a0710b1a.js",
+  "t/site/css/site.css": "t/site/css/site-abe79a9077.css",
+  "t/site/js/site.js": "t/site/js/site-2308ff3afd.js"
 }

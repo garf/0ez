@@ -35,9 +35,18 @@ class PostsController extends Controller
             $category_id = null;
         }
 
+        $q = request('q', null);
+
+        if (!empty($q)) {
+
+        }
+
+        $posts = Posts::i()->getPostsByCategoryId($category_id, $q);
+
         $data = [
-            'posts'    => Posts::i()->getPostsByCategoryId($category_id),
+            'posts'    => $posts,
             'category' => $category,
+            'q' => $q,
         ];
 
         return view('site.posts.index', $data);

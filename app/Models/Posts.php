@@ -45,11 +45,15 @@ class Posts extends Model implements SluggableInterface
         return $this->belongsTo(Categories::class, 'category_id');
     }
 
-    public function getPostsByCategoryId($category_id)
+    public function getPostsByCategoryId($category_id, $str = null)
     {
         $posts = $this->with(['category', 'user']);
         if (!empty($category_id)) {
-            $posts = $posts->where('category_id', $category_id);
+            $posts->where('category_id', $category_id);
+        }
+
+        if (!empty($str)) {
+            $this->scopeSearch($posts, $str);
         }
 
         return $posts->active()->sort()->paginate(10);
@@ -91,5 +95,13 @@ class Posts extends Model implements SluggableInterface
         } else {
             return $query->where('status', $statuses);
         }
+    }
+
+    public function scopeSearch($query, $str)
+    {
+        $str = '%' . $str . '%';
+        return $query->where('title', 'like', $str)
+            ->orWhere('excerpt', 'like', $str)
+            ->orWhere('content', 'like', $str);
     }
 }

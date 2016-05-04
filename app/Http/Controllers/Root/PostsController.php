@@ -23,20 +23,31 @@ class PostsController extends Controller
 
     public function index()
     {
+        $posts = Posts::with('category');
+
         if (request()->has('status')) {
-            $posts = Posts::with('category')->byStatus(request('status'))->sort()->paginate(20);
+            $posts->byStatus(request('status'));
         } else {
-            $posts = Posts::with('category')->whereNotIn('status', ['deleted', 'refused'])->sort()->paginate(20);
+            $posts->whereNotIn('status', ['deleted', 'refused']);
         }
 
         Title::prepend('Posts');
 
+        $q = request()->get('q', null);
+
+        if (!empty($q)) {
+            Title::prepend('Search: ' . $q);
+            $posts->search($q);
+        }
+
         $data = [
-            'posts'      => $posts,
-            'title'      => Title::renderr(' : ', true),
+            'posts' => $posts->sort()->paginate(20),
+            'url_params' => request()->except(['q']),
+            'q' => $q,
+            'status' => request('status', 'all'),
+            'title' => Title::renderr(' : ', true),
             'categories' => Categories::all(),
         ];
-
 
         view()->share('menu_item_active', 'posts');
 

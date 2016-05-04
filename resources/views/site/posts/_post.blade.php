@@ -6,9 +6,9 @@
         <div class="col-lg-12">
             <div class="post-content">
                 <h2 class="post-title">
-                    <a href="{{ route('view', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                    <a href="{{ route('view', ['slug' => $post->slug]) }}">{!! highlight_str($post->title, $q) !!}</a>
                 </h2>
-                <p class="lead">{!! nl2br($post->excerpt) !!}</p>
+                <p class="lead">{!! nl2br(highlight_str($post->excerpt, $q)) !!}</p>
                 <hr />
                 <div class="row">
                     <div class="col-lg-12">
