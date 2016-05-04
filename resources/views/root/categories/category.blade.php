@@ -4,7 +4,8 @@
     <div class="container">
         <h1>{{ $title }}</h1>
         <div>
-            {!! Form::open(['url' => $save_url, 'method' => 'post']) !!}
+            <form action="{{ $save_url }}" method="POST">
+                {!! csrf_field() !!}
                 <div class="form-group">
                     <label for="inputTitle">Title</label>
                     <input type="text" name="title" value="{{ $category->title or Input::old('title', '') }}" class="form-control" id="inputTitle">
@@ -39,7 +40,7 @@
                     <a href="{{ route('root-categories') }}" class="btn btn-default">Cancel</a>
                     <input type="submit" value="Save" class="btn btn-success">
                 </div>
-            {!! Form::close() !!}
+            </form>
         </div>
     </div>
 @stop

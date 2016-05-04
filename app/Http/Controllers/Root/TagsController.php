@@ -6,19 +6,25 @@ use App\Http\Controllers\Controller;
 use App\Models\PostTag;
 use App\Models\Tags;
 use Notifications;
-use Redirect;
-use View;
+use Title;
 
 class TagsController extends Controller
 {
+    public function __construct()
+    {
+        Title::prepend('Admin');
+    }
+
     public function index()
     {
+        Title::prepend('Tags');
+
         $data = [
-            'title' => 'Tags',
+            'title' => Title::renderr(' : ', true),
             'tags'  => Tags::i()->allWithPostsCount(),
         ];
-        $this->title->prepend($data['title']);
-        View::share('menu_item_active', 'tags');
+
+        view()->share('menu_item_active', 'tags');
 
         return view('root.tags.index', $data);
     }
@@ -33,7 +39,7 @@ class TagsController extends Controller
         }
         Notifications::add('Empty tags removed', 'success');
 
-        return Redirect::back();
+        return redirect()->back();
     }
 
     public function remove($tag_id)
@@ -43,6 +49,6 @@ class TagsController extends Controller
 
         Notifications::add('Tag removed', 'success');
 
-        return Redirect::back();
+        return redirect()->back();
     }
 }

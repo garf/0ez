@@ -5,34 +5,40 @@ namespace App\Http\Controllers\Root;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Models\Users;
-use Input;
 use Notifications;
-use Redirect;
-use View;
+use Title;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        Title::prepend('Admin');
+    }
+
     public function index()
     {
+        Title::prepend('Users');
         $data = [
-            'title' => 'Users',
+            'title' => Title::renderr(' : ', true),
             'users' => Users::all(),
         ];
-        $this->title->prepend($data['title']);
-        View::share('menu_item_active', 'users');
+
+        view()->share('menu_item_active', 'users');
 
         return view('root.users.index', $data);
     }
 
     public function add()
     {
+        Title::prepend('New User');
+
         $data = [
-            'title'    => 'New User',
+            'title'    => Title::renderr(' : ', true),
             'user'     => null,
             'save_url' => route('root-users-save'),
         ];
-        $this->title->prepend($data['title']);
-        View::share('menu_item_active', 'users');
+
+        view()->share('menu_item_active', 'users');
 
         return view('root.users.user', $data);
     }
@@ -40,13 +46,17 @@ class UsersController extends Controller
     public function edit($user_id)
     {
         $user = Users::find($user_id);
+
+        Title::prepend('Edit User');
+        Title::prepend($user->name);
+
         $data = [
-            'title'    => 'Edit User '.$user->name,
+            'title'    => Title::renderr(' : ', true),
             'user'     => $user,
             'save_url' => route('root-users-save', ['user_id' => $user->id]),
         ];
-        $this->title->prepend($data['title']);
-        View::share('menu_item_active', 'users');
+
+        view()->share('menu_item_active', 'users');
 
         return view('root.users.user', $data);
     }
@@ -55,24 +65,24 @@ class UsersController extends Controller
     {
         $user = Users::findOrNew($user_id);
 
-        $user->email = Input::get('email');
-        $user->name = Input::get('name');
-        $user->role = Input::get('role');
+        $user->email = $request->get('email');
+        $user->name = $request->get('name');
+        $user->role = $request->get('role');
 
-        $password = trim(Input::get('password'));
+        $password = trim($request->get('password'));
 
         if ($password != '') {
-            $user->password = Input::get('password');
+            $user->password = $request->get('password');
             Notifications::add('Password changed', 'success');
         } else {
             Notifications::add('Password not changed', 'warning');
         }
 
-        $user->active = Input::has('active');
+        $user->active = $request->has('active');
         $user->save();
 
         Notifications::add('User saved', 'success');
 
-        return Redirect::route('root-users');
+        return redirect()->route('root-users');
     }
 }

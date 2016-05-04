@@ -1,9 +1,9 @@
 /*!
  * elFinder - file manager for web
- * Version 2.1.0 (2015-06-24)
+ * Version 2.1.11 (2016-04-11)
  * http://elfinder.org
  * 
- * Copyright 2009-2015, Studio 42
+ * Copyright 2009-2016, Studio 42
  * Licensed under a 3 clauses BSD license
  */
 
@@ -164,7 +164,11 @@
 .elfinder-resize-rotate-slider {
 	float: left;
 	width: 195px;
-	margin: 7px 7px 0;
+	margin: 7px;
+}
+
+.elfinder-resize-type span.ui-checkboxradio-icon {
+	display: none;
 }
 
 /********************** COMMAND "EDIT" ****************************/
@@ -284,7 +288,28 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 /*********************************************/
 
 /* common container */
-.elfinder { padding:0; position:relative; display:block; }
+.elfinder {
+	padding: 0;
+	position:relative;
+	display:block;
+	font-size: 18px;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+}
+
+/* for disable select of Touch devices */
+.elfinder *:not(input):not(textarea):not(select):not([contenteditable=true]),
+.elfinder-contextmenu *:not(input):not(textarea):not(select):not([contenteditable=true]) {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	/*-webkit-touch-callout:none;*/
+	-webkit-user-select:  none;
+	-moz-user-select:     none;
+	-khtml-user-select:   none;
+	user-select:          none;
+}
+
+.elfinder .overflow-scrolling-touch {
+	-webkit-overflow-scrolling: touch;
+}
 
 /* right to left enviroment */
 .elfinder-rtl { text-align:right; direction:rtl; }
@@ -326,25 +351,36 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 
 /* drag helper */
 .elfinder-drag-helper {
-	width:60px;
-	height:50px;
+	width:70px;
+	height:60px;
 	padding:0 0 0 25px;
 	z-index:100000;
 }
+.elfinder-drag-helper.html5-native {
+	position: absolute;
+	top: -1000px;
+	left: -1000px;
+}
 
-/* drag helper "plus" icon */
-.elfinder-drag-helper-icon-plus {
+/* drag helper status icon (default no-drop) */
+.elfinder-drag-helper-icon-status {
 	position:absolute;
 	width:16px;
 	height:16px;
-	left:43px;
-	top:55px;
-	background:url('../img/toolbar.png') 0 -544px no-repeat;
-	display:none;
+	left:42px;
+	top:60px;
+	background:url('../img/toolbar.png') 0 -96px no-repeat;
+	display: block;
 }
 
+/* show "up-arrow" icon for move item */
+.elfinder-drag-helper-move .elfinder-drag-helper-icon-status {
+	background-position:0 -720px;
+}
 /* show "plus" icon when ctrl/shift pressed */
-.elfinder-drag-helper-plus .elfinder-drag-helper-icon-plus { display:block; }
+.elfinder-drag-helper-plus .elfinder-drag-helper-icon-status {
+	background-position:0 -544px;
+}
 
 /* files num in drag helper */
 .elfinder-drag-num {
@@ -367,8 +403,12 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 /* icon in drag helper */
 .elfinder-drag-helper .elfinder-cwd-icon { margin:0 0 0 -24px; float:left; }
 
-/* transparent overlay >_< */
-.elfinder-overlay { opacity: 0; filter:Alpha(Opacity=0); }
+/* transparent overlay */
+.elfinder-overlay {
+	position: absolute;
+	opacity: .2;
+	filter: Alpha(Opacity=20);
+}
 
 /* panels under/below cwd (for search field etc) */
 .elfinder .elfinder-panel {
@@ -377,9 +417,10 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 	padding:7px 12px;
 }
 
-
-
-
+/* for html5 drag and drop */
+[draggable=true] {
+	-khtml-user-drag: element;
+}
 
 
 /* File: /css/contextmenu.css */
@@ -401,6 +442,17 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .elfinder-contextmenu-rtl .elfinder-contextmenu-sub { margin-right:-5px; }
 
 /* menu item */
+.elfinder-contextmenu-header {
+	margin-top: -4px;
+	padding: 0 .5em .2ex;
+	border: none;
+	text-align: center;
+}
+.elfinder-contextmenu-header span {
+	font-weight: normal;
+	font-size: 0.8em;
+	font-weight: bolder;
+}
 .elfinder-contextmenu-item {
 	position:relative;
 	display:block;
@@ -434,16 +486,20 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .elfinder-contextmenu-rtl .elfinder-contextmenu-sub .elfinder-contextmenu-item { padding-right:12px; }
 
 /* command/submenu icon */
+.elfinder-contextmenu-extra-icon,
 .elfinder-contextmenu-arrow,
 .elfinder-contextmenu-icon {
 	position:absolute;
 	top:50%;
 	margin-top:-8px;
+	overflow: hidden;
 }
 
 /* command icon in rtl/ltr enviroment */
 .elfinder-contextmenu-ltr .elfinder-contextmenu-icon { left:8px; }
 .elfinder-contextmenu-rtl .elfinder-contextmenu-icon { right:8px; }
+.elfinder-contextmenu-ltr .elfinder-contextmenu-extra-icon { right:8px; }
+.elfinder-contextmenu-rtl .elfinder-contextmenu-extra-icon { left:8px; }
 
 /* arrow icon */
 .elfinder-contextmenu-arrow {
@@ -455,6 +511,19 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 /* arrow icon in rtl/ltr enviroment */
 .elfinder-contextmenu-ltr .elfinder-contextmenu-arrow { right:5px; }
 .elfinder-contextmenu-rtl .elfinder-contextmenu-arrow { left:5px; background-position: 0 -10px; }
+
+/* command extra icon's <a>, <span> tag */
+.elfinder-contextmenu-extra-icon a, 
+.elfinder-contextmenu-extra-icon span {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	margin: 0;
+	color: transparent !important;
+	text-decoration: none;
+	cursor: pointer;
+}
 
 /* disable ui border/bg image on hover */
 .elfinder-contextmenu .ui-state-hover { border:0 solid; background-image:none;}
@@ -488,22 +557,27 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 	margin:0;
 	-ms-touch-action: auto;
 	touch-action: auto;
-	-moz-user-select: -moz-none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
-	-webkit-tap-highlight-color:rgba(0,0,0,0);
-	-webkit-touch-callout:none;
-	user-select:          none;
-	-webkit-user-select:  none;
-	-moz-user-select:     none;
-	-khtml-user-select:   none;
 }
 
 /* container active on dropenter */
 .elfinder .elfinder-cwd-wrapper.elfinder-droppable-active {
-	padding:0;
-	border:2px solid #8cafed;
+	outline: 2px solid #8cafed;
+	outline-offset: -2px;
+}
+
+.elfinder-cwd-wrapper-empty .elfinder-cwd:after {
+	display: block;
+	position: absolute;
+	top: 40%;
+	left: 0;
+	right: 0;
+	margin-top: -2em;
+	line-height: 1.5em;
+	text-align: center;
+	white-space: pre-wrap;
+	opacity: 0.6;
+	filter: Alpha(Opacity=60);
+	font-weight: bold;
 }
 
 
@@ -538,16 +612,24 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 
 /* file name place */
 .elfinder-cwd-view-icons .elfinder-cwd-filename {
-	text-align:center;
-	white-space:pre;
-	overflow:hidden;
-	text-overflow:ellipsis;
-    -o-text-overflow:ellipsis;
-	margin:3px 1px 0 1px;
-	padding:1px;
+	text-align: center;
+	max-height: 2.4em;
+	line-height: 1.2em;
+	white-space: pre-line;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	margin: 3px 1px 0 1px;
+	padding: 1px;
 	-moz-border-radius: 8px; 
 	-webkit-border-radius: 8px; 
 	border-radius: 8px;
+	/* for webkit CSS3 */
+	word-break: break-word;
+	overflow-wrap: break-word;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 /* permissions/symlink markers */
@@ -569,6 +651,10 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 
 /* "opened folder" icon on dragover */
 .elfinder-cwd .elfinder-droppable-active .elfinder-cwd-icon { background-position: 0 -100px; }
+.elfinder-cwd .elfinder-droppable-active {
+	outline: 2px solid #8cafed;
+	outline-offset: -2px;
+}
 
 /* mimetypes icons */
 .elfinder-cwd-icon-directory         { background-position:0 -50px; }
@@ -659,6 +745,15 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 /* textfield inside icon */
 .elfinder-cwd input { width:100%; border:0px solid; margin:0; padding:0; }
 .elfinder-cwd-view-icons input {text-align:center; }
+.elfinder-cwd-view-icons textarea {
+	width: 100%;
+	border: 0px solid;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	overflow: hidden;
+	resize: none;
+}
 
 .elfinder-cwd-view-icons { text-align:center; }
 
@@ -673,6 +768,8 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 	border: 0 solid;
 	margin: 0 0 10px 0;
 	border-spacing: 0;
+	box-sizing: padding-box;
+	padding: 2px;
 }
 .elfinder .elfinder-cwd table thead tr { border-left:0 solid; border-top:0 solid; border-right:0 solid; }
 
@@ -697,7 +794,10 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 	text-align:right;
 	cursor:default;
 	border:0 solid;
-	
+}
+
+.elfinder .elfinder-cwd table td div { 
+	box-sizing: content-box;
 }
 
 .elfinder .elfinder-cwd tr.elfinder-touch td {
@@ -724,11 +824,15 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 /* premissions/symlink marker */
 .elfinder-cwd-view-list .elfinder-perms, 
 .elfinder-cwd-view-list .elfinder-lock,
-.elfinder-cwd-view-list .elfinder-symlink { top:50%; margin-top:-6px; }
+.elfinder-cwd-view-list .elfinder-symlink {
+	margin-top:-6px;
+	opacity: .6;
+	filter:Alpha(Opacity=60);
+}
 /* markers in ltr/rtl enviroment */
-.elfinder-ltr .elfinder-cwd-view-list .elfinder-perms   { left:7px;  }
-.elfinder-ltr .elfinder-cwd-view-list .elfinder-lock    { left:9px; top:0px; }
-.elfinder-ltr .elfinder-cwd-view-list .elfinder-symlink { left:-7px; }
+.elfinder-ltr .elfinder-cwd-view-list .elfinder-perms   { left:8px; bottom:-4px; }
+.elfinder-ltr .elfinder-cwd-view-list .elfinder-lock    { left:10px; top:0px; }
+.elfinder-ltr .elfinder-cwd-view-list .elfinder-symlink { left:-7px; bottom:-4px; }
 
 /* file icon */
 .elfinder-cwd-view-list td .elfinder-cwd-icon {
@@ -742,8 +846,6 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 /* icon in ltr/rtl enviroment */
 .elfinder-ltr .elfinder-cwd-view-list .elfinder-cwd-icon { left:0;  }
 .elfinder-rtl .elfinder-cwd-view-list .elfinder-cwd-icon { right:0; }
-
-
 
 /* File: /css/dialog.css */
 /*********************************************/
@@ -783,16 +885,26 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .std42-dialog .ui-dialog-content {
 	padding:.3em .5em;
 }
+.std42-dialog .ui-dialog-content,
+.std42-dialog .ui-dialog-content * {
+	-webkit-user-select:  auto !important;
+	-moz-user-select:     text !important;
+	-khtml-user-select:   text !important;
+	user-select:          text !important;
+}
 
 /* buttons */
 .std42-dialog .ui-dialog-buttonpane {
-	border:0 solid;
-	margin:0;
-	padding:.5em .7em;
+	border: 0 solid;
+	margin: 0;
+	padding: .5em;
+	text-align: right;
 }
+.elfinder-rtl .std42-dialog .ui-dialog-buttonpane { text-align: left; }
 
-.std42-dialog .ui-dialog-buttonpane button { margin:0 0 0 .4em;	padding:0; outline:0px solid; }
+.std42-dialog .ui-dialog-buttonpane button { margin:.7em 0 0 .4em; padding: .2em; outline:0px solid; }
 .std42-dialog .ui-dialog-buttonpane button span { padding:2px 9px; }
+.std42-dialog .ui-dialog-buttonpane button span.ui-icon { padding: 2px; }
 
 .elfinder-dialog .ui-resizable-e, 
 .elfinder-dialog .ui-resizable-s { width:0; height:0;}
@@ -866,6 +978,7 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 
 /* icons */
 .elfinder-dialog-icon-open, 
+.elfinder-dialog-icon-readdir,
 .elfinder-dialog-icon-file        { background-position: 0 -225px; }
 .elfinder-dialog-icon-reload      { background-position: 0 -225px; }
 .elfinder-dialog-icon-mkdir       { background-position: 0 -64px; }
@@ -879,6 +992,7 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .elfinder-dialog-icon-download    { background-position: 0 -260px; }
 .elfinder-dialog-icon-save        { background-position: 0 -295px; }
 .elfinder-dialog-icon-rename      { background-position: 0 -330px; }
+.elfinder-dialog-icon-zipdl,
 .elfinder-dialog-icon-archive,
 .elfinder-dialog-icon-extract     { background-position: 0 -365px; }
 .elfinder-dialog-icon-search      { background-position: 0 -402px; }
@@ -886,15 +1000,22 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .elfinder-dialog-icon-loadimg,
 .elfinder-dialog-icon-netmount,
 .elfinder-dialog-icon-netunmount,
+.elfinder-dialog-icon-chmod,
+.elfinder-dialog-icon-preupload,
 .elfinder-dialog-icon-dim         { background-position: 0 -434px; }
 
 /*********************** CONFIRM DIALOG **************************/
 
-.elfinder-dialog-confirm-applyall {	padding-top:3px; }
+.elfinder-dialog-confirm-applyall {
+	padding: 0 1em;
+	margin: 0;
+}
+.elfinder-ltr .elfinder-dialog-confirm-applyall { text-align: left; }
+.elfinder-rtl .elfinder-dialog-confirm-applyall { text-align: right; }
 
 .elfinder-dialog-confirm .elfinder-dialog-icon { background-position:0 -32px; }
 
-
+.elfinder-dialog-confirm .ui-dialog-buttonset { width: auto; }
 
 /*********************** FILE INFO DIALOG **************************/
 
@@ -904,6 +1025,12 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 	width:48px;
 	height:48px;
 	margin-right:1em;
+}
+
+.elfinder-rtl .elfinder-info-title .elfinder-cwd-icon {
+	float: right;
+	margin-right: 0;
+	margin-left: 1em;
 }
 
 .elfinder-info-title strong { display:block; padding:.3em 0 .5em 0; }
@@ -930,7 +1057,15 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 }
 
 .elfinder-netmount-tb { margin:0 auto; }
+.elfinder-netmount-tb select,
 .elfinder-netmount-tb input { border:1px solid #ccc; }
+.elfinder-netmount-tb .elfinder-button-icon { cursor: pointer; }
+
+button.elfinder-info-button {
+	margin: -3.5px 0;
+	cursor: pointer;
+}
+
 /*********************** UPLOAD DIALOG **************************/
 
 .elfinder-upload-dropbox {
@@ -993,7 +1128,36 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .elfinder-rtl .dialogelfinder-drag-close { left:12px; }
 
 
+/*********************** RM CONFIRM **************************/
+.elfinder-rm-title {
+	margin-bottom: .5ex;
+}
 
+.elfinder-rm-title .elfinder-cwd-icon {
+	float:left;
+	width:48px;
+	height:48px;
+	margin-right:1em;
+}
+
+.elfinder-rtl .elfinder-rm-title .elfinder-cwd-icon {
+	float: right;
+	margin-right: 0;
+	margin-left: 1em;
+}
+
+.elfinder-rm-title strong {
+	display: block;
+	/*word-wrap: break-word;*/
+	white-space: pre-wrap;
+	word-break: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.elfinder-rm-title+br {
+	display: none;
+}
 /* File: /css/fonts.css */
 .elfinder-contextmenu .elfinder-contextmenu-item span { font-size:.76em; }
 
@@ -1033,17 +1197,6 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 	overflow:auto;
 	display:none;
 	position:relative;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	user-select: none;
-	-webkit-tap-highlight-color:rgba(0,0,0,0);
-/*	border:1px solid #111;*/
-	-webkit-touch-callout:none;
-	user-select:          none;
-	-webkit-user-select:  none;
-	-moz-user-select:     none;
-	-khtml-user-select:   none;
 }
 
 
@@ -1125,6 +1278,13 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .elfinder-tree   .elfinder-navbar-root .elfinder-navbar-icon { background-position:0 0; }
 .elfinder-places .elfinder-navbar-root .elfinder-navbar-icon { background-position:0 -704px; }
 
+/* root icon of each volume */
+.elfinder-tree .elfinder-navbar-root-local   .elfinder-navbar-icon { background-image:url("../img/volume_icon_local.png"); }
+.elfinder-tree .elfinder-navbar-root-ftp     .elfinder-navbar-icon { background-image:url("../img/volume_icon_ftp.png"); }
+.elfinder-tree .elfinder-navbar-root-sql     .elfinder-navbar-icon { background-image:url("../img/volume_icon_sql.png"); }
+.elfinder-tree .elfinder-navbar-root-dropbox .elfinder-navbar-icon { background-image:url("../img/volume_icon_dropbox.png"); }
+.elfinder-tree .elfinder-navbar-root-googledrive .elfinder-navbar-icon { background-image:url("../img/volume_icon_googledrive.png"); }
+
 /* icon in active/hove/dropactive state */
 .ui-state-active           .elfinder-navbar-icon, 
 .elfinder-droppable-active .elfinder-navbar-icon, 
@@ -1152,19 +1312,27 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 .elfinder-ltr .elfinder-navbar-spinner { left:0;  margin-left:-2px; }
 .elfinder-rtl .elfinder-navbar-spinner { right:0; margin-right:-2px; }
 
+/* marker */
+.elfinder-navbar .elfinder-perms,
+.elfinder-navbar .elfinder-lock,
+.elfinder-navbar .elfinder-symlink { opacity: .6; filter:Alpha(Opacity=60); }
+
 /* permissions marker */
-.elfinder-navbar .elfinder-perms { top:50%; margin-top:-8px; }
+.elfinder-navbar .elfinder-perms { bottom:-1px; margin-top:-8px; }
 
 /* locked marker */
 .elfinder-navbar .elfinder-lock { top:-2px; }
 
 /* permissions/symlink markers ltr/rtl enviroment */
-.elfinder-ltr .elfinder-navbar .elfinder-perms   { left:  18px; }
-.elfinder-rtl .elfinder-navbar .elfinder-perms   { right: 18px; }
-.elfinder-ltr .elfinder-navbar .elfinder-lock    { left:  18px; }
-.elfinder-rtl .elfinder-navbar .elfinder-lock    { right: 18px; }
+.elfinder-ltr .elfinder-navbar .elfinder-perms   { left:  20px; }
+.elfinder-rtl .elfinder-navbar .elfinder-perms   { right: 20px; }
+.elfinder-ltr .elfinder-navbar .elfinder-lock    { left:  20px; }
+.elfinder-rtl .elfinder-navbar .elfinder-lock    { right: 20px; }
 .elfinder-ltr .elfinder-navbar .elfinder-symlink { left:  8px; }
 .elfinder-rtl .elfinder-navbar .elfinder-symlink { right: 8px; }
+
+/* navbar input */
+.elfinder-navbar input { width:100%; border:0px solid; margin:0; padding:0; }
 
 /* resizable */
 .elfinder-navbar .ui-resizable-handle { width:12px; background:transparent url('../img/resize.png') center center no-repeat; }
@@ -1185,12 +1353,32 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 }
 
 
-
-
-
-
-
 /* File: /css/places.css */
+/*********************************************/
+/*               PLACES STYLES               */
+/*********************************************/
+/* root extra icon */
+.elfinder-navbar-root .elfinder-places-root-icon {
+	position: absolute;
+	top: 50%;
+	margin-top: -9px;
+	cursor: pointer;
+	display: none;
+}
+.elfinder-ltr .elfinder-places-root-icon {
+	right: 10px;
+}
+.elfinder-rtl .elfinder-places-root-icon {
+	left: 10px;
+}
+.elfinder-navbar-expanded .elfinder-places-root-icon {
+	display: block;
+}
+
+/* dragging helper base */
+.elfinder-place-drag {
+	font-size: 0.8em;
+}
 
 /* File: /css/quicklook.css */
 /* quicklook window */
@@ -1229,6 +1417,10 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 
 /* hide preview border in fullscreen mode */
 .elfinder-quicklook-fullscreen .elfinder-quicklook-preview { border:0 solid ;}
+
+.elfinder-quicklook-fullscreen iframe {
+	height: 99%;
+}
 
 /* quicklook titlebar */
 .elfinder-quicklook-titlebar {
@@ -1403,6 +1595,21 @@ div.elfinder-cwd-wrapper-list tr.ui-state-default td span.ui-icon {
 	overflow:auto;
 }
 
+/* archive files preview wrapper */
+.elfinder-quicklook-preview-archive-wrapper {
+	width: 100%;
+	height:100%;
+	background:#fff;
+	color:#222;
+	font-size: 1.5ex;
+	overflow:auto;
+}
+
+/* archive files preview header */
+.elfinder-quicklook-preview-archive-wrapper strong {
+	padding: 0 5px;
+}
+
 /* text preview */
 pre.elfinder-quicklook-preview-text {
 	margin:0;
@@ -1411,7 +1618,8 @@ pre.elfinder-quicklook-preview-text {
 
 /* html/pdf preview */
 .elfinder-quicklook-preview-html,
-.elfinder-quicklook-preview-pdf {
+.elfinder-quicklook-preview-pdf,
+.elfinder-quicklook-preview-iframe {
 	width:100%;
 	height:100%;
 	background:#fff;
@@ -1473,12 +1681,6 @@ embed.elfinder-quicklook-preview-audio {
 	border-right:0 solid transparent;
 	border-bottom:0 solid transparent;
 	border-left:0 solid transparent;
-	
-	-webkit-touch-callout:none;
-	user-select:          none;
-	-webkit-user-select:  none;
-	-moz-user-select:     none;
-	-khtml-user-select:   none;
 }
 
 .elfinder-statusbar a { text-decoration:none; }
@@ -1594,6 +1796,7 @@ embed.elfinder-quicklook-preview-audio {
 .elfinder-button-icon-back      { background-position: 0 -112px; }
 .elfinder-button-icon-forward   { background-position: 0 -128px; }
 .elfinder-button-icon-up        { background-position: 0 -144px; }
+.elfinder-button-icon-opendir   { background-position: 0  -32px; }
 .elfinder-button-icon-reload    { background-position: 0 -160px; }
 .elfinder-button-icon-open      { background-position: 0 -176px; } 
 .elfinder-button-icon-mkdir     { background-position: 0 -192px; }
@@ -1616,6 +1819,7 @@ embed.elfinder-quicklook-preview-audio {
 .elfinder-button-icon-view-list { background-position: 0 -464px; }
 .elfinder-button-icon-help      { background-position: 0 -480px; }
 .elfinder-button-icon-resize    { background-position: 0 -512px; }
+.elfinder-button-icon-link      { background-position: 0 -528px; }
 .elfinder-button-icon-search    { background-position: 0 -561px; }
 .elfinder-button-icon-sort      { background-position: 0 -577px; }
 .elfinder-button-icon-rotate-r  { background-position: 0 -625px; }
@@ -1624,11 +1828,14 @@ embed.elfinder-quicklook-preview-audio {
 .elfinder-button-icon-netunmount { background-position: 0 -96px; }
 .elfinder-button-icon-places    { background-position: 0 -704px; }
 .elfinder-button-icon-chmod     { background-position: 0  -48px; }
+.elfinder-button-icon-accept    { background-position: 0 -736px; }
+.elfinder-button-icon-opendir   { background-position: 0  -32px; }
 
 /* button with dropdown menu*/
 .elfinder .elfinder-menubutton { overflow:visible; }
 
-
+/* button with spinner icon */
+.elfinder-button-icon-spinner  { background: url("../img/spinner-mini.gif") center center no-repeat; }
 
 /* menu */
 .elfinder-button-menu {
@@ -1733,6 +1940,9 @@ embed.elfinder-quicklook-preview-audio {
 	margin:-9px 4px 0 4px;
 	opacity: .6; 
 	filter:Alpha(Opacity=60);
+}
+.elfinder-button-search .ui-checkboxradio-icon {
+	display: none;
 }
 
 /* search/close icons */

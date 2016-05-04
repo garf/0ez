@@ -8,7 +8,8 @@
                 @include('root.partials.settings-menu')
             </div>
             <div class="col-md-9">
-                {!! Form::open(['route' => 'root-settings-counters-save']) !!}
+                <form action="{{ route('root-settings-counters-save') }}" method="POST">
+                    {!! csrf_field() !!}
                     <div>
                         <div class="form-group">
                             <label for="inputGoogle">Google counter ID <span
@@ -31,7 +32,7 @@
                         <a href="{{ route('root-settings') }}" class="btn btn-default">Cancel</a>
                         <input type="submit" value="SAVE" class="btn btn-success"/>
                     </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>

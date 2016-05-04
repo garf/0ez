@@ -18,7 +18,8 @@
                         <h2>Links
                             <small>Add links to your communities and groups in social networks</small></h2>
                         <h3>Add Link</h3>
-                        {!! Form::open(['url' => route('root-settings-social-links-save'), 'method' => 'post']) !!}
+                        <form action="{{ route('root-settings-social-links-save') }}" method="post">
+                            {!! csrf_field() !!}
                             <div class="panel panel-success">
                                 <div class="panel-body">
                                     <div class="row">
@@ -50,7 +51,7 @@
                                     </div>
                                 </div>
                             </div>
-                        {!! Form::close() !!}
+                        </form>
                         <div>
                             <h3>Existing links</h3>
                             <ul class="list-group">
@@ -76,7 +77,8 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="comments">
-                        {!! Form::open(['url' => route('root-settings-social-save'), 'method' => 'post']) !!}
+                        <form action="{{ route('root-settings-social-save') }}" method="post">
+                            {{ csrf_field() }}
                             <h2>Comments
                                 <small>Comment widgets for posts</small></h2>
                             @include('root.partials.settings.comments-vk')
@@ -86,7 +88,7 @@
                                 <a href="{{ route('root-settings') }}" class="btn btn-default">Cancel</a>
                                 <input type="submit" value="SAVE" class="btn btn-success"/>
                             </div>
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
 

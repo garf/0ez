@@ -5,15 +5,22 @@ namespace App\Http\Controllers\Root;
 use App\Http\Controllers\Controller;
 use App\Models\Posts;
 use App\Models\Users;
-use View;
+use Title;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        Title::prepend('Admin');
+    }
+
     public function index()
     {
-        View::share('menu_item_active', 'index');
+        view()->share('menu_item_active', 'index');
+        Title::prepend('Dashboard');
+
         $data = [
-            'title'            => 'Dashboard',
+            'title'            => Title::renderr(' : ', true),
             'posts_total'      => Posts::count(),
             'posts_active'     => Posts::where('status', 'active')->count(),
             'posts_draft'      => Posts::where('status', 'draft')->count(),
@@ -24,7 +31,7 @@ class DashboardController extends Controller
             'latest_posts'     => Posts::active()->orderBy('published_at', 'desc')->limit(5)->get(),
             'popular_posts'    => Posts::active()->orderBy('views', 'desc')->limit(5)->get(),
         ];
-        $this->title->prepend($data['title']);
+
 
         return view('root.dashboard.index', $data);
     }

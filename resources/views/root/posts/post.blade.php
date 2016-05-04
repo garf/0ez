@@ -5,14 +5,15 @@
     <div class="container">
         <h1>{{ $title }}</h1>
 
-        {!! Form::open(['url' => $save_url, 'enctype' => 'multipart/form-data']) !!}
+        <form action="{{ $save_url }}" enctype="multipart/form-data" method="post">
+            {!! csrf_field() !!}
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <div class="form-group">
                         <label for="inputTitle">Title</label>
                         <input id="inputTitle" type="text" value="{{ $post->title or Input::old('title') }}" class="form-control" name="title">
                     </div>
-                    @if(!empty($post))
+                    @if(!is_null($post))
                         <div class="well">
                             <div>
                                 <span class="text-muted">URL:</span>
@@ -152,7 +153,7 @@
                     </div>
                 </div>
             </div>
-        {!! Form::close() !!}
+        </form>
     </div>
 @stop
 

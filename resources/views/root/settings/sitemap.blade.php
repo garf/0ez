@@ -22,7 +22,8 @@
                     <div class="alert alert-warning">Sitemap doesn't exist. You have to press "Generate Sitemap" button.</div>
                 @endif
 
-                {!! Form::open(['url' => route('root-settings-sitemap-save'), 'method' => 'post']) !!}
+                <form action="{{ route('root-settings-sitemap-save') }}" method="post">
+                {!! csrf_field() !!}
                     <div class="form-group">
                         <label for="inputFilename">Sitemap Filename</label>
                         <div class="input-group">
@@ -34,7 +35,7 @@
                         <a href="{{ route('root-settings') }}" class="btn btn-default">Cancel</a>
                         <input type="submit" value="SAVE" class="btn btn-success">
                     </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <hr />

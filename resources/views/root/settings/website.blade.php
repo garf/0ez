@@ -8,7 +8,8 @@
                 @include('root.partials.settings-menu')
             </div>
             <div class="col-md-9">
-                {!! Form::open(['route' => 'root-settings-website-save', 'method' => 'post']) !!}
+                <form action="{{ route('root-settings-website-save') }}" method="post">
+                    {!! csrf_field() !!}
                     <div class="form-group">
                         <label for="inputSiteName">Site Name</label>
                         <input type="text" value="{{ Conf::get('app.sitename') }}" name="sitename" class="form-control" id="inputSiteName">
@@ -51,7 +52,7 @@
                         <a href="{{ route('root-settings') }}" class="btn btn-default">Cancel</a>
                         <input type="submit" value="Save" class="btn btn-success">
                     </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
     </div>

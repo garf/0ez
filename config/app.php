@@ -2,6 +2,8 @@
 
 return [
 
+    'env' => env('APP_ENV', 'production'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode
@@ -126,13 +128,11 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-        Illuminate\Routing\ControllerServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -154,12 +154,10 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
-
-        Illuminate\Html\HtmlServiceProvider::class,
 
         //https://github.com/anhskohbo/no-captcha
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
@@ -187,6 +185,8 @@ return [
         Gaaarfild\LaravelPinger\LaravelPingerServiceProvider::class,
         //https://github.com/cviebrock/eloquent-sluggable
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        //https://github.com/gaaarfild/laravel-title
+        Gaaarfild\LaravelTitle\LaravelTitleServiceProvider::class,
 
     ],
 
@@ -241,12 +241,11 @@ return [
         'Date'          => Jenssegers\Date\Date::class,
         'Image'         => Intervention\Image\Facades\Image::class,
         'Agent'         => Jenssegers\Agent\Facades\Agent::class,
-        'Form'          => Illuminate\Html\FormFacade::class,
-        'HTML'          => Illuminate\Html\HtmlFacade::class,
         'Debugbar'      => Barryvdh\Debugbar\Facade::class,
         'Conf'          => Gaaarfild\LaravelConf\ConfFacade::class,
         'Notifications' => Gaaarfild\LaravelNotifications\NotificationsFacade::class,
         'Pinger'        => Gaaarfild\LaravelPinger\PingerFacade::class,
+        'Title'         => Gaaarfild\LaravelTitle\TitleFacade::class,
     ],
 
 ];

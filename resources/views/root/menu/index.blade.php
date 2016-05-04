@@ -6,7 +6,8 @@
         <div class="panel panel-default">
             <div class="panel-heading">New item</div>
             <div class="panel-body">
-                {!! Form::open(['route' => 'root-menu-save']) !!}
+                <form action="{{ route('root-menu-save') }}" method="POST">
+                    {!! csrf_field() !!}
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="form-group">
@@ -68,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                </form>
             </div>
         </div>
         <hr />

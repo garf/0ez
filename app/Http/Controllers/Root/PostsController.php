@@ -8,45 +8,54 @@ use App\Models\Categories;
 use App\Models\Posts;
 use App\Models\PostTag;
 use App\Models\Tags;
-use Auth;
-use Input;
 use Notifications;
 use Pinger;
 use Redirect;
 use View;
+use Title;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        Title::prepend('Admin');
+    }
+
     public function index()
     {
-        if (Input::has('status')) {
-            $posts = Posts::with('category')->byStatus(Input::get('status'))->sort()->paginate(20);
+        if (request()->has('status')) {
+            $posts = Posts::with('category')->byStatus(request('status'))->sort()->paginate(20);
         } else {
             $posts = Posts::with('category')->whereNotIn('status', ['deleted', 'refused'])->sort()->paginate(20);
         }
+
+        Title::prepend('Posts');
+
         $data = [
             'posts'      => $posts,
-            'title'      => 'Posts',
+            'title'      => Title::renderr(' : ', true),
             'categories' => Categories::all(),
         ];
 
-        $this->title->prepend($data['title']);
-        View::share('menu_item_active', 'posts');
+
+        view()->share('menu_item_active', 'posts');
 
         return view('root.posts.index', $data);
     }
 
     public function newPost()
     {
+        Title::prepend('New Post');
+
         $data = [
             'categories' => Categories::all(),
-            'title'      => 'New Post',
+            'title'      => Title::renderr(' : ', true),
             'post'       => null,
             'save_url'   => route('root-posts-store'),
             'tags'       => Tags::all(),
         ];
-        $this->title->prepend($data['title']);
-        View::share('menu_item_active', 'posts');
+
+        view()->share('menu_item_active', 'posts');
 
         return view('root.posts.post', $data);
     }
@@ -56,34 +65,34 @@ class PostsController extends Controller
         $post = Posts::findOrNew($post_id);
 
         if (empty($post)) {
-            Redirect::back()->withInput();
+            redirect()->back()->withInput();
         }
 
-        $seo_title = (Input::get('seo_title', '') != '') ? Input::get('seo_title') : Input::get('title');
+        $seo_title = ($request->get('seo_title', '') != '') ? $request->get('seo_title') : $request->get('title');
 
-        if (Input::hasFile('img')) {
-            $filename = $this->_uploadMiniature(Input::file('img'));
+        if ($request->hasFile('img')) {
+            $filename = $this->_uploadMiniature($request->file('img'));
             $post->img = $filename;
         }
 
-        $post->user_id = Auth::user()->id;
-        $post->category_id = Input::get('category_id');
-        $post->title = Input::get('title');
-        $post->excerpt = Input::get('excerpt');
-        $post->content = Input::get('content');
+        $post->user_id = auth()->user()->id;
+        $post->category_id = $request->get('category_id');
+        $post->title = $request->get('title');
+        $post->excerpt = $request->get('excerpt');
+        $post->content = $request->get('content');
         $post->seo_title = strip_tags($seo_title);
-        $post->seo_description = strip_tags(Input::get('seo_description'));
-        $post->seo_keywords = mb_strtolower(strip_tags(Input::get('seo_keywords')));
-        $post->status = Input::get('status');
-        $post->published_at = Input::get('published_at');
-        if (Input::has('update_slug')) {
+        $post->seo_description = strip_tags($request->get('seo_description'));
+        $post->seo_keywords = mb_strtolower(strip_tags($request->get('seo_keywords')));
+        $post->status = $request->get('status');
+        $post->published_at = $request->get('published_at');
+        if ($request->has('update_slug')) {
             $post->resluggify();
         }
         $post->save();
 
-        $this->_setTags(Input::get('tags'), $post->id);
+        $this->_setTags($request->get('tags'), $post->id);
 
-        if (Input::has('ping')) {
+        if ($request->has('ping')) {
             Pinger::pingAll($post->title, route('view', ['slug' => $post->slug]));
         }
 
@@ -95,14 +104,18 @@ class PostsController extends Controller
     public function edit($post_id)
     {
         $post = Posts::with('tags')->find($post_id);
+
+        Title::prepend('Edit Post');
+        Title::prepend($post->id);
+
         $data = [
             'categories' => Categories::all(),
             'post'       => $post,
-            'title'      => $post->id.' : Edit Post',
+            'title'      => Title::renderr(' : ', true),
             'save_url'   => route('root-posts-store', ['post_id' => $post_id]),
             'tags'       => Tags::all(),
         ];
-        $this->title->prepend($data['title']);
+
         View::share('menu_item_active', 'posts');
 
         return view('root.posts.post', $data);
