@@ -3,7 +3,6 @@
 /.idea/
 Homestead.yaml
 .env
-/public/upload/
 /app/packages/
 /public/robots.txt
 /public/humans.txt

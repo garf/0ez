@@ -8,13 +8,12 @@
                 <h2 class="post-title">
                     <a href="{{ route('view', ['slug' => $post->slug]) }}">{!! highlight_str($post->title, $q) !!}</a>
                 </h2>
-                <p class="lead">{!! nl2br(highlight_str($post->excerpt, $q)) !!}</p>
+                <p class="lead">{!! nl2br(highlight_str(strip_tags($post->excerpt), $q)) !!}</p>
                 <hr />
                 <div class="row">
                     <div class="col-lg-12">
                         <div>
                             <i class="fa fa-square"></i>
-
                             <a href="{{ route('category', ['slug' => $post->category->slug]) }}">{{ $post->category->title }}</a>
                         </div>
                         <div>
