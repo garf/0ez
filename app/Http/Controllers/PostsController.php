@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Posts;
-use View;
+use Title;
+use Conf;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        Title::prepend(Conf::get('app.sitename'));
+    }
+
     public function index($slug = '')
     {
         if ($slug != '') {
@@ -16,12 +22,15 @@ class PostsController extends Controller
                 abort(404);
             }
             $category_id = $category->id;
-            View::share('active_category', $category_id);
-            View::share('seo_title', 'Категория: '.$category->seo_title);
-            View::share('seo_description', $category->seo_description);
-            View::share('seo_keywords', $category->seo_keywords);
-            $this->title->prepend('Категория: '.$category->seo_title);
+            view()->share('active_category', $category_id);
+            view()->share('seo_title', 'Категория: '.$category->seo_title);
+            view()->share('seo_description', $category->seo_description);
+            view()->share('seo_keywords', $category->seo_keywords);
+            
+            Title::prepend('Категория');
+            Title::prepend($category->seo_title);
         } else {
+            Title::append(Conf::get('seo.default.seo_title'));
             $category = null;
             $category_id = null;
         }
@@ -37,10 +46,10 @@ class PostsController extends Controller
     public function view($slug)
     {
         $post = Posts::i()->getBySlug($slug);
-        View::share('seo_title', $post->seo_title);
-        View::share('seo_description', $post->seo_description);
-        View::share('seo_keywords', $post->seo_keywords);
-        $this->title->prepend($post->seo_title);
+        view()->share('seo_title', $post->seo_title);
+        view()->share('seo_description', $post->seo_description);
+        view()->share('seo_keywords', $post->seo_keywords);
+        Title::prepend($post->seo_title);
 
         if ($post->status == 'active') {
             $post->increment('views');
@@ -55,7 +64,7 @@ class PostsController extends Controller
             'posts' => Posts::i()->getPostsByTag($tag),
             'title' => 'Тэг: '.$tag,
         ];
-        View::share('seo_title', $data['title']);
+        view()->share('seo_title', $data['title']);
         $this->title->prepend($data['title']);
 
         return view('site.posts.index', $data);

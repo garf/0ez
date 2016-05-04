@@ -8,9 +8,15 @@ use Hash;
 use Input;
 use Notifications;
 use Redirect;
+use Title;
 
 class AuthController extends Controller
 {
+    public function __construct()
+    {
+        Title::prepend('Authentication');
+    }
+
     public function login()
     {
         return view('site.auth.login', []);
