@@ -68,7 +68,7 @@ class PostsController extends Controller
                 $post->increment('views');
             }
         } catch (QueryException $e) {
-            //
+            //This is just for demo purposes.
         }
 
         return view('site.posts.view', ['post' => $post]);
