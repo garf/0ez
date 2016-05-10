@@ -24,7 +24,8 @@ if (!function_exists('generate_filename')) {
 }
 
 if (!function_exists('highlight_str')) {
-    function highlight_str($haystack, $needle, $filter=true) {
+    function highlight_str($haystack, $needle, $filter = true)
+    {
         if ($filter) {
             $needle = e($needle);
             $haystack = e($haystack);

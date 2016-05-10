@@ -47,9 +47,7 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $e
      * @return \Illuminate\Http\Response
-     *
      */
-
     public function render($request, Exception $e)
     {
         if ($this->isResponseException($e)) {
@@ -60,7 +58,8 @@ class Handler extends ExceptionHandler
             if ($request->ajax() || $request->wantsJson()) {
                 return new JsonResponse(['404: ' . $e->getMessage()], 404);
             }
-            return response()->view("errors.404", ['exception' => $e], 404);
+
+            return response()->view('errors.404', ['exception' => $e], 404);
         }
 
         if (config('app.debug')) {
@@ -101,7 +100,7 @@ class Handler extends ExceptionHandler
             return new JsonResponse([$this->getStatusCode($e) . ': ' . $e->getMessage()], $this->getStatusCode($e));
         }
 
-        return response()->view("errors.500", ['exception' => $e], $this->getStatusCode($e));
+        return response()->view('errors.500', ['exception' => $e], $this->getStatusCode($e));
     }
 
     private function renderExceptionWithWhoops(Exception $e)

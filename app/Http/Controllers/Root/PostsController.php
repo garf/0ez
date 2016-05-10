@@ -72,7 +72,7 @@ class PostsController extends Controller
     }
 
     public function store(Requests\StorePostRequest $request, $post_id = null)
-    {;
+    {
         $post = Posts::findOrNew($post_id);
 
         if (empty($post)) {

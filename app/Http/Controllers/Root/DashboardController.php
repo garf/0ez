@@ -32,7 +32,6 @@ class DashboardController extends Controller
             'popular_posts'    => Posts::active()->orderBy('views', 'desc')->limit(5)->get(),
         ];
 
-
         return view('root.dashboard.index', $data);
     }
 }
