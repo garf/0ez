@@ -24,7 +24,7 @@
                                 </label>
                             </div>
                             <div>
-                                {!! Notifications::byGroup('login')->toBootstrap() !!}
+                                {!! Notifications::byGroup('login')->toHTML() !!}
                             </div>
                         </div>
                         <div class="panel-footer">

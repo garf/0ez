@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use Auth;
 use Hash;
+use Illuminate\Http\Request;
 use Input;
 use Notifications;
 use Redirect;
@@ -22,13 +23,13 @@ class AuthController extends Controller
         return view('site.auth.login', []);
     }
 
-    public function loginPost()
+    public function loginPost(Request $request)
     {
-        $redirectTarget = (Input::has('target')) ? Input::get('target') : 'root-index';
+        $redirectTarget = ($request->has('target')) ? $request->get('target') : 'root-index';
 
-        $email = trim(Input::get('email', ''));
-        $password = trim(Input::get('password', ''));
-        $isRemember = Input::has('remember');
+        $email = trim($request->get('email', ''));
+        $password = trim($request->get('password', ''));
+        $isRemember = $request->has('remember');
 
         $user = Users::where('email', $email)->first();
 

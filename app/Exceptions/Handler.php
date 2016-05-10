@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -55,6 +56,13 @@ class Handler extends ExceptionHandler
             return parent::render($request, $e);
         }
 
+        if ($this->isNotFountException($e)) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return new JsonResponse(['404: ' . $e->getMessage()], 404);
+            }
+            return response()->view("errors.404", ['exception' => $e], 404);
+        }
+
         if (config('app.debug')) {
             return $this->handleInDebugMode($request, $e);
         }
@@ -83,11 +91,10 @@ class Handler extends ExceptionHandler
 
     private function handleInProductionMode(Request $request, Exception $e)
     {
-        if ($this->isNotFountException($e)) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return new JsonResponse(['404: ' . $e->getMessage()], 404);
-            }
-            return response()->view("errors.404", ['exception' => $e], 404);
+        if ($this->isQueryException($e)) {
+            \Notifications::add('Update not allowed', 'danger', '0');
+
+            return redirect()->back();
         }
 
         if ($request->ajax() || $request->wantsJson()) {
@@ -117,6 +124,11 @@ class Handler extends ExceptionHandler
     private function isResponseException($e)
     {
         return $e instanceof HttpResponseException;
+    }
+
+    private function isQueryException($e)
+    {
+        return $e instanceof QueryException;
     }
 
     private function getStatusCode(Exception $e)

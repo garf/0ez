@@ -12,7 +12,7 @@ return [
      |
      */
 
-    'enabled' => env('DEBUGBAR_ENABLED', false),
+    'enabled' => env('APP_DEBUG', false),
 
     /*
      |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
      */
     'storage' => [
         'enabled'    => true,
-        'driver'     => 'redis', // redis, file, pdo
+        'driver'     => 'file', // redis, file, pdo
         'path'       => storage_path().'/debugbar', // For file driver
         'connection' => null,   // Leave null for default connection (Redis/PDO)
     ],
