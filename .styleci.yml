@@ -1,0 +1,17 @@
+preset: laravel
+
+disabled:
+  - concat_without_spaces
+  - phpdoc_to_comment
+  - not_operator_with_successor_space
+  - phpdoc_summary
+  - phpdoc_no_package
+  
+finder:
+  not-path:
+    - "config"
+    - "resources/views"
+    - "public"
+  not-contains:
+    - ".blade.php"
+    - "server.php"
