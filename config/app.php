@@ -40,6 +40,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'sitename' => env('APP_SITENAME', '0ez'),
 
     /*
     |--------------------------------------------------------------------------
@@ -155,7 +156,36 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ComposerServiceProvider::class,
 
+        //https://github.com/anhskohbo/no-captcha
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        //https://github.com/jenssegers/laravel-date
+        Jenssegers\Date\DateServiceProvider::class,
+        //https://github.com/barryvdh/laravel-ide-helper
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        //http://image.intervention.io
+        Intervention\Image\ImageServiceProvider::class,
+        //https://github.com/jenssegers/laravel-agent
+        Jenssegers\Agent\AgentServiceProvider::class,
+        //https://github.com/YOzaz/Laravel-SwiftMailer
+        YOzaz\LaravelSwiftmailer\ServiceProvider::class,
+        //https://github.com/StydeNet/blade-pagination
+        Styde\BladePagination\ServiceProvider::class,
+        //https://github.com/barryvdh/laravel-debugbar
+        Barryvdh\Debugbar\ServiceProvider::class,
+        //https://github.com/barryvdh/laravel-elfinder
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
+        //https://github.com/gaaarfild/laravel-conf
+        Gaaarfild\LaravelConf\LaravelConfServiceProvider::class,
+        //https://github.com/gaaarfild/laravel-notifications
+        Gaaarfild\LaravelNotifications\LaravelNotificationsServiceProvider::class,
+        //https://github.com/gaaarfild/laravel-pinger
+        Gaaarfild\LaravelPinger\LaravelPingerServiceProvider::class,
+        //https://github.com/cviebrock/eloquent-sluggable
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        //https://github.com/gaaarfild/laravel-title
+        Gaaarfild\LaravelTitle\LaravelTitleServiceProvider::class,
     ],
 
     /*
@@ -202,6 +232,14 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Date'          => Jenssegers\Date\Date::class,
+        'Image'         => Intervention\Image\Facades\Image::class,
+        'Agent'         => Jenssegers\Agent\Facades\Agent::class,
+        'Debugbar'      => Barryvdh\Debugbar\Facade::class,
+        'Conf'          => Gaaarfild\LaravelConf\ConfFacade::class,
+        'Notifications' => Gaaarfild\LaravelNotifications\NotificationsFacade::class,
+        'Pinger'        => Gaaarfild\LaravelPinger\PingerFacade::class,
+        'Title'         => Gaaarfild\LaravelTitle\TitleFacade::class,
     ],
 
 ];
