@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categories;
 use App\Models\Posts;
+use Illuminate\Database\QueryException;
 use Title;
 use Conf;
 
@@ -47,6 +48,7 @@ class PostsController extends Controller
             'posts'    => $posts,
             'category' => $category,
             'q' => $q,
+            'title' => Title::renderr(' : ', true),
         ];
 
         return view('site.posts.index', $data);
@@ -61,8 +63,12 @@ class PostsController extends Controller
 
         Title::prepend($post->seo_title);
 
-        if ($post->status == 'active') {
-            $post->increment('views');
+        try {
+            if ($post->status == 'active') {
+                $post->increment('views');
+            }
+        } catch (QueryException $e) {
+            //
         }
 
         return view('site.posts.view', ['post' => $post]);
@@ -70,12 +76,15 @@ class PostsController extends Controller
 
     public function tag($tag)
     {
+        Title::prepend('Тэг: '.$tag);
+
         $data = [
             'posts' => Posts::i()->getPostsByTag($tag),
-            'title' => 'Тэг: '.$tag,
+            'title' => Title::renderr(' : ', true),
+            'q' => '',
         ];
         view()->share('seo_title', $data['title']);
-        $this->title->prepend($data['title']);
+
 
         return view('site.posts.index', $data);
     }

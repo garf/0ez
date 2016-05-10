@@ -18,7 +18,7 @@
 <body>
 @include('root.partials.header')
 <div class="container">
-    {!! Notifications::byGroup('0')->toBootstrap() !!}
+    {!! Notifications::byGroup('0')->toHTML() !!}
 </div>
 @yield('body')
 @include('root.partials.footer')

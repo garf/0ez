@@ -18,7 +18,6 @@
         "intervention/image": "~2.1",
         "laracasts/testdummy": "^2.3",
         "barryvdh/laravel-debugbar": "^2.0",
-        "barryvdh/laravel-elfinder": "^0.3.4",
         "gaaarfild/laravel-conf": "~1.0",
         "gaaarfild/laravel-notifications": "~1.0",
         "gaaarfild/laravel-pinger": "~1.0",
@@ -59,7 +58,6 @@
         "post-update-cmd": [
             "php artisan clear-compiled",
             "php artisan ide-helper:generate",
-            "php artisan elfinder:publish",
             "php artisan optimize"
         ],
         "post-root-package-install": [
