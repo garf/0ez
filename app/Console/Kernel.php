@@ -24,6 +24,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('create:sitemap --env=production')->everyMinute();
+        $schedule->command('create:sitemap --env=production')->hourly();
     }
 }
