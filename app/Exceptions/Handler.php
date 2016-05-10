@@ -52,11 +52,6 @@ class Handler extends ExceptionHandler
 
     public function render($request, Exception $e)
     {
-        if ($this->isQueryException($e)) {
-            \Notifications::add('Update not allowed', 'danger', '0');
-
-            return redirect()->back();
-        }
         if ($this->isResponseException($e)) {
             return parent::render($request, $e);
         }
@@ -96,7 +91,11 @@ class Handler extends ExceptionHandler
 
     private function handleInProductionMode(Request $request, Exception $e)
     {
+        if ($this->isQueryException($e)) {
+            \Notifications::add('Update not allowed', 'danger', '0');
 
+            return redirect()->back();
+        }
 
         if ($request->ajax() || $request->wantsJson()) {
             return new JsonResponse([$this->getStatusCode($e) . ': ' . $e->getMessage()], $this->getStatusCode($e));
