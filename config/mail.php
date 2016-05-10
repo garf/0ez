@@ -11,7 +11,8 @@ return [
     | sending of e-mail. You may specify which one you're using throughout
     | your application here. By default, Laravel is setup for SMTP mail.
     |
-    | Supported: "smtp", "mail", "sendmail", "mailgun", "mandrill", "ses", "log"
+    | Supported: "smtp", "mail", "sendmail", "mailgun", "mandrill",
+    |            "ses", "sparkpost", "log"
     |
     */
 
@@ -28,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.yandex.ru'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 465),
+    'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'noreply@0ez.ru', 'name' => '0ez Robot'],
+    'from' => ['address' => null, 'name' => null],
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +68,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +81,7 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'noreply@0ez.ru'),
+    'username' => env('MAIL_USERNAME'),
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +94,7 @@ return [
     |
     */
 
-    'password' => env('MAIL_PASSWORD', 'Gastrafetas115'),
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
@@ -107,18 +108,5 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Mail "Pretend"
-    |--------------------------------------------------------------------------
-    |
-    | When this option is enabled, e-mail will not actually be sent over the
-    | web and will instead be written to your application's logs files so
-    | you may inspect the message. This is great for local development.
-    |
-    */
-
-    'pretend' => false,
 
 ];

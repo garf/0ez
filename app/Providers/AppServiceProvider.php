@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Conf;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        include app_path('helpers.php');
+        //
     }
 
     /**
@@ -24,9 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(\App\Classes\Title::class, function () {
-            return new \App\Classes\Title(Conf::get('app.sitename'));
-        });
-        $this->app->bind('title', \App\Classes\Title::class);
+        //
     }
 }
