@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use Auth;
 use Hash;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Input;
 use Notifications;
@@ -50,7 +51,11 @@ class AuthController extends Controller
             return Redirect::route('login', ['target' => $redirectTarget])->withInput();
         }
 
-        Auth::login($user, $isRemember);
+        try {
+            Auth::login($user, $isRemember);
+        } catch (QueryException $e) {
+            //just for demo purposes
+        }
 
         return Redirect::route($redirectTarget);
     }
