@@ -100,6 +100,7 @@ class Posts extends Model implements SluggableInterface
     public function scopeSearch($query, $str)
     {
         $str = '%' . $str . '%';
+
         return $query->where('title', 'like', $str)
             ->orWhere('excerpt', 'like', $str)
             ->orWhere('content', 'like', $str);

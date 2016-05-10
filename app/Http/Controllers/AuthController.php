@@ -7,7 +7,6 @@ use Auth;
 use Hash;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Input;
 use Notifications;
 use Redirect;
 use Title;

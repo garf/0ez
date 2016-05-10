@@ -56,7 +56,6 @@ class CategoriesController extends Controller
             'save_url' => route('root-categories-store', ['category_id' => $category->id]),
         ];
 
-
         return view('root.categories.category', $data);
     }
 

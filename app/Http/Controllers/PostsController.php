@@ -27,7 +27,7 @@ class PostsController extends Controller
             view()->share('seo_title', 'Категория: '.$category->seo_title);
             view()->share('seo_description', $category->seo_description);
             view()->share('seo_keywords', $category->seo_keywords);
-            
+
             Title::prepend('Категория');
             Title::prepend($category->seo_title);
         } else {
@@ -39,7 +39,6 @@ class PostsController extends Controller
         $q = request('q', null);
 
         if (!empty($q)) {
-
         }
 
         $posts = Posts::i()->getPostsByCategoryId($category_id, $q);
@@ -84,7 +83,6 @@ class PostsController extends Controller
             'q' => '',
         ];
         view()->share('seo_title', $data['title']);
-
 
         return view('site.posts.index', $data);
     }
