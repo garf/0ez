@@ -11,7 +11,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-8">
                     <div class="form-group">
                         <label for="inputTitle">Title</label>
-                        <input id="inputTitle" type="text" value="{{ $post->title or Input::old('title') }}" class="form-control" name="title">
+                        <input id="inputTitle" type="text" value="{{ $post->title or old('title') }}" class="form-control" name="title">
                     </div>
                     @if(!is_null($post))
                         <div class="well">
@@ -56,25 +56,25 @@
                     <div class="form-group">
                         <label for="inputExcerpt">Excerpt</label>
                         <textarea id="inputExcerpt"
-                                  name="excerpt" class="form-control">{!! $post->excerpt or Input::old('excerpt')  !!} </textarea>
+                                  name="excerpt" class="form-control">{!! $post->excerpt or old('excerpt')  !!} </textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputContent">Content</label>
-                        <textarea id="inputContent" name="content">{!! $post->content or Input::old('content')  !!} </textarea>
+                        <textarea id="inputContent" name="content">{!! $post->content or old('content')  !!} </textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="inputSEOTitle">SEO Title</label>
-                        <input id="inputSEOTitle" type="text" value="{{ $post->seo_title or Input::old('seo_title') }}" class="form-control" name="seo_title">
+                        <input id="inputSEOTitle" type="text" value="{{ $post->seo_title or old('seo_title') }}" class="form-control" name="seo_title">
                     </div>
                     <div class="form-group">
                         <label for="inputSEODescription">SEO Description</label>
-                        <textarea id="inputSEODescription" name="seo_description" class="form-control">{{ $post->seo_description or Input::old('seo_description') }}</textarea>
+                        <textarea id="inputSEODescription" name="seo_description" class="form-control">{{ $post->seo_description or old('seo_description') }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputSEOKeywords">SEO Keywords</label>
                         <input id="inputSEOKeywords" type="text" class="form-control"
-                               value="{{ $post->seo_keywords or Input::old('seo_keywords') }}" name="seo_keywords">
+                               value="{{ $post->seo_keywords or old('seo_keywords') }}" name="seo_keywords">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-4">
@@ -127,7 +127,7 @@
                         <input type="text"
                                id="inputTags"
                                name="tags"
-                               value="{{ (!empty($post) ? $post->tags->implode('tag', ', ') : Input::old('tags'))  }}"
+                               value="{{ (!empty($post) ? $post->tags->implode('tag', ', ') : old('tags'))  }}"
                                class="form-control">
 
                         <div class="well well-sm tags-list">

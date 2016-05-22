@@ -8,13 +8,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="inputName">Name</label>
-                        <input type="text" name="name" value="{{ $user->name or Input::old('name') }}" class="form-control" id="inputName">
+                        <input type="text" name="name" value="{{ $user->name or old('name') }}" class="form-control" id="inputName">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="inputEmail">E-mail</label>
-                        <input type="text" name="email" value="{{ $user->email or Input::old('email') }}" class="form-control" id="inputEmail">
+                        <input type="text" name="email" value="{{ $user->email or old('email') }}" class="form-control" id="inputEmail">
                     </div>
                 </div>
             </div>
