@@ -38,7 +38,6 @@ Route::group(['middleware' => 'web'], function () {
 
 //=======ROOT=======//
     Route::group(['prefix' => 'root', 'middleware' => 'auth'], function () {
-
         Route::get('/', [
             'as'   => 'root-index',
             'uses' => 'Root\DashboardController@index',
