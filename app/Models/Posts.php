@@ -66,7 +66,13 @@ class Posts extends Model implements SluggableInterface
         if (Cache::has($key)) {
             return Cache::get($key);
         } else {
-            $posts = Tags::where('tag', 'like', $tag)->first()->posts()->active()->paginate(10);
+            $tag = Tags::where('tag', 'like', $tag)->first();
+
+            if (is_null($tag)) {
+                return null;
+            }
+
+            $posts = $tag->posts()->active()->paginate(10);
             Cache::put($key, $posts, 5);
         }
 
